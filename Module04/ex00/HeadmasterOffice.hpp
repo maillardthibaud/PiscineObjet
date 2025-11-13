@@ -5,9 +5,14 @@
 
 class HeadmasterOffice : public Room
 {
-private:
+    private:
 
-public:
+
+
+    public:
+
+            HeadmasterOffice(int id);
+            ~HeadmasterOffice();
 
 };
 

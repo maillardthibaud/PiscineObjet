@@ -6,11 +6,15 @@
 
 class Secretary : public Staff
 {
-private:
+	private:
 
-public:
-	Form* createForm(FormType p_formType);
-	void archiveForm();
+	public:
+
+		Secretary(std::string name);
+		~Secretary();
+		
+		Form* createForm(FormType p_formType);
+		void archiveForm();
 };
 
 #endif

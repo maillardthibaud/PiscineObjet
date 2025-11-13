@@ -7,11 +7,16 @@
 
 class Headmaster : public Staff
 {
-private:
-	std::vector<Form*> _formToValidate;
-	
-public:
-	void receiveForm(Form* p_form);
+	private:
+
+		std::vector<Form*> _formToValidate;
+		
+	public:
+		
+		Headmaster(std::string name);
+		~Headmaster();
+
+		void receiveForm(Form* p_form);
 };
 
 #endif

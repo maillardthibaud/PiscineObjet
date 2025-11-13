@@ -9,6 +9,11 @@ class Staff : public Person
     private:
 
     public:
+
+        Staff(std::string name);
+        ~Staff();
+
+        
         void sign(Form* p_form);
 };
 

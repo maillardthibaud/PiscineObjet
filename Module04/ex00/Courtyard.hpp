@@ -9,5 +9,8 @@ private:
 
 public:
 
+        Courtyard(int id);
+        ~Courtyard();
+
 };
 #endif

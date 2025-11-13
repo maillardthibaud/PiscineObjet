@@ -5,9 +5,12 @@
 
 class StaffRestRoom : public Room
 {
-private:
+    private:
 
-public:
+    public:
+
+    StaffRestRoom(int id);
+    ~StaffRestRoom();
 
 };
 #endif

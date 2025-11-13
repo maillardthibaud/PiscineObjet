@@ -11,16 +11,16 @@ enum class FormType
 
 class Form
 {
-private:
-	FormType _formType;
+	private:
 
-public:
-	Form(FormType p_formType)
-	{
+		FormType _formType;
 
-	}
+	public:
 
-	virtual void execute() = 0;
+		Form(FormType p_formType);
+		~Form();
+
+		virtual void execute() = 0;
 
 };
 

@@ -7,8 +7,20 @@ CFLAGS			:= -Wall -Wextra -Werror -std=c++11
 
 SRC				:= main.cpp \
 					Room.cpp \
+					HeadmasterOffice.cpp \
+					SecretarialOffice.cpp \
+					StaffRestRoom.cpp \
+					Classroom.cpp \
+					Courtyard.cpp \
 					Person.cpp \
-					Classroom.cpp 
+					Student.cpp \
+					Staff.cpp \
+					Secretary.cpp \
+					Headmaster.cpp \
+					Professor.cpp \
+					Form.cpp 
+					
+
 
 
 
@@ -30,7 +42,7 @@ clean			:
 fclean			: clean
 					rm -f $(NAME)
 
-re				: fclean
+re				: fclean all
 
 .PHONY			: all clean fclean re
 

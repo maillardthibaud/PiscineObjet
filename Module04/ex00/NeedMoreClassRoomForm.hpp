@@ -5,9 +5,12 @@
 
 class NeedMoreClassRoomForm : public Form
 {
-private:
+	private:
 
-public:
-	void execute();
+	public:
+
+		NeedMoreClassRoomForm();
+		~NeedMoreClassRoomForm();
+		void execute();
 };
 #endif

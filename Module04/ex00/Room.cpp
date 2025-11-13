@@ -6,7 +6,6 @@ Room::Room(int id) : _id(id)
     std::cout << "Room constructor, id : " << _id << std::endl;
 }
 
-
 Room::~Room()
 {
     std::cout << "Destructor Room" << std::endl;

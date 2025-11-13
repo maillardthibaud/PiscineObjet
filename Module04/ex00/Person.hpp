@@ -7,7 +7,7 @@ class Room;
 
 class Person
 {
-	private:
+	protected:
 
 		std::string _name;
 		Room* _currentRoom;
@@ -17,7 +17,7 @@ class Person
 		Person(std::string p_name);
 		~Person();
 
-		Room* room();
+		Room* getCurrentRoom();
 
 };
 

@@ -1,17 +1,13 @@
-#ifndef __SECRETARIALOFFICE_HPP__
-#define __SECRETARIALOFFICE_HPP__
+#include <iostream>
+#include "SecretarialOffice.hpp"
 
 
-#include <vector>
-#include "Room.hpp"
-#include "Form.hpp"
-
-class SecretarialOffice: public Room
+SecretarialOffice::SecretarialOffice(int id) : Room(id)
 {
-private:
-	std::vector<Form*> _archivedForms;
+	std::cout << "Secretary office constructor, id :" << _id << std::endl;
+}
+SecretarialOffice::~SecretarialOffice()
+{
+	std::cout << "Secretary office destructor"  << std::endl;
 
-public:
-
-};
-#endif
+}

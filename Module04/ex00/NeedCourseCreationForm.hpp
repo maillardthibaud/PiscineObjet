@@ -5,10 +5,14 @@
 
 class NeedCourseCreationForm : public Form
 {
-private:
+	private:
 
-public:
-	void execute();
+	public:
+
+		NeedCourseCreationForm();
+		~NeedCourseCreationForm();
+
+		void execute();
 };
 
 
