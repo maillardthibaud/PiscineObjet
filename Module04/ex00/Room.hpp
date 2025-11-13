@@ -2,20 +2,24 @@
 #define __ROOM_HPP__
 
 #include <vector>
-#include "Person.hpp"
+// #include "Person.hpp"
+class Person;
 
 class Room
 {
-private:
-	long long ID;
-	std::vector<Person*> _occupants;
+	private:
+			std::vector<Person*> _occupants;
 
-public:
-	Room();
-	bool canEnter(Person*);
-	void enter(Person*);
-	void exit(Person*);
-	
-	void printOccupant();
+	protected:
+			int _id;
+
+	public:
+
+			Room(int id);
+			~Room();
+			bool canEnter(Person* person);
+			void enter(Person* person);
+			void exit(Person* person);
+			void printOccupant();
 };
 #endif
