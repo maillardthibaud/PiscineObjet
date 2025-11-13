@@ -13,6 +13,8 @@
 #include "Secretary.hpp"
 #include "Headmaster.hpp"
 #include "Professor.hpp"
+#include "Form.hpp"
+#include "SubscriptionToCourseForm.hpp"
 int main()
 {
     HeadmasterOffice ho(1);
@@ -27,6 +29,7 @@ int main()
     Secretary sc("42i");
     Professor ps("Wiplier");
 
+    SubscriptionToCourseForm scf;
 
 
 

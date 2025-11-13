@@ -12,3 +12,9 @@ Courtyard::~Courtyard()
     std::cout << "Courtyard destructor" << std::endl;
 
 }
+
+bool Courtyard::canEnter(Person* person)
+{
+    (void)person;
+    return (true);
+}

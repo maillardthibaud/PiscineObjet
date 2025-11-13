@@ -10,11 +10,12 @@ Room::~Room()
 {
     std::cout << "Destructor Room" << std::endl;
 }
-bool Room::canEnter(Person* person)
-{
-    (void) person;
-    return (true);
-}
+// bool Room::canEnter(Person* person)
+// {
+//     (void) person;
+//     return (true);
+// }
+
 void Room::enter(Person* person)
 {
 

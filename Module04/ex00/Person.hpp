@@ -2,7 +2,7 @@
 #define __PERSON_HPP__
 
 #include <string>
-// #include "Room.hpp"
+
 class Room;
 
 class Person

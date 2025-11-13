@@ -1,20 +1,18 @@
-#include "NeedCourseCreationForm.hpp"
 #include <iostream>
+#include "SubscriptionToCourseForm.hpp"
 
-NeedCourseCreationForm::NeedCourseCreationForm() : Form(FormType::NeedCourseCreation)
+
+SubscriptionToCourseForm::SubscriptionToCourseForm() : Form(FormType::SubscriptionToCourse)
 {
-    std::cout << "NCCForm constructor" << std::endl;
+    std::cout << "STCForm constructor" << std::endl; 
 }
-NeedCourseCreationForm::~NeedCourseCreationForm()
+SubscriptionToCourseForm::~SubscriptionToCourseForm()
 {
-
-    std::cout << "NCCForm destructor" << std::endl;
+    std::cout << "STCForm destructor" << std::endl; 
 
 }
 
-void NeedCourseCreationForm::execute()
+void SubscriptionToCourseForm::execute()
 {
-
-    std::cout << "Need course creation form execute" << std::endl;
-
+    std::cout << "STCForm execute" << std::endl; 
 }

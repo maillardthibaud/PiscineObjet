@@ -16,10 +16,11 @@ class Room
 	public:
 
 			Room(int id);
-			~Room();
-			bool canEnter(Person* person);
-			void enter(Person* person);
-			void exit(Person* person);
-			void printOccupant();
+			virtual ~Room();
+
+			virtual bool canEnter(Person* person) = 0;
+			virtual void enter(Person* person);
+			virtual void exit(Person* person);
+			virtual void printOccupant();
 };
 #endif

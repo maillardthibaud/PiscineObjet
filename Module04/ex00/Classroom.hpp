@@ -1,21 +1,26 @@
 #ifndef __CLASSROOM_HPP__
 #define __CLASSROOM_HPP__
 
+#include <string>
 #include "Room.hpp"
-// class Room;
-// #include "Course.hpp"
-// class Course;
+#include "Course.hpp"
 
 class Classroom : public Room
 {
 	private:
 
-		// Course* _currentRoom;
+		std::string		_courseName;
+		Course* 		_currentRoom;
 
 	public:
 
 		Classroom(int idClassroom);
 		~Classroom();
-		// void assignCourse(Course* p_course);
+
+		void 		assignCourse(Course* p_course);
+
+		bool 		canEnter(Person* person);
 };
+
+
 #endif

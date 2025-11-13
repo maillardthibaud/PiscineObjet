@@ -11,6 +11,8 @@ class StaffRestRoom : public Room
 
     StaffRestRoom(int id);
     ~StaffRestRoom();
+    
+    bool canEnter(Person* person);
 
 };
 #endif

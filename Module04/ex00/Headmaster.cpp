@@ -11,11 +11,13 @@ Headmaster::Headmaster(std::string name) : Staff(name)
 Headmaster::~Headmaster()
 {
     std::cout << "Headmaster destructor" << std::endl;
-
 }
 
 void Headmaster::receiveForm(Form* p_form)
 {
-    (void)p_form;
-
+    if (p_form)
+    {
+        std::cout << _name << " has received form : "  << std::endl;
+        _formToValidate.push_back(p_form);
+    }
 }

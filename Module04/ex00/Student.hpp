@@ -3,9 +3,9 @@
 
 #include <vector>
 #include "Person.hpp"
-// #include "Course.hpp"
-#include "Classroom.hpp"
+
 class Course;
+class Classroom;
 
 class Student : public Person
 {
@@ -17,6 +17,8 @@ class Student : public Person
 
 		Student(std::string name);
 		~Student();
+
+		std::string	getName();
 		void attendClass(Classroom* p_classroom);
 		void exitClass();
 		void graduate(Course* p_course);

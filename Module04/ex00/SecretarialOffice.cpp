@@ -11,3 +11,9 @@ SecretarialOffice::~SecretarialOffice()
 	std::cout << "Secretary office destructor"  << std::endl;
 
 }
+
+bool SecretarialOffice::canEnter(Person* person)
+{
+	(void)person;
+	return (true);
+}

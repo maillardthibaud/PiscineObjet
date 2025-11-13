@@ -14,6 +14,8 @@ class HeadmasterOffice : public Room
             HeadmasterOffice(int id);
             ~HeadmasterOffice();
 
+            bool canEnter(Person* person);
+
 };
 
 #endif

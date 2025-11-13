@@ -11,6 +11,7 @@ public:
 
         Courtyard(int id);
         ~Courtyard();
-
+        
+        bool canEnter(Person* person);
 };
 #endif

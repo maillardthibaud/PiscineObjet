@@ -6,10 +6,14 @@
 
 class SubscriptionToCourseForm : public Form
 {
-private:
+	private:
 
-public:
-	void execute();
+	public:
+
+		SubscriptionToCourseForm();
+		~SubscriptionToCourseForm();
+
+		void execute();
 };
 
 

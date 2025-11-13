@@ -17,5 +17,7 @@ class SecretarialOffice: public Room
         SecretarialOffice(int id);
         ~SecretarialOffice();
 
+        bool canEnter(Person* person);
+
 };
 #endif

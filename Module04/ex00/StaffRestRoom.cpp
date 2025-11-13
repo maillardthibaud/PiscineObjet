@@ -12,3 +12,9 @@ StaffRestRoom::~StaffRestRoom()
     std::cout << "StaffRoom destructor" << std::endl;
 
 }
+
+bool StaffRestRoom::canEnter(Person* person)
+{
+    (void)person;
+    return(true);
+}

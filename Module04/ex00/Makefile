@@ -18,7 +18,15 @@ SRC				:= main.cpp \
 					Secretary.cpp \
 					Headmaster.cpp \
 					Professor.cpp \
-					Form.cpp 
+					Form.cpp \
+					NeedCourseCreationForm.cpp \
+					NeedMoreClassRoomForm.cpp \
+					SubscriptionToCourseForm.cpp \
+					CourseFinishedForm.cpp \
+					Course.cpp 
+
+
+
 					
 
 

@@ -11,3 +11,10 @@ HeadmasterOffice::~HeadmasterOffice()
     std::cout << "HeadmasterOffice destructor" << std::endl;
 
 }
+
+
+bool HeadmasterOffice::canEnter(Person* person)
+{
+    (void)person;
+    return(true);
+}

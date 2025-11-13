@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Classroom.hpp"
-#include "Room.hpp"
 
 Classroom::Classroom(int idClassroom) : Room(idClassroom)
 {
@@ -9,12 +8,25 @@ Classroom::Classroom(int idClassroom) : Room(idClassroom)
 }
 Classroom::~Classroom()
 {
-
     std::cout << "Classroom destructor id : " << _id << std::endl;
-
+}
+void Classroom::assignCourse(Course* p_course)
+{
+    if(!p_course)
+        return;
+    if (!_currentRoom)
+    {
+        _courseName = p_course->getName();
+        std::cout << "Classroom id : " << _id << " has been assign the " << _courseName << " course" << std::endl;
+        _currentRoom = p_course;
+    }
+    else
+        std::cout << "This classroom has already a course assign" << std::endl;
 
 }
-// void Classroom::assignCourse(Course* p_course)
-// {
 
-// }
+bool Classroom::canEnter(Person* person)
+{
+    (void)person;
+    return(true);
+}

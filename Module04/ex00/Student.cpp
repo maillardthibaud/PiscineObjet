@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "Student.hpp"
-#include "Person.hpp"
+// #include "Person.hpp"
 // #include "Course.hpp"
 
 Student::Student(std::string name) : Person(name)
@@ -12,6 +12,11 @@ Student::Student(std::string name) : Person(name)
 Student::~Student()
 {
     std::cout << "Student Destructor" << std::endl;
+}
+
+std::string	Student::getName()
+{
+    return (_name);
 }
 
 void Student::attendClass(Classroom* p_classroom)

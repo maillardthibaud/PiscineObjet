@@ -18,6 +18,7 @@ class Form
 	public:
 
 		Form(FormType p_formType);
+		FormType	getFormType();
 		~Form();
 
 		virtual void execute() = 0;
