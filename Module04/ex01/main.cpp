@@ -15,10 +15,15 @@
 #include "Professor.hpp"
 #include "Form.hpp"
 #include "SubscriptionToCourseForm.hpp"
+#include "Singleton.hpp"
+#include "StudentList.hpp"
+
+
 int main()
 {
 
-
+    Student st("Boty");
+    Singleton<List<Student>>::getIntance().add(st);
 
     return (0);
 }

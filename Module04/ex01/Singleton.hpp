@@ -21,8 +21,17 @@ class List
         std::vector<T>  getList(){
             return (_listItems);
         }
+        void        displayList()
+        {
+            std::vector<T>::iterator it;
 
-}
+            for (it = _listItems.begin(); it != _listItems.end(); it++)
+            {
+                it->
+            }
+        }
+
+};
 
 
 
