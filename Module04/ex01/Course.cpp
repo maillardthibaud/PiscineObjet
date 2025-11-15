@@ -6,9 +6,9 @@
 Course::Course(std::string p_name, int toGrad, int maxStud)
  : _name(p_name), _numberOfClassToGraduate(toGrad), _maximumNumberOfStudent(maxStud)
 {   
-    std::cout << "Course constructor { name : " << _name << "\n"
-                                    << "to graduate need assist " << _numberOfClassToGraduate << " class" << "\n"
-                                    << "maximum students allow : " << _maximumNumberOfStudent << std::endl;
+    // std::cout << "Course constructor { name : " << _name << "\n"
+    //                                 << "to graduate need assist " << _numberOfClassToGraduate << " class" << "\n"
+    //                                 << "maximum students allow : " << _maximumNumberOfStudent << std::endl;
 }
 Course::~Course()
 {
@@ -17,6 +17,14 @@ Course::~Course()
 std::string 	Course::getName()
 {
     return (_name);
+}
+int				Course::getNbToGrad()
+{
+    return (_numberOfClassToGraduate);
+}
+int				Course::getMaxStud()
+{
+    return (_maximumNumberOfStudent);
 }
 void Course::assign(Professor* p_professor)
 {

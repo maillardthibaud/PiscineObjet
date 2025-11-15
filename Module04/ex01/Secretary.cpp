@@ -4,11 +4,11 @@
 
 Secretary::Secretary(std::string name) : Staff(name)
 {
-    std::cout << "Secretary constructor, name : " << _name << std::endl;
+    // std::cout << "Secretary constructor, name : " << _name << std::endl;
 }
 Secretary::~Secretary()
 {
-    std::cout << "Secretary destructor" << std::endl;
+    // std::cout << "Secretary destructor" << std::endl;
 }
 
 		

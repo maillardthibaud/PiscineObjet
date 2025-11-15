@@ -4,12 +4,12 @@
 
 NeedCourseCreationForm::NeedCourseCreationForm() : Form(FormType::NeedCourseCreation)
 {
-    std::cout << "NCCForm constructor" << std::endl;
+    // std::cout << "NCCForm constructor" << std::endl;
 }
 NeedCourseCreationForm::~NeedCourseCreationForm()
 {
 
-    std::cout << "NCCForm destructor" << std::endl;
+    // std::cout << "NCCForm destructor" << std::endl;
 
 }
 

@@ -3,13 +3,22 @@
 
 Room::Room(int id) : _id(id)
 {
-    std::cout << "Room constructor, id : " << _id << std::endl;
+    // std::cout << "Room constructor, id : " << _id << std::endl;
 }
 
 Room::~Room()
 {
-    std::cout << "Destructor Room" << std::endl;
+    // std::cout << "Destructor Room" << std::endl;
 }
+// int 						Room::getId()
+// {
+//     return (_id);
+// }
+// std::vector<Person*>		Room::getOccupants()
+// {
+//     return (_occupants);
+// }
+
 // bool Room::canEnter(Person* person)
 // {
 //     (void) person;

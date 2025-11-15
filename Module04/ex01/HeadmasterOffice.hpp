@@ -16,6 +16,10 @@ class HeadmasterOffice : public Room
 
             bool canEnter(Person* person);
 
+			int 						getId();
+
+
+        std::vector<Person*>        getOccupants();
 };
 
 #endif

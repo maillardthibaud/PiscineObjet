@@ -13,6 +13,7 @@ class StaffRestRoom : public Room
     ~StaffRestRoom();
     
     bool canEnter(Person* person);
+    std::vector<Person*>    getOccupants();
 
 };
 #endif

@@ -4,11 +4,11 @@
 
 CourseFinishedForm::CourseFinishedForm() : Form(FormType::CourseFinished)
 {
-    std::cout << "Course finnished constructor" << std::endl;
+    // std::cout << "Course finnished constructor" << std::endl;
 }
 CourseFinishedForm::~CourseFinishedForm()
 {
-    std::cout << "Course finnished destructor" << std::endl;
+    // std::cout << "Course finnished destructor" << std::endl;
 }
 
 void CourseFinishedForm::execute()

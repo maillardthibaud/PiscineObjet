@@ -4,12 +4,12 @@
         
 StaffRestRoom::StaffRestRoom(int id) : Room(id)
 {
-    std::cout << "StaffRoom construtor, id : " << _id << std::endl;
+    // std::cout << "StaffRoom construtor, id : " << _id << std::endl;
 
 }
 StaffRestRoom::~StaffRestRoom()
 {
-    std::cout << "StaffRoom destructor" << std::endl;
+    // std::cout << "StaffRoom destructor" << std::endl;
 
 }
 
@@ -17,4 +17,9 @@ bool StaffRestRoom::canEnter(Person* person)
 {
     (void)person;
     return(true);
+}
+
+std::vector<Person*>    StaffRestRoom::getOccupants()
+{
+    return(_occupants);
 }

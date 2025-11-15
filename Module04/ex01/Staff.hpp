@@ -13,7 +13,7 @@ class Staff : public Person
         Staff(std::string name);
         ~Staff();
 
-        
+        std::string getName(); 
         void sign(Form* p_form);
 };
 

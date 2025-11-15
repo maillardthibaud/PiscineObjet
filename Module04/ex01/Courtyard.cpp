@@ -5,16 +5,20 @@
 
 Courtyard::Courtyard(int id) : Room(id)
 {
-    std::cout << "Courtyard constructor, id : " << _id << std::endl;
+    // std::cout << "Courtyard constructor, id : " << _id << std::endl;
 }
 Courtyard::~Courtyard()
 {
-    std::cout << "Courtyard destructor" << std::endl;
-
+    // std::cout << "Courtyard destructor" << std::endl;
 }
 
 bool Courtyard::canEnter(Person* person)
 {
     (void)person;
     return (true);
+}
+
+std::vector<Person*>        Courtyard::getOccupants()
+{
+    return (_occupants);
 }

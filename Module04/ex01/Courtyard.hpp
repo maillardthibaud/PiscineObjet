@@ -13,5 +13,7 @@ public:
         ~Courtyard();
         
         bool canEnter(Person* person);
+
+        std::vector<Person*>        getOccupants();
 };
 #endif

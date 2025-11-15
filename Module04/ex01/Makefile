@@ -1,5 +1,5 @@
 
-NAME			:= Sinngleton
+NAME			:= Singleton
 
 CC				:= c++
 
@@ -24,11 +24,6 @@ SRC				:= main.cpp \
 					SubscriptionToCourseForm.cpp \
 					CourseFinishedForm.cpp \
 					Course.cpp 
-
-
-
-					
-
 
 
 

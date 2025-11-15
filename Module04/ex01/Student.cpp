@@ -6,12 +6,12 @@
 
 Student::Student(std::string name) : Person(name)
 {
-    std::cout << "Student Constructor, name : " << _name << std::endl;
+    // std::cout << "Student Constructor, name : " << _name << std::endl;
 }
 
 Student::~Student()
 {
-    std::cout << "Student Destructor" << std::endl;
+    // std::cout << "Student Destructor" << std::endl;
 }
 
 std::string	Student::getName()

@@ -20,6 +20,8 @@ class Classroom : public Room
 		void 		assignCourse(Course* p_course);
 
 		bool 		canEnter(Person* person);
+
+		std::vector<Person*>	getOccupants();
 };
 
 

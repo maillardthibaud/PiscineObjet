@@ -17,6 +17,8 @@ class Person
 		Person(std::string p_name);
 		~Person();
 
+		std::string	getName();
+
 		Room* getCurrentRoom();
 
 };

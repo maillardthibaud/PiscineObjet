@@ -1,37 +1,12 @@
 
 #ifndef __SINGLETON_HPP__
 #define __SINGLETON_HPP__
+
 #include <vector>
 #include <iostream>
+#include <mutex>
 
-template <typename T>
-class List
-{
-    private:
-            std::vector<T>     _listItems;
-
-    public:
-
-        void    add(const T& item){
-            _listItems.push_back(item);
-        }
-        void    remove(const T& item){
-            _listItems.erase(item);
-        }
-        std::vector<T>  getList(){
-            return (_listItems);
-        }
-        void        displayList()
-        {
-            std::vector<T>::iterator it;
-
-            for (it = _listItems.begin(); it != _listItems.end(); it++)
-            {
-                it->
-            }
-        }
-
-};
+#include "Student.hpp"
 
 
 
@@ -40,19 +15,81 @@ class Singleton
 {
     private:
 
+        static Singleton<S>* _instance;
+        static std::mutex _mutex;
 
-        Singleton() = delete;
-        Singleton&(const Singleton&) = delete;
+        std::vector<S> _list;
+
+        Singleton() = default;
+        Singleton(const Singleton&) = delete;
         Singleton& operator=(const Singleton&) = delete;
 
     public:
 
-        static S& getIntance(){
-            static S instance;
-            return (instance)
-        }
+        static Singleton<S>&            getInstance();
+        
+        void                            add(const S& item);
+        void                            remove(const S& item);
+        std::vector<S>&                 getList();
+
         ~Singleton();
 };
+
+
+template <typename S>
+Singleton<S>* Singleton<S>::_instance = nullptr;
+
+template <typename S>
+std::mutex Singleton<S>::_mutex;
+
+class Student;
+using StudentList = Singleton<Student>;
+
+class Staff;
+using StaffList = Singleton<Staff>;
+
+
+class Course;
+using CourseList = Singleton<Course>;
+
+class Room;
+using RoomList = Singleton<Room>;
+
+
+template <typename S>
+Singleton<S>& Singleton<S>::getInstance()
+{
+    std::lock_guard<std::mutex> lock(_mutex);
+    if (!_instance)
+    {
+        _instance = new Singleton<S>();
+    }
+    return (*_instance);
+}
+
+template <typename S>
+void Singleton<S>::add(const S& item)
+{
+    std::lock_guard<std::mutex> lock(_mutex);
+    _list.push_back(item);
+}
+
+template <typename S>
+std::vector<S>& Singleton<S>::getList()
+{
+    return(_list);
+}
+
+// template <typename S>
+// void Singleton<S>::remove(const S& item)
+// {
+//     std::lock_guard<std::mutex> lock(_mutex);
+//     typename std::vector<S>::iterator it = std::find(_list.begin(), _list.end(), item);
+//     if (it != _list.end())
+//         _list.erase(it);
+// }
+
+
 
 
 #endif

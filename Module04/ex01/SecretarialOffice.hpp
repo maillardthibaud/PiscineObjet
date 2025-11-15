@@ -18,6 +18,9 @@ class SecretarialOffice: public Room
         ~SecretarialOffice();
 
         bool canEnter(Person* person);
+        int     getId();
+
+        std::vector<Person*>		getOccupants();
 
 };
 #endif

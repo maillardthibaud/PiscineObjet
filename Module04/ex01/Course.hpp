@@ -24,6 +24,8 @@ class Course
 		~Course();
 
 		std::string 	getName();
+		int				getNbToGrad();
+		int				getMaxStud();
 		void 			assign(Professor* p_professor);
 		void 			subscribe(Student* p_student);
 };

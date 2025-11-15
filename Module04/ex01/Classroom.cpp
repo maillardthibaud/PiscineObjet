@@ -3,12 +3,11 @@
 
 Classroom::Classroom(int idClassroom) : Room(idClassroom)
 {
-    std::cout << "Classroom constructor id : " << _id << std::endl;
-
+    // std::cout << "Classroom constructor id : " << _id << std::endl;
 }
 Classroom::~Classroom()
 {
-    std::cout << "Classroom destructor id : " << _id << std::endl;
+    // std::cout << "Classroom destructor id : " << _id << std::endl;
 }
 void Classroom::assignCourse(Course* p_course)
 {
@@ -29,4 +28,9 @@ bool Classroom::canEnter(Person* person)
 {
     (void)person;
     return(true);
+}
+
+std::vector<Person*>        Classroom::getOccupants()
+{
+    return (_occupants);
 }

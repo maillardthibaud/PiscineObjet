@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "Person.hpp"
+// #include "Singleton.hpp"
 
 class Course;
 class Classroom;
@@ -23,5 +24,7 @@ class Student : public Person
 		void exitClass();
 		void graduate(Course* p_course);
 };
+
+// using StudentList = Singleton<Student>;
 
 #endif
