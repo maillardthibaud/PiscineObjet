@@ -50,25 +50,14 @@ int main()
                 << ", max student : " << s.getMaxStud() << std::endl;
     }
 
+    std::cout << "-----------------------" << std::endl;
+
     auto& rml = RoomList::getInstance();
     rml.add(Room(HeadmasterOffice(1)));
     rml.add(Room(SecretarialOffice(2)));
 
-    for (auto s : rml.getList())
-    {
-        std::cout << "Room id : " << s.getId() << std::endl;
-        if (s.getOccupants().empty())
-            std::cout << " have nobody in here" << std::endl;
-        // else
-        // {
-        //     for (auto v : s.getOccupants())
-        //     {
-        //         std::cout << " "<< v->getName() << " is here." <<std::endl;
-        //     }
-        // }
-    }
-
-
+    for (auto r : rml.getList())
+        r.printOccupant();
 
     return (0);
 }

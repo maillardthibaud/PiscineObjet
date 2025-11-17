@@ -34,3 +34,8 @@ std::vector<Person*>        Classroom::getOccupants()
 {
     return (_occupants);
 }
+
+int						Classroom::getId()
+{
+    return (_id);
+}

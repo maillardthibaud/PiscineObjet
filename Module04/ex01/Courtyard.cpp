@@ -22,3 +22,8 @@ std::vector<Person*>        Courtyard::getOccupants()
 {
     return (_occupants);
 }
+
+int                         Courtyard::getId()
+{
+    return (_id);
+}

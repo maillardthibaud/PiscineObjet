@@ -22,6 +22,7 @@ class Classroom : public Room
 		bool 		canEnter(Person* person);
 
 		std::vector<Person*>	getOccupants();
+		int						getId();
 };
 
 

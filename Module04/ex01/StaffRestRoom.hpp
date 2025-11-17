@@ -12,8 +12,9 @@ class StaffRestRoom : public Room
     StaffRestRoom(int id);
     ~StaffRestRoom();
     
-    bool canEnter(Person* person);
+    bool                    canEnter(Person* person);
     std::vector<Person*>    getOccupants();
+    int                     getId();
 
 };
 #endif

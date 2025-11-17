@@ -20,6 +20,7 @@ class HeadmasterOffice : public Room
 
 
         std::vector<Person*>        getOccupants();
+        void                        printOccupant();
 };
 
 #endif

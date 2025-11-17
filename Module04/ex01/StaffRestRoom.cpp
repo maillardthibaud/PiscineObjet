@@ -23,3 +23,8 @@ std::vector<Person*>    StaffRestRoom::getOccupants()
 {
     return(_occupants);
 }
+
+int                     StaffRestRoom::getId()
+{
+    return (_id);
+}
