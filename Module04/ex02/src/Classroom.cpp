@@ -18,7 +18,7 @@ void Classroom::assignCourse(Course* p_course)
         _courseName = p_course->getName();
         if (DEBUG)
             std::cout << "Classroom id : " << _id << " has been assign the " << _courseName << " course" << std::endl;
-        p_course->addClassroom(this);
+        // p_course->addClassroom(this);
         _currentRoom = p_course;
     }
     else

@@ -15,13 +15,13 @@ class Course
 	private:
 
 		std::string 			_name;
-		Professor* 				_responsable;
 		std::vector<Student*> 	_students;
 		int 					_numberOfClassToGraduate;
 		int						_maximumNumberOfStudent;
+		Professor* 				_responsable;
 
 
-		std::vector<Classroom*>	_classroom;
+		Classroom*				_classroom;
 
 	public:
 
@@ -32,8 +32,11 @@ class Course
 		int						getNbToGrad();
 		int						getMaxStud();
 		std::vector<Student*>	getStud();
-		std::vector<Classroom*> getClassroom();
-		void					addClassroom(Classroom* room);
+		Professor*				getResponsable();
+		Classroom*				getClassroom();
+			// void					addClassroom(Classroom* room);
+
+		// void        			setResponsable(Professor* prof);
 
 
 		void 					assign(Professor* p_professor);

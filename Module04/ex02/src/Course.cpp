@@ -4,7 +4,7 @@
 #include "Student.hpp"
 
 Course::Course(std::string p_name, int toGrad, int maxStud)
- : _name(p_name), _numberOfClassToGraduate(toGrad), _maximumNumberOfStudent(maxStud)
+ : _name(p_name), _numberOfClassToGraduate(toGrad), _maximumNumberOfStudent(maxStud), _responsable(nullptr)
 {   
     // std::cout << "Course constructor { name : " << _name << "\n"
     //                                 << "to graduate need assist " << _numberOfClassToGraduate << " class" << "\n"
@@ -17,6 +17,12 @@ Course::~Course()
 std::string 	Course::getName()
 {
     return (_name);
+}
+
+
+Professor*      Course::getResponsable()
+{
+    return (_responsable);
 }
 int				Course::getNbToGrad()
 {
@@ -64,19 +70,22 @@ void					Course::displayInfoCourse()
         std::cout << "have no student register" << std::endl;
         return;
     }
-    std:: cout << "have " << _students.size() << " student(s) register : " << std::endl;
-    std::vector<Student*>::iterator it;
-    for (it = _students.begin(); it != _students.end(); it++)
+    else
     {
-        std::cout << "|-> " << (*it)->getName() << std::endl;
+        std:: cout << "have " << _students.size() << " student(s) register : " << std::endl;
+        std::vector<Student*>::iterator it;
+        for (it = _students.begin(); it != _students.end(); it++)
+        {
+            std::cout << "|-> " << (*it)->getName() << std::endl;
+        }
     }
 
-    std::cout << "This course have " << _classroom.size() << " classroom assign : " << std::endl;
-    std::vector<Classroom*>::iterator itc;
-    for (itc = _classroom.begin(); itc != _classroom.end(); itc++)
-    {
-        std::cout << "Classsroom id : " << (*itc)->getId() << std::endl;
-    }
+    // std::cout << "This course have " << _classroom.size() << " classroom assign : " << std::endl;
+    // std::vector<Classroom*>::iterator itc;
+    // for (itc = _classroom.begin(); itc != _classroom.end(); itc++)
+    // {
+    //     std::cout << "Classsroom id : " << (*itc)->getId() << std::endl;
+    // }
 }
 
 
@@ -84,13 +93,19 @@ std::vector<Student*>   Course::getStud()
 {
     return (_students);
 }
-std::vector<Classroom*> Course::getClassroom()
+Classroom* Course::getClassroom()
 {
     return (_classroom);
 }
-void					Course::addClassroom(Classroom* room)
-{
-    if (room)
-        _classroom.push_back(room);
 
-}
+
+// void        Course::setResponsable(Professor* prof)
+// {
+//     _responsable = prof;
+// }
+// void					Course::addClassroom(Classroom* room)
+// {
+//     if (room)
+//         _classroom.push_back(room);
+
+// }

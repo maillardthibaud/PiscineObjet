@@ -45,19 +45,19 @@ void    NeedCourseForm(Secretary& cpe, Headmaster& director, Course& course)
     if (courseCrea->inspectFormInfo(&course))
         director.receiveForm(courseCrea);
 }
-void NeedMoreClassForm(Secretary& cpe, Headmaster& director, Course& course)
+void NeedMoreClassForm(Secretary& cpe, Headmaster& director, Course& course, Professor& prof)
 {
     std::cout << "-->NeedMoreClassRoomForm" << std::endl;
     Form* formClassroomCrea = cpe.createForm(FormType::NeedMoreClassRoom);
     NeedMoreClassRoomForm* classroomCrea = dynamic_cast<NeedMoreClassRoomForm*>(formClassroomCrea);
-    if (classroomCrea->inspectFormInfo(&course))
+    if (classroomCrea->inspectFormInfo(&course, &prof))
         director.receiveForm(classroomCrea);
 }
 
 
 void    CourseFinishForm(Secretary& cpe, Headmaster& director, Course& course, Student& stud)
 {
-    std::cout << "-->NeedMoreClassRoomForm" << std::endl;
+    std::cout << "-->CourseFinishedForm" << std::endl;
     Form* formCourseFinish = cpe.createForm(FormType::CourseFinished);
     CourseFinishedForm* courseFinish = dynamic_cast<CourseFinishedForm*>(formCourseFinish);
     if (courseFinish->inspectFormInfo(&course, &stud))
@@ -89,6 +89,7 @@ int main()
     std::cout << "-->Staff Creation" << std::endl;
     Secretary cpe("Josephine");
     Headmaster dirlo("Director");
+    Professor prof("Mr Jacquard");
 
     std::cout << "|-->Add to list" << std::endl;
     auto& iStaff = StaffList::getInstance();
@@ -113,36 +114,43 @@ int main()
     room.assignCourse(&math);
     room2.assignCourse(&geo);
 
+    // displayRoomInfo()
+
     std::cout << "|-->Add to list" << std::endl;
     auto& iRoom = RoomList::getInstance();
     iRoom.add(&room);
     iRoom.add(&room2);
+    // std::cout << "-->Display info course" << std::endl;
+    // math.displayInfoCourse();
+    // geo.displayInfoCourse();
 
 
     SubCreationForm(cpe, dirlo, ludo, geo);
     DirectorValidation(dirlo);
 
-    NeedCourseForm(cpe, dirlo, math);
-    DirectorValidation(dirlo);
-
-    
-    NeedMoreClassForm(cpe, dirlo, geo);
-    DirectorValidation(dirlo);
-
-    SubCreationForm(cpe, dirlo, boty, geo);
     SubCreationForm(cpe, dirlo, boty, math);
     DirectorValidation(dirlo);
+
+    // NeedCourseForm(cpe, dirlo, math);
+    // DirectorValidation(dirlo);
+
     
-    CourseFinishForm(cpe, dirlo, geo, boty);
+    NeedMoreClassForm(cpe, dirlo, geo, prof);
+    DirectorValidation(dirlo);
+
+
+    
+    // CourseFinishForm(cpe, dirlo, geo, boty);
 
 
     
 
 
-    // std::cout << "-->Display info course" << std::endl;
-
+    std::cout << "-->Display info course" << std::endl;
     math.displayInfoCourse();
     geo.displayInfoCourse();
+
+    SubCreationForm(cpe, dirlo, boty, geo);
 
     
     // displayRoomInfo();
