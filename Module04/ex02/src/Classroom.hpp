@@ -1,9 +1,12 @@
 #ifndef __CLASSROOM_HPP__
 #define __CLASSROOM_HPP__
 
+
+
 #include <string>
 #include "Room.hpp"
 #include "Course.hpp"
+#include "Singleton.hpp"
 
 class Classroom : public Room
 {

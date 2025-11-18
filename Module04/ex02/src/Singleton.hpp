@@ -2,6 +2,10 @@
 #ifndef __SINGLETON_HPP__
 #define __SINGLETON_HPP__
 
+#ifndef DEBUG
+#define DEBUG 1
+#endif
+
 #include <vector>
 #include <iostream>
 #include <mutex>
@@ -43,17 +47,17 @@ template <typename S>
 std::mutex Singleton<S>::_mutex;
 
 class Student;
-using StudentList = Singleton<Student>;
+using StudentList = Singleton<Student*>;
 
 class Staff;
-using StaffList = Singleton<Staff>;
+using StaffList = Singleton<Staff*>;
 
 
 class Course;
-using CourseList = Singleton<Course>;
+using CourseList = Singleton<Course*>;
 
 class Room;
-using RoomList = Singleton<Room>;
+using RoomList = Singleton<Room*>;
 
 
 template <typename S>

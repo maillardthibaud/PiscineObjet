@@ -19,7 +19,7 @@ class NeedCourseCreationForm : public Form
 
 		void execute();
 
-		bool checkCourseCreation(Course* course);
+		bool inspectFormInfo(Course* course);
 };
 
 

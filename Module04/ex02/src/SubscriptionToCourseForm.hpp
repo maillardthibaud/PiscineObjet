@@ -5,6 +5,7 @@
 #include "Form.hpp"
 #include "Student.hpp"
 #include "Course.hpp"
+#include <algorithm>
 
 class SubscriptionToCourseForm : public Form
 {
@@ -18,9 +19,10 @@ class SubscriptionToCourseForm : public Form
 		SubscriptionToCourseForm();
 		~SubscriptionToCourseForm();
 
-		void	fillStudentAndCourse(Student* stud, Course* course);
+		bool	inspectFormInfo(Student* stud, Course* course);
 
-		void execute();
+		void 	execute();
+		bool    inspectCourseAndStud(Student* stud, Course* course);
 };
 
 

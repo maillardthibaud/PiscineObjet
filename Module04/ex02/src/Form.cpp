@@ -28,3 +28,8 @@ void			Form::setName(std::string name)
 {
     _name = name;
 }
+
+bool				Form::getIsSigned()
+{
+    return (_isSigned);
+}

@@ -27,13 +27,14 @@ class Form
 		Form(FormType p_formType, std::string name);
 		virtual ~Form();
 
-		virtual void execute() = 0;
-		FormType	getFormType();
+		virtual void 		execute() = 0;
 
-		std::string 	getName();
-		void			setName(std::string name);		
+		FormType			getFormType();
+		std::string 		getName();
+		bool				getIsSigned();
+		void				setName(std::string name);		
 
-		void			signeForm();
+		void				signeForm();
 
 
 };

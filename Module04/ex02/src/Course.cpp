@@ -42,12 +42,9 @@ void Course::subscribe(Student* p_student)
         std::cout << "Student : " << p_student->getName() << " has subscribe to " << _name << " course" << std::endl;
         p_student->addCourse(this);
         _students.push_back(p_student);
-        std::cout << "stud : " << _students.size() << std::endl;
     }
 
 }
-
-
 
 
 
