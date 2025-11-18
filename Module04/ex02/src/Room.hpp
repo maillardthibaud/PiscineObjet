@@ -27,5 +27,6 @@ class Room
 			virtual void 				enter(Person* person);
 			virtual void 				exit(Person* person);
 			virtual void 				printOccupant();
+
 };
 #endif

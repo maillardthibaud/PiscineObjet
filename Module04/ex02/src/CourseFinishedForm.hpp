@@ -5,6 +5,7 @@
 #include "Form.hpp"
 #include "Course.hpp"
 #include "Student.hpp"
+#include "Singleton.hpp"
 
 class CourseFinishedForm : public Form
 {
@@ -18,7 +19,7 @@ class CourseFinishedForm : public Form
 		CourseFinishedForm();
 		~CourseFinishedForm();
 
-		void	checkCourseForStudent(Course* course, Student* stud);
+		bool   	inspectFormInfo(Course* course, Student* stud);
 
 		void execute();
 };

@@ -21,7 +21,7 @@ class Student : public Person
 	private:
 
 		std::vector<Course*> 				_subscribedCourse;
-		std::vector<CourseProgress>			_courseProgress; 
+		std::vector<CourseProgress*>		_courseProgress; 
 		
 
 	public:
@@ -31,7 +31,7 @@ class Student : public Person
 
 		std::string						getName();
 		std::vector<Course*>			getCourses();
-		std::vector<CourseProgress>		getProgress();
+		std::vector<CourseProgress*>	getProgress();
 
 		void							addCourse(Course* course);
 		void 							attendClass(Classroom* p_classroom);
@@ -41,6 +41,5 @@ class Student : public Person
 		void							getAllCourseAndRemainClass();
 };
 
-// using StudentList = Singleton<Student>;
 
 #endif

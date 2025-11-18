@@ -12,7 +12,7 @@ class NeedMoreClassRoomForm : public Form
 	private:
 
 
-			Course* 		_course;
+			Course* 			_course;
 			Classroom*			_newRoom;
 
 

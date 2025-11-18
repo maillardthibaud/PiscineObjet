@@ -20,6 +20,60 @@
 #include "SubscriptionToCourseForm.hpp"
 #include "NeedCourseCreationForm.hpp"
 #include "NeedMoreClassRoomForm.hpp"
+#include "CourseFinishedForm.hpp"
+
+void DirectorValidation(Headmaster& director)
+{
+    std::cout << "-->Director Validated Form" << std::endl;
+    director.validateForms();
+}
+
+void SubCreationForm(Secretary& cpe, Headmaster& director, Student& stud, Course& course)
+{
+    std::cout << "-->SubToCourseForm Creation" << std::endl;
+    Form* formsub = cpe.createForm(FormType::SubscriptionToCourse);
+    SubscriptionToCourseForm* sub = dynamic_cast<SubscriptionToCourseForm*>(formsub);
+    std::cout << "|-->Fill SubToCourseForm" << std::endl;
+    if (sub->inspectFormInfo(&stud, &course))
+        director.receiveForm(sub);
+}
+void    NeedCourseForm(Secretary& cpe, Headmaster& director, Course& course)
+{
+    std::cout << "-->NeedCourseCreationForm" << std::endl;
+    Form* formCourseCrea = cpe.createForm(FormType::NeedCourseCreation);
+    NeedCourseCreationForm* courseCrea = dynamic_cast<NeedCourseCreationForm*>(formCourseCrea);
+    if (courseCrea->inspectFormInfo(&course))
+        director.receiveForm(courseCrea);
+}
+void NeedMoreClassForm(Secretary& cpe, Headmaster& director, Course& course)
+{
+    std::cout << "-->NeedMoreClassRoomForm" << std::endl;
+    Form* formClassroomCrea = cpe.createForm(FormType::NeedMoreClassRoom);
+    NeedMoreClassRoomForm* classroomCrea = dynamic_cast<NeedMoreClassRoomForm*>(formClassroomCrea);
+    if (classroomCrea->inspectFormInfo(&course))
+        director.receiveForm(classroomCrea);
+}
+
+
+void    CourseFinishForm(Secretary& cpe, Headmaster& director, Course& course, Student& stud)
+{
+    std::cout << "-->NeedMoreClassRoomForm" << std::endl;
+    Form* formCourseFinish = cpe.createForm(FormType::CourseFinished);
+    CourseFinishedForm* courseFinish = dynamic_cast<CourseFinishedForm*>(formCourseFinish);
+    if (courseFinish->inspectFormInfo(&course, &stud))
+        director.receiveForm(courseFinish);
+    
+}
+
+void    displayRoomInfo()
+{
+    auto& classroom = RoomList::getInstance().getList();
+    std::vector<Room*>::iterator it;
+    for (it = classroom.begin(); it != classroom.end(); it++)
+    {
+        std::cout << (*it)->getId() << std::endl;
+    }
+}
 
 int main()
 {
@@ -42,13 +96,15 @@ int main()
     iStaff.add(&dirlo);
 
     std::cout << "-->Course Creation" << std::endl;
-    Course math("Mathematique", 3, 10);
-    Course geo("Geographie", 3, 10);
+    Course math("Mathematique", 3, 1);
+    Course geo("Geographie", 3, 1);
 
     std::cout << "|-->Add to list" << std::endl;
     auto& iCourse = CourseList::getInstance();
-    // iCourse.add(&math);
+    iCourse.add(&math);
     iCourse.add(&geo);
+
+
 
     std::cout << "-->Classroom Creation" << std::endl;
     Classroom room(5);
@@ -63,48 +119,33 @@ int main()
     iRoom.add(&room2);
 
 
-    std::cout << "-->SubToCourseForm Creation" << std::endl;
-    Form* formsub = cpe.createForm(FormType::SubscriptionToCourse);
-    SubscriptionToCourseForm* sub = dynamic_cast<SubscriptionToCourseForm*>(formsub);
-    std::cout << "|-->Fill SubToCourseForm" << std::endl;
-    if (sub->inspectFormInfo(&ludo, &geo))
-        dirlo.receiveForm(sub);
+    SubCreationForm(cpe, dirlo, ludo, geo);
+    DirectorValidation(dirlo);
 
-    std::cout << "-->NeedCourseCreationForm" << std::endl;
-    Form* formCourseCrea = cpe.createForm(FormType::NeedCourseCreation);
-    NeedCourseCreationForm* courseCrea = dynamic_cast<NeedCourseCreationForm*>(formCourseCrea);
-    if (courseCrea->inspectFormInfo(&math))
-        dirlo.receiveForm(courseCrea);
+    NeedCourseForm(cpe, dirlo, math);
+    DirectorValidation(dirlo);
 
-    dirlo.validateForms();
+    
+    NeedMoreClassForm(cpe, dirlo, geo);
+    DirectorValidation(dirlo);
 
-
-    Form* formClassroomCrea = cpe.createForm(FormType::NeedMoreClassRoom);
-    NeedMoreClassRoomForm* classroomCrea = dynamic_cast<NeedMoreClassRoomForm*>(formClassroomCrea);
-    if (classroomCrea->inspectFormInfo(&math))
-        dirlo.receiveForm(classroomCrea);
+    SubCreationForm(cpe, dirlo, boty, geo);
+    SubCreationForm(cpe, dirlo, boty, math);
+    DirectorValidation(dirlo);
+    
+    CourseFinishForm(cpe, dirlo, geo, boty);
 
 
-
-    std::cout << "-->Director Validated Form" << std::endl;
-    dirlo.validateForms();
+    
 
 
+    // std::cout << "-->Display info course" << std::endl;
 
-    // Form* formsub2 = cpe.createForm(FormType::SubscriptionToCourse);
-    // SubscriptionToCourseForm* sub2 = dynamic_cast<SubscriptionToCourseForm*>(formsub2);
-    // sub2->fillStudentAndCourse(&boty, &geo);
-    // sub2->execute();
+    math.displayInfoCourse();
+    geo.displayInfoCourse();
 
-    // boty.attendClass(&room);
-    // boty.getAllCourseAndRemainClass();
-
-
-
-
-
-
-
+    
+    // displayRoomInfo();
 
     return (0);
 }

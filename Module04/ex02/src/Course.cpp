@@ -47,8 +47,50 @@ void Course::subscribe(Student* p_student)
 }
 
 
+bool                Course::countStudent()
+{
+    if (static_cast<int>(_students.size()) < _maximumNumberOfStudent)
+        return true;
+    std::cout << _name << " course have reach the max student value" << std::endl;
+    return false;
+}
+
+
+void					Course::displayInfoCourse()
+{
+    std::cout << _name << " course, ";
+    if (_students.empty())
+    {
+        std::cout << "have no student register" << std::endl;
+        return;
+    }
+    std:: cout << "have " << _students.size() << " student(s) register : " << std::endl;
+    std::vector<Student*>::iterator it;
+    for (it = _students.begin(); it != _students.end(); it++)
+    {
+        std::cout << "|-> " << (*it)->getName() << std::endl;
+    }
+
+    std::cout << "This course have " << _classroom.size() << " classroom assign : " << std::endl;
+    std::vector<Classroom*>::iterator itc;
+    for (itc = _classroom.begin(); itc != _classroom.end(); itc++)
+    {
+        std::cout << "Classsroom id : " << (*itc)->getId() << std::endl;
+    }
+}
+
 
 std::vector<Student*>   Course::getStud()
 {
     return (_students);
+}
+std::vector<Classroom*> Course::getClassroom()
+{
+    return (_classroom);
+}
+void					Course::addClassroom(Classroom* room)
+{
+    if (room)
+        _classroom.push_back(room);
+
 }

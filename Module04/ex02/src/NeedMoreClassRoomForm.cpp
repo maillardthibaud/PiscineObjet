@@ -14,10 +14,10 @@ NeedMoreClassRoomForm::~NeedMoreClassRoomForm()
 }
 void NeedMoreClassRoomForm::execute()
 {
-    if (!_newRoom && DEBUG) {
-        std::cout << "Error on newRoom" << std::endl;
-        return;}
-    std::cout << "Exec : push back classromm, assign course" << std::endl;
+    if (!_newRoom) 
+        return;
+    if (DEBUG)
+        std::cout << "Exec : push back classromm, assign course" << std::endl;
     RoomList::getInstance().getList().push_back(_newRoom);
     _newRoom->assignCourse(_course);
 }
@@ -35,8 +35,10 @@ bool    NeedMoreClassRoomForm::inspectFormInfo(Course* course)
             if ((*it)->getMaxStud() <= static_cast<int>((*it)->getStud().size()))
             {
                 if (DEBUG)
-                    std::cout << "Max stud reach. -> add new classroom for this course" << std::endl;
-                _newRoom = new Classroom(4 + listcourse.getList().size());
+                    std::cout << "Max stud reach : " << (*it)->getStud().size() << " -> add new classroom for this course" << std::endl;
+                _newRoom = new Classroom(5 + listcourse.getList().size());
+                (*it)->addClassroom(_newRoom);
+                _course = course;
                 return(true);
             }
             else

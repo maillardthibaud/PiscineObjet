@@ -27,6 +27,7 @@ bool	SubscriptionToCourseForm::inspectFormInfo(Student* stud, Course* course)
         std::cout << "Student : " << stud->getName() << " subscribe to " << course->getName() << " course." << std::endl;
     _subStudent = stud;
     _subCourse = course;
+    _isSigned = false;
     return true;
 }
 bool    SubscriptionToCourseForm::inspectCourseAndStud(Student* stud, Course* course)
@@ -39,15 +40,17 @@ bool    SubscriptionToCourseForm::inspectCourseAndStud(Student* stud, Course* co
             std::cout << "Student find" << std::endl;
         auto& courList = CourseList::getInstance().getList();
         auto it = std::find(courList.begin(), courList.end(), course);
-        if (it != courList.end())
+        if (it != courList.end() && (*it)->countStudent())
         {
             if (DEBUG)
                 std::cout << "course find" << std::endl;
             return (true);
         }
-        std::cout << "! Course not register" << std::endl;
+        std::cout << "! Course not register or max stud reach" << std::endl;
         return (false);
     }
     std::cout << "! Stud not register" << std::endl;
     return (false);
 }
+
+

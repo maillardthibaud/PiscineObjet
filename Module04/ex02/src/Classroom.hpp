@@ -20,13 +20,13 @@ class Classroom : public Room
 		Classroom(int idClassroom);
 		~Classroom();
 
-		void 		assignCourse(Course* p_course);
-
-		bool 		canEnter(Person* person);
+		void 					assignCourse(Course* p_course);
+		bool 					canEnter(Person* person);
 
 		std::vector<Person*>	getOccupants();
 		int						getId();
 		Course*					getCurrentCourse();
+
 };
 
 
