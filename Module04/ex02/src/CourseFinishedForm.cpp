@@ -13,7 +13,7 @@ CourseFinishedForm::~CourseFinishedForm()
 
 void CourseFinishedForm::execute()
 {
-    std::cout << "Execute Course Finished Form" << std::endl;
+    std::cout << "|->exec graduation for student " << _studToGrad->getName() << " for " << _finishedcourse->getName() << " course" << std::endl;
 
 }
 
@@ -33,8 +33,14 @@ bool	CourseFinishedForm::inspectFormInfo(Course* course, Student* stud)
                 {
                     if(DEBUG)
                         std::cout << "Check progress course remain : " << (*itp)->courseRemain << std::endl;
-                    if ((*itp)->courseRemain == 0)
+                    if ((*itp)->courseRemain == 1)
+                    {
+                        _studToGrad = stud;
+                        _finishedcourse = course;
                         return true;
+                    }
+                    else
+                        return false;
                 }
             }
         }

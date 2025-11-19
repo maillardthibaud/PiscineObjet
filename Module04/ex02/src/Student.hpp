@@ -30,8 +30,8 @@ class Student : public Person
 		~Student();
 
 		std::string						getName();
-		std::vector<Course*>			getCourses();
-		std::vector<CourseProgress*>	getProgress();
+		std::vector<Course*>&			getCourses();
+		std::vector<CourseProgress*>&	getProgress();
 
 		void							addCourse(Course* course);
 		void 							attendClass(Classroom* p_classroom);

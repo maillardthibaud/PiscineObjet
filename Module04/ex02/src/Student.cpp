@@ -79,12 +79,12 @@ void Student::graduate(Course* p_course)
 }
 
 
-std::vector<Course*>	Student::getCourses()
+std::vector<Course*>&	Student::getCourses()
 {
     return (_subscribedCourse);
 }
 
-std::vector<CourseProgress*>		Student::getProgress()
+std::vector<CourseProgress*>&		Student::getProgress()
 {
     return (_courseProgress);
 }

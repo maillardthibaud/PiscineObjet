@@ -9,14 +9,17 @@ class Professor : public Staff
 {
 	private:
 
-		Course* _currentCourse;
+		Course* 		_currentCourse;
+		std::string		_subjectTeaching;
 
 	public:
 
-		Professor(std::string name);
+		Professor(std::string name, std::string subject);
 		~Professor();
 
 		std::string 	getName();
+		std::string		getSubject();
+		Course*			getCurrentCourse();
 
 		void assignCourse(Course* p_course);
 		void doClass();

@@ -4,7 +4,7 @@
 #include "Student.hpp"
 
 Course::Course(std::string p_name, int toGrad, int maxStud)
- : _name(p_name), _numberOfClassToGraduate(toGrad), _maximumNumberOfStudent(maxStud), _responsable(nullptr)
+ : _name(p_name), _numberOfClassToGraduate(toGrad), _maximumNumberOfStudent(maxStud), _responsable(nullptr), _classroom(nullptr)
 {   
     // std::cout << "Course constructor { name : " << _name << "\n"
     //                                 << "to graduate need assist " << _numberOfClassToGraduate << " class" << "\n"
@@ -80,12 +80,7 @@ void					Course::displayInfoCourse()
         }
     }
 
-    // std::cout << "This course have " << _classroom.size() << " classroom assign : " << std::endl;
-    // std::vector<Classroom*>::iterator itc;
-    // for (itc = _classroom.begin(); itc != _classroom.end(); itc++)
-    // {
-    //     std::cout << "Classsroom id : " << (*itc)->getId() << std::endl;
-    // }
+    std::cout << "Classsroom id : " << _classroom->getId() << std::endl;
 }
 
 
@@ -103,9 +98,10 @@ Classroom* Course::getClassroom()
 // {
 //     _responsable = prof;
 // }
-// void					Course::addClassroom(Classroom* room)
-// {
-//     if (room)
-//         _classroom.push_back(room);
+void					Course::addClassroom(Classroom* room)
+{
+    if (room)
+        _classroom = room;
 
-// }
+
+}

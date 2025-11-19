@@ -3,6 +3,9 @@
 
 #include <string>
 #include "Form.hpp"
+#include "Staff.hpp"
+#include "Professor.hpp"
+#include "Course.hpp"
 
 class Course;
 
@@ -10,6 +13,7 @@ class NeedCourseCreationForm : public Form
 {
 	private:
 
+			Professor* 		_askCourse;
 			Course*			_course;
 
 	public:
@@ -19,7 +23,7 @@ class NeedCourseCreationForm : public Form
 
 		void execute();
 
-		bool inspectFormInfo(Course* course);
+		bool inspectFormInfo(Professor* prof);
 };
 
 

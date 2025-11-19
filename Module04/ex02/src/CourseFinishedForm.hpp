@@ -11,8 +11,8 @@ class CourseFinishedForm : public Form
 {
 	private:
 
-			Course* 	_Finishedcourse;
-			Student*	_StudToGrad;
+			Course* 	_finishedcourse;
+			Student*	_studToGrad;
 
 	public:
 

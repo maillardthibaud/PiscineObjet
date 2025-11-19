@@ -34,7 +34,7 @@ class Course
 		std::vector<Student*>	getStud();
 		Professor*				getResponsable();
 		Classroom*				getClassroom();
-			// void					addClassroom(Classroom* room);
+		void					addClassroom(Classroom* room);
 
 		// void        			setResponsable(Professor* prof);
 

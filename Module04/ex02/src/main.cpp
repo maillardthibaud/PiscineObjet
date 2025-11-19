@@ -37,20 +37,20 @@ void SubCreationForm(Secretary& cpe, Headmaster& director, Student& stud, Course
     if (sub->inspectFormInfo(&stud, &course))
         director.receiveForm(sub);
 }
-void    NeedCourseForm(Secretary& cpe, Headmaster& director, Course& course)
+void    NeedCourseForm(Secretary& cpe, Headmaster& director, Professor& prof)
 {
     std::cout << "-->NeedCourseCreationForm" << std::endl;
     Form* formCourseCrea = cpe.createForm(FormType::NeedCourseCreation);
     NeedCourseCreationForm* courseCrea = dynamic_cast<NeedCourseCreationForm*>(formCourseCrea);
-    if (courseCrea->inspectFormInfo(&course))
+    if (courseCrea->inspectFormInfo(&prof))
         director.receiveForm(courseCrea);
 }
-void NeedMoreClassForm(Secretary& cpe, Headmaster& director, Course& course, Professor& prof)
+void NeedMoreClassForm(Secretary& cpe, Headmaster& director, Professor& prof)
 {
     std::cout << "-->NeedMoreClassRoomForm" << std::endl;
     Form* formClassroomCrea = cpe.createForm(FormType::NeedMoreClassRoom);
     NeedMoreClassRoomForm* classroomCrea = dynamic_cast<NeedMoreClassRoomForm*>(formClassroomCrea);
-    if (classroomCrea->inspectFormInfo(&course, &prof))
+    if (classroomCrea->inspectFormInfo(&prof))
         director.receiveForm(classroomCrea);
 }
 
@@ -89,71 +89,77 @@ int main()
     std::cout << "-->Staff Creation" << std::endl;
     Secretary cpe("Josephine");
     Headmaster dirlo("Director");
-    Professor prof("Mr Jacquard");
+    Professor prof("Mr Jacquard", "Physique");
 
     std::cout << "|-->Add to list" << std::endl;
     auto& iStaff = StaffList::getInstance();
     iStaff.add(&cpe);
     iStaff.add(&dirlo);
+    iStaff.add(&prof);
 
-    std::cout << "-->Course Creation" << std::endl;
-    Course math("Mathematique", 3, 1);
-    Course geo("Geographie", 3, 1);
+    // std::cout << "-->Course Creation" << std::endl;
+    // Course math("Mathematique", 3, 1);
+    // Course geo("Geographie", 3, 1);
 
-    std::cout << "|-->Add to list" << std::endl;
-    auto& iCourse = CourseList::getInstance();
-    iCourse.add(&math);
-    iCourse.add(&geo);
-
-
+    // std::cout << "|-->Add to list" << std::endl;
+    // auto& iCourse = CourseList::getInstance();
+    // iCourse.add(&math);
+    // iCourse.add(&geo);
 
     std::cout << "-->Classroom Creation" << std::endl;
     Classroom room(5);
     Classroom room2(6);
-    std::cout << "|-->Classroom assign Course" << std::endl;
-    room.assignCourse(&math);
-    room2.assignCourse(&geo);
-
-    // displayRoomInfo()
 
     std::cout << "|-->Add to list" << std::endl;
     auto& iRoom = RoomList::getInstance();
     iRoom.add(&room);
     iRoom.add(&room2);
+
+    // recute prof before !!!
+    // if (prof.hasnocourse)
+        NeedCourseForm(cpe, dirlo, prof);
+    DirectorValidation(dirlo);
+
+    // std::cout << "-->Display info course" << std::endl;
+    // math.displayInfoCourse();
+    // geo.displayInfoCourse();
+
     // std::cout << "-->Display info course" << std::endl;
     // math.displayInfoCourse();
     // geo.displayInfoCourse();
 
 
-    SubCreationForm(cpe, dirlo, ludo, geo);
+    SubCreationForm(cpe, dirlo, ludo, *prof.getCurrentCourse());
     DirectorValidation(dirlo);
 
-    SubCreationForm(cpe, dirlo, boty, math);
-    DirectorValidation(dirlo);
-
-    // NeedCourseForm(cpe, dirlo, math);
+    // SubCreationForm(cpe, dirlo, boty, math);
     // DirectorValidation(dirlo);
 
-    
-    NeedMoreClassForm(cpe, dirlo, geo, prof);
+
+
+    // teaching 
+    // if prof has no room
+        NeedMoreClassForm(cpe, dirlo, prof);
     DirectorValidation(dirlo);
 
-
-    
-    // CourseFinishForm(cpe, dirlo, geo, boty);
-
-
-    
-
-
     std::cout << "-->Display info course" << std::endl;
-    math.displayInfoCourse();
-    geo.displayInfoCourse();
+    prof.getCurrentCourse()->displayInfoCourse();
+    // prof.getCurrentCourse().displayInfoCourse();
+    // geo.displayInfoCourse();
 
-    SubCreationForm(cpe, dirlo, boty, geo);
+    
+    CourseFinishForm(cpe, dirlo, *prof.getCurrentCourse(), ludo);
+    DirectorValidation(dirlo);
+    // SubCreationForm(cpe, dirlo, boty, geo);
 
     
     // displayRoomInfo();
+    // std::cout << "|-->Classroom assign Course" << std::endl;
+    // room.assignCourse(&math);
+    // room2.assignCourse(&geo);
+
+    // displayRoomInfo()
+
 
     return (0);
 }

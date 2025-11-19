@@ -24,7 +24,7 @@ bool	SubscriptionToCourseForm::inspectFormInfo(Student* stud, Course* course)
     if (!inspectCourseAndStud(stud, course))
         return false;
     if (DEBUG)
-        std::cout << "Student : " << stud->getName() << " subscribe to " << course->getName() << " course." << std::endl;
+        std::cout << "Student : " << stud->getName() << " ask to subscribe " << course->getName() << " course." << std::endl;
     _subStudent = stud;
     _subCourse = course;
     _isSigned = false;
