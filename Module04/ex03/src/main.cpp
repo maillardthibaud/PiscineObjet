@@ -120,6 +120,17 @@ int main()
     iRoom.add(&room2);
 
     mediator.setSecretary(&cpe);
+    mediator.assignCourseToProf(math, prof);
+    mediator.assignCourseToProf(geo, prof2);
+
+    prof.setHeadmaster(&mediator);
+    prof2.setHeadmaster(&mediator);
+    prof3.setHeadmaster(&mediator);
+
+    prof.doClass();
+    prof2.doClass();    
+    prof3.doClass();
+    prof3.doClass();
 
 
     return (0);

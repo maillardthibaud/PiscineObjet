@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Professor.hpp"
+#include "Headmaster.hpp"
+#include "NeedCourseCreationForm.hpp"
 
 Professor::Professor(std::string name, std::string subject) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(nullptr)
 {
@@ -16,11 +18,25 @@ std::string 	Professor::getName()
 }
 void Professor::assignCourse(Course* p_course)
 {
+    if (DEBUG)
+        std::cout << _name << " has been assign to : " << p_course->getName() << std::endl;
     _currentCourse = p_course;
 }
 void Professor::doClass()
 {
+    if(_currentCourse == nullptr)
+    {
+        _director->needCreationForm(*this);
+    }
+    else
+        _currentCourse->displayInfoCourse();
 
+}
+
+void    Professor::fillCreationForm(NeedCourseCreationForm& nccf)
+{
+    nccf.setName(_subjectTeaching);
+    nccf.setProf(this);
 }
 void Professor::closeCourse()
 {
@@ -37,10 +53,10 @@ Course*         Professor::getCurrentCourse()
     return (_currentCourse);
 }
 
-void        Professor::needCourseCreationForm()
-{
-    // _director->receiveForm(FormType::NeedCourseCreation);
-}
+// void        Professor::needCourseCreationForm()
+// {
+//     _director->receiveForm(NeedCourseCreation);
+// }
 
 void	Professor::setHeadmaster(Headmaster* p_headmaster)
 {

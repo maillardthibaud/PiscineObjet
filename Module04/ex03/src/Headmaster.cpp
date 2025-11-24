@@ -39,34 +39,36 @@ void	Headmaster::setSecretary(Secretary* cpe)
 // }
 
 
-// void	Headmaster::assignCourseToProf(Course& course, Professor& prof)
-// {
-//     auto& cList = CourseList::getInstance().getList();  
-//     auto& pList = StaffList::getInstance().getList();  
-
-//     auto itC = std::find(cList.begin(), cList.end(), course);
-//     auto itP = std::find(pList.begin(), pList.end(), prof);
-
-//     if (itC == cList.end() || itP == pList.end())
-//     {
-//         std::cout << "Course or Professor not register in Singleton<List>" << std::endl;
-//         return;
-//     }
-//     else
-//     {
-//         if (course.getName() == prof.getSubject())
-//         {
-//             course.setResponsable(&prof);
-//             prof.setCourse(&course);
-//         }
-//         else
-//             std::cout << "This professor subject : " << prof.getSubject() <<  " is different from this course subject : " << course.getName() << std::endl;
-//     }
+void	Headmaster::assignCourseToProf(Course& course, Professor& prof)
+{
+    if (course.getName() == prof.getSubject())
+    {
+        if (DEBUG)
+            std::cout << "setResponsable to : " << course.getName() << " course and setCourse to prof : " << prof.getName() << std::endl;
+        course.setResponsable(&prof);
+        prof.setCourse(&course);
+    }
+    else
+        std::cout << "This professor subject : " << prof.getSubject() <<  " is different from this course subject : " << course.getName() << std::endl;
     
 
 
 
-// }
+}
+
+void	Headmaster::needCreationForm(Professor& prof)
+{
+    NeedCourseCreationForm& nccf = dynamic_cast<NeedCourseCreationForm&>(*_cpe->createForm(FormType::NeedCourseCreation));
+    // nccf->inspectFormInfo(prof);
+    prof.fillCreationForm(nccf);
+    if (nccf.getProf())
+    {
+        nccf.signeForm();
+        nccf.execute();
+    }
+
+
+}
 
 void Headmaster::receiveForm(Form* p_form)
 {

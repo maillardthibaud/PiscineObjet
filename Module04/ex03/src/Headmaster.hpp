@@ -30,7 +30,8 @@ class Headmaster : public Staff
 
 		void	setSecretary(Secretary* cpe);
 
-		// void	assignCourseToProf(Course& course, Professor& prof);
+		void	assignCourseToProf(Course& course, Professor& prof);
+		void	needCreationForm(Professor& prof);
 		// void	addStudent(Student* stud);
 		// void	addProfessor(Professor* prof);
 

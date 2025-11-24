@@ -13,7 +13,7 @@ class NeedCourseCreationForm : public Form
 {
 	private:
 
-			Professor* 		_askCourse;
+			Professor* 		_professor;
 			Course*			_course;
 
 	public:
@@ -22,6 +22,11 @@ class NeedCourseCreationForm : public Form
 		~NeedCourseCreationForm();
 
 		void execute();
+
+		void 	setProf(Professor* p_prof);
+		Professor* 	getProf();
+		
+		// void	setCourse(Course* p_course);
 
 		bool inspectFormInfo(Professor* prof);
 };

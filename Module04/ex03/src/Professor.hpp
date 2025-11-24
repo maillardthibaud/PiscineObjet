@@ -3,11 +3,12 @@
 
 #include "Staff.hpp"
 // #include "Headmaster.hpp"
-#include "Form.hpp"
-#include "NeedCourseCreationForm.hpp"
+// #include "Form.hpp"
+// #include "NeedCourseCreationForm.hpp"
 
 class Course;
 class Headmaster;
+class NeedCourseCreationForm;
 
 class Professor : public Staff
 {
@@ -34,6 +35,8 @@ class Professor : public Staff
 
 		void	setHeadmaster(Headmaster* p_headmaster);
 		void	setCourse(Course* p_course);
-		void	needCourseCreationForm();
+		// void	needCourseCreationForm();
+
+		void    fillCreationForm(NeedCourseCreationForm& nccf);
 };
 #endif
