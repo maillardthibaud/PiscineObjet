@@ -36,7 +36,7 @@ class Course
 		Classroom*				getClassroom();
 		void					addClassroom(Classroom* room);
 
-		// void        			setResponsable(Professor* prof);
+		void        			setResponsable(Professor* prof);
 
 
 		void 					assign(Professor* p_professor);

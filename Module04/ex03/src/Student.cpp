@@ -88,3 +88,9 @@ std::vector<CourseProgress*>&		Student::getProgress()
 {
     return (_courseProgress);
 }
+
+void 						Student::askForSubscriptionForm(FormType* p_formtype)
+{
+    (void)p_formtype;
+
+}

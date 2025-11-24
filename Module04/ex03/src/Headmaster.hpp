@@ -4,12 +4,20 @@
 #include <vector>
 #include "Staff.hpp"
 #include "Form.hpp"
+#include "Secretary.hpp"
+#include "Course.hpp"
+#include "Professor.hpp"
+#include <algorithm>
 
 class Headmaster : public Staff
 {
 	private:
 
-		std::vector<Form*>		_formToValidate;
+		std::vector<Form*>			_formToValidate;
+		// std::vector<Student*>		_students;
+		// std::vector<Professor*>		_professors;
+
+		Secretary*					_cpe;
 		
 	public:
 		
@@ -19,6 +27,16 @@ class Headmaster : public Staff
 		void 	receiveForm(Form* p_form);
 
 		void	validateForms();
+
+		void	setSecretary(Secretary* cpe);
+
+		// void	assignCourseToProf(Course& course, Professor& prof);
+		// void	addStudent(Student* stud);
+		// void	addProfessor(Professor* prof);
+
+
+
+		// void 	attendClass();
 };
 
 #endif

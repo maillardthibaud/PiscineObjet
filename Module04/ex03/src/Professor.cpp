@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Professor.hpp"
 
-Professor::Professor(std::string name, std::string subject) : Staff(name), _currentCourse(nullptr), _subjectTeaching(subject)
+Professor::Professor(std::string name, std::string subject) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(nullptr)
 {
     // std::cout << "Professor constructor, name : " << _name << std::endl;
 }
@@ -16,7 +16,7 @@ std::string 	Professor::getName()
 }
 void Professor::assignCourse(Course* p_course)
 {
-_currentCourse = p_course;
+    _currentCourse = p_course;
 }
 void Professor::doClass()
 {
@@ -35,4 +35,21 @@ std::string		Professor::getSubject()
 Course*         Professor::getCurrentCourse()
 {
     return (_currentCourse);
+}
+
+void        Professor::needCourseCreationForm()
+{
+    // _director->receiveForm(FormType::NeedCourseCreation);
+}
+
+void	Professor::setHeadmaster(Headmaster* p_headmaster)
+{
+    _director = p_headmaster;
+}
+
+
+
+void	Professor::setCourse(Course* p_course)
+{
+    _currentCourse = p_course;
 }

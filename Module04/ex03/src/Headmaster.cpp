@@ -4,8 +4,11 @@
 #include "Staff.hpp"
 #include "Form.hpp"
 #include "Singleton.hpp"
+#include "NeedCourseCreationForm.hpp"
+#include "Professor.hpp"
+#include "Course.hpp"
 
-Headmaster::Headmaster(std::string name) : Staff(name)
+Headmaster::Headmaster(std::string name) : Staff(name), _cpe(nullptr)
 {
     // std::cout << "Headmaster constructor, name : " << _name << std::endl;
 }
@@ -14,8 +17,74 @@ Headmaster::~Headmaster()
     // std::cout << "Headmaster destructor" << std::endl;
 }
 
+
+
+void	Headmaster::setSecretary(Secretary* cpe)
+{   
+    _cpe = cpe;
+
+}
+
+// void	Headmaster::addStudent(Student* stud)
+// {
+//     if (stud)
+//     {
+//         _students.push_back(stud);
+//     }
+// }
+    
+// void	Headmaster::addProfessor(Professor* prof)
+// {
+
+// }
+
+
+// void	Headmaster::assignCourseToProf(Course& course, Professor& prof)
+// {
+//     auto& cList = CourseList::getInstance().getList();  
+//     auto& pList = StaffList::getInstance().getList();  
+
+//     auto itC = std::find(cList.begin(), cList.end(), course);
+//     auto itP = std::find(pList.begin(), pList.end(), prof);
+
+//     if (itC == cList.end() || itP == pList.end())
+//     {
+//         std::cout << "Course or Professor not register in Singleton<List>" << std::endl;
+//         return;
+//     }
+//     else
+//     {
+//         if (course.getName() == prof.getSubject())
+//         {
+//             course.setResponsable(&prof);
+//             prof.setCourse(&course);
+//         }
+//         else
+//             std::cout << "This professor subject : " << prof.getSubject() <<  " is different from this course subject : " << course.getName() << std::endl;
+//     }
+    
+
+
+
+// }
+
 void Headmaster::receiveForm(Form* p_form)
 {
+    
+    switch (p_form->getFormType())
+    {
+        case FormType::NeedCourseCreation :
+        {
+            // NeedCourseCreationForm* courseCreaForm = dynamic_cast<NeedCourseCreationForm*>(_cpe->createForm(FormType::NeedCourseCreation));
+            
+            break;
+
+        }
+        
+        default:
+            break;
+    }
+
     if (p_form && !p_form->getIsSigned())
     {
         if(DEBUG)
@@ -40,3 +109,7 @@ void    Headmaster::validateForms()
 }
 
 
+// void 	Headmaster::attendClass()
+// {
+
+// }

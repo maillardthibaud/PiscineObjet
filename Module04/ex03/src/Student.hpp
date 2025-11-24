@@ -4,6 +4,7 @@
 #include <vector>
 #include <map>
 #include "Person.hpp"
+#include "Form.hpp"
 // #include "Singleton.hpp"
 
 class Course;
@@ -37,8 +38,12 @@ class Student : public Person
 		void 							attendClass(Classroom* p_classroom);
 		void 							exitClass();
 		void 							graduate(Course* p_course);
+
 		bool        					checkStudentSub(Classroom* p_classroom);
 		void							getAllCourseAndRemainClass();
+
+
+		void 						askForSubscriptionForm(FormType* p_formtype);
 };
 
 

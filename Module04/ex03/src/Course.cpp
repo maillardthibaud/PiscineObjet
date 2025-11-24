@@ -94,10 +94,10 @@ Classroom* Course::getClassroom()
 }
 
 
-// void        Course::setResponsable(Professor* prof)
-// {
-//     _responsable = prof;
-// }
+void        Course::setResponsable(Professor* prof)
+{
+    _responsable = prof;
+}
 void					Course::addClassroom(Classroom* room)
 {
     if (room)
