@@ -2,6 +2,8 @@
 #include "Professor.hpp"
 #include "Headmaster.hpp"
 #include "NeedCourseCreationForm.hpp"
+#include "CourseFinishedForm.hpp"
+#include "Student.hpp"
 
 Professor::Professor(std::string name, std::string subject) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(nullptr)
 {
@@ -37,6 +39,15 @@ void    Professor::fillCreationForm(NeedCourseCreationForm& nccf)
 {
     nccf.setName(_subjectTeaching);
     nccf.setProf(this);
+    _director->receiveForm(&nccf);
+}
+
+void	Professor::fillGraduationForm(CourseFinishedForm& cff, Student& stud)
+{
+    cff.setCourseFinished(_currentCourse);
+    cff.setStudToGrad(&stud);
+    _director->receiveForm(&cff);
+
 }
 void Professor::closeCourse()
 {

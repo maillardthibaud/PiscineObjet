@@ -32,6 +32,14 @@ class Headmaster : public Staff
 
 		void	assignCourseToProf(Course& course, Professor& prof);
 		void	needCreationForm(Professor& prof);
+
+		void    needGraduationForm(Professor& prof, Student& stud);
+
+		bool    inspectAndVerifyGradForm(CourseFinishedForm& form);
+		bool 	inspectCourse(Course* course);
+		bool    inspectStud(Student* stud);
+
+		bool	inspectFormInfo(Course* course, Student* stud);
 		// void	addStudent(Student* stud);
 		// void	addProfessor(Professor* prof);
 

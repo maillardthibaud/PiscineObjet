@@ -28,43 +28,6 @@ void DirectorValidation(Headmaster& director)
     director.validateForms();
 }
 
-// void SubCreationForm(Secretary& cpe, Headmaster& director, Student& stud, Course& course)
-// {
-//     std::cout << "-->SubToCourseForm Creation" << std::endl;
-//     Form* formsub = cpe.createForm(FormType::SubscriptionToCourse);
-//     SubscriptionToCourseForm* sub = dynamic_cast<SubscriptionToCourseForm*>(formsub);
-//     std::cout << "|-->Fill SubToCourseForm" << std::endl;
-//     if (sub->inspectFormInfo(&stud, &course))
-//         director.receiveForm(sub);
-// }
-// void    NeedCourseForm(Secretary& cpe, Headmaster& director, Professor& prof)
-// {
-//     std::cout << "-->NeedCourseCreationForm" << std::endl;
-//     Form* formCourseCrea = cpe.createForm(FormType::NeedCourseCreation);
-//     NeedCourseCreationForm* courseCrea = dynamic_cast<NeedCourseCreationForm*>(formCourseCrea);
-//     if (courseCrea->inspectFormInfo(&prof))
-//         director.receiveForm(courseCrea);
-// }
-// void NeedMoreClassForm(Secretary& cpe, Headmaster& director, Professor& prof)
-// {
-//     std::cout << "-->NeedMoreClassRoomForm" << std::endl;
-//     Form* formClassroomCrea = cpe.createForm(FormType::NeedMoreClassRoom);
-//     NeedMoreClassRoomForm* classroomCrea = dynamic_cast<NeedMoreClassRoomForm*>(formClassroomCrea);
-//     if (classroomCrea->inspectFormInfo(&prof))
-//         director.receiveForm(formClassroomCrea);
-// }
-
-
-// void    CourseFinishForm(Secretary& cpe, Headmaster& director, Course& course, Student& stud)
-// {
-//     std::cout << "-->CourseFinishedForm" << std::endl;
-//     Form* formCourseFinish = cpe.createForm(FormType::CourseFinished);
-//     CourseFinishedForm* courseFinish = dynamic_cast<CourseFinishedForm*>(formCourseFinish);
-//     if (courseFinish->inspectFormInfo(&course, &stud))
-//         director.receiveForm(courseFinish);
-    
-// }
-
 void    displayRoomInfo()
 {
     auto& classroom = RoomList::getInstance().getList();
@@ -123,6 +86,8 @@ int main()
     mediator.assignCourseToProf(math, prof);
     mediator.assignCourseToProf(geo, prof2);
 
+    // cpe
+
     prof.setHeadmaster(&mediator);
     prof2.setHeadmaster(&mediator);
     prof3.setHeadmaster(&mediator);
@@ -131,6 +96,9 @@ int main()
     prof2.doClass();    
     prof3.doClass();
     prof3.doClass();
+
+    math.subscribe(&boty);
+    mediator.needGraduationForm(prof, boty);
 
 
     return (0);

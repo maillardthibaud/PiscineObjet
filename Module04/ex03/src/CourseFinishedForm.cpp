@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-CourseFinishedForm::CourseFinishedForm() : Form(FormType::CourseFinished, "CourseFinishedForm")
+CourseFinishedForm::CourseFinishedForm() : Form(FormType::CourseFinished, "CourseFinishedForm"), _finishedcourse(nullptr), _studToGrad(nullptr)
 {
     // std::cout << "Course finnished constructor" << std::endl;
 }
@@ -47,4 +47,21 @@ bool	CourseFinishedForm::inspectFormInfo(Course* course, Student* stud)
     }
     std::cout << "You re not register to this course" << std::endl;
     return(false);
+}
+void	CourseFinishedForm::setCourseFinished(Course* course)
+{
+    _finishedcourse = course;
+
+}
+void	CourseFinishedForm::setStudToGrad(Student* stud)
+{
+    _studToGrad = stud;
+}
+Course*	CourseFinishedForm::getFinishedCourse()
+{
+    return(_finishedcourse);
+}
+Student*	CourseFinishedForm::getStudentToGrad()
+{
+    return(_studToGrad);
 }

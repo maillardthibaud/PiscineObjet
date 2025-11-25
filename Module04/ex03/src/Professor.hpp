@@ -9,6 +9,8 @@
 class Course;
 class Headmaster;
 class NeedCourseCreationForm;
+class CourseFinishedForm;
+class Student;
 
 class Professor : public Staff
 {
@@ -16,6 +18,7 @@ class Professor : public Staff
 
 		std::string		_subjectTeaching;
 		Course* 		_currentCourse;
+
 
 		Headmaster*		_director;
 
@@ -38,5 +41,7 @@ class Professor : public Staff
 		// void	needCourseCreationForm();
 
 		void    fillCreationForm(NeedCourseCreationForm& nccf);
+
+		void	fillGraduationForm(CourseFinishedForm& cff, Student& stud);
 };
 #endif
