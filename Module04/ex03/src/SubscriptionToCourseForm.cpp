@@ -17,7 +17,14 @@ void SubscriptionToCourseForm::execute()
     std::cout << "execute -> Student subscribe to course " << std::endl; 
     _subCourse->subscribe(_subStudent);
 }
-
+Student*		SubscriptionToCourseForm::getStud()
+{
+    return (_subStudent);
+}
+std::string		SubscriptionToCourseForm::getSubject()
+{
+    return (_subSubject);
+}
 
 bool	SubscriptionToCourseForm::inspectFormInfo(Student* stud, Course* course)
 {
@@ -26,10 +33,27 @@ bool	SubscriptionToCourseForm::inspectFormInfo(Student* stud, Course* course)
     if (DEBUG)
         std::cout << "Student : " << stud->getName() << " ask to subscribe " << course->getName() << " course." << std::endl;
     _subStudent = stud;
-    _subCourse = course;
+    // _subCourse = course;
     _isSigned = false;
     return true;
 }
+
+
+void	SubscriptionToCourseForm::setSubStud(Student* stud)
+{
+    _subStudent = stud;
+}
+void	SubscriptionToCourseForm::setSubjectSub(std::string subject)
+{
+    _subSubject = subject;
+}
+
+void	SubscriptionToCourseForm::setSubCourse(Course* course)
+{
+    _subCourse = course;
+}
+
+
 bool    SubscriptionToCourseForm::inspectCourseAndStud(Student* stud, Course* course)
 {
     auto& studList = StudentList::getInstance().getList();

@@ -13,6 +13,7 @@ class SubscriptionToCourseForm : public Form
 
 			Student*		_subStudent;
 			Course*			_subCourse;
+			std::string 	_subSubject;
 
 	public:
 
@@ -23,6 +24,16 @@ class SubscriptionToCourseForm : public Form
 
 		void 	execute();
 		bool    inspectCourseAndStud(Student* stud, Course* course);
+
+		Student*		getStud();
+		std::string		getSubject();
+
+		void	setSubStud(Student* stud);
+		void	setSubCourse(Course* course);
+		void	setSubjectSub(std::string subject);
+
+
+		friend class Headmaster;
 };
 
 

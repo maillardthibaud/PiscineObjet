@@ -1,9 +1,11 @@
 #include <iostream>
 
+#include "Headmaster.hpp"
 #include "Student.hpp"
 #include "Classroom.hpp"
 // #include "Person.hpp"
 #include "Course.hpp"
+#include "SubscriptionToCourseForm.hpp"
 
 Student::Student(std::string name) : Person(name)
 {
@@ -13,6 +15,11 @@ Student::Student(std::string name) : Person(name)
 Student::~Student()
 {
     // std::cout << "Student Destructor" << std::endl;
+    for (std::vector<CourseProgress*>::iterator it = _courseProgress.begin(); it != _courseProgress.end(); ++it)
+    {
+        delete *it;
+    }
+    _courseProgress.clear();
 }
 
 std::string	Student::getName()
@@ -20,11 +27,20 @@ std::string	Student::getName()
     return (_name);
 }
 
+void			Student::fillSubscriptionForm(SubscriptionToCourseForm& form)
+{
+    form.setSubStud(this);
+    form.setSubjectSub(_subjectSubscription);
+    _director->receiveForm(&form);
+}
+
 void					Student::addCourse(Course* course)
 {
     _subscribedCourse.push_back(course);
-    CourseProgress cp = {course, course->getNbToGrad()};
-    _courseProgress.push_back(&cp);
+    CourseProgress* cp = new CourseProgress();
+    cp->course = course;
+    cp->courseRemain = course->getNbToGrad();
+    _courseProgress.push_back(cp);
 }
 
 void Student::attendClass(Classroom* p_classroom)
@@ -89,8 +105,15 @@ std::vector<CourseProgress*>&		Student::getProgress()
     return (_courseProgress);
 }
 
-void 						Student::askForSubscriptionForm(FormType* p_formtype)
+void 						Student::askForSubscriptionForm(std::string subject)
 {
-    (void)p_formtype;
+    _subjectSubscription = subject;
+    if (_director)
+        std::cout << "chelou " << std::endl;
+    _director->needSubscriptionCourseForm(*this);
+}
 
+void							Student::setHeadmaster(Headmaster* director)
+{
+    _director = director;
 }

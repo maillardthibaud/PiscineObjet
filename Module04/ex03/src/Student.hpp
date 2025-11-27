@@ -9,6 +9,8 @@
 
 class Course;
 class Classroom;
+class SubscriptionToCourseForm;
+class Headmaster;
 
 struct CourseProgress
 {
@@ -23,6 +25,8 @@ class Student : public Person
 
 		std::vector<Course*> 				_subscribedCourse;
 		std::vector<CourseProgress*>		_courseProgress; 
+		Headmaster*							_director;		
+		std::string 						_subjectSubscription;
 		
 
 	public:
@@ -34,16 +38,22 @@ class Student : public Person
 		std::vector<Course*>&			getCourses();
 		std::vector<CourseProgress*>&	getProgress();
 
+		void							setHeadmaster(Headmaster* director);
+
 		void							addCourse(Course* course);
 		void 							attendClass(Classroom* p_classroom);
 		void 							exitClass();
 		void 							graduate(Course* p_course);
 
+
+
+
 		bool        					checkStudentSub(Classroom* p_classroom);
 		void							getAllCourseAndRemainClass();
 
 
-		void 						askForSubscriptionForm(FormType* p_formtype);
+		void 							askForSubscriptionForm(std::string subject);
+		void							fillSubscriptionForm(SubscriptionToCourseForm& form);
 };
 
 

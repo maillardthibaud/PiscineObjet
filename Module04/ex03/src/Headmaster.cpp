@@ -53,6 +53,13 @@ void    Headmaster::needGraduationForm(Professor& prof, Student& stud)
     prof.fillGraduationForm(cff, stud);
 }
 
+
+void    Headmaster::needSubscriptionCourseForm(Student& stud)
+{
+    SubscriptionToCourseForm& scf = dynamic_cast<SubscriptionToCourseForm&>(*_cpe->createForm(FormType::SubscriptionToCourse));
+    stud.fillSubscriptionForm(scf);
+}
+
 void Headmaster::receiveForm(Form* p_form)
 {
 
@@ -76,6 +83,17 @@ void Headmaster::receiveForm(Form* p_form)
                     cff.signeForm();
                     cff.execute();
                }
+               break;
+        }
+        case FormType::SubscriptionToCourse : 
+        {
+            SubscriptionToCourseForm& scf = dynamic_cast<SubscriptionToCourseForm&>(*p_form);
+            if (inspectAndVerifySubForm(scf))
+            {
+                scf.signeForm();
+                scf.execute();
+            }
+            break;
         }
         
         default:
@@ -98,6 +116,25 @@ bool    Headmaster::inspectCourse(Course* course)
     return (false);
 }
 
+bool    Headmaster::inspectAndVerifySubForm(SubscriptionToCourseForm& form)
+{
+    if (inspectStud(form.getStud())) 
+    {
+        auto& cList = CourseList::getInstance().getList();
+        std::vector<Course*>::iterator it;
+        for (it = cList.begin(); it != cList.end(); it++)
+        {
+            if ((*it)->getName() == form.getSubject())
+            {
+                form.setSubCourse(*it);
+                return (true);
+            }
+        }
+        std::cout << "This subject is not available in course list" << std::endl;
+    }
+    return (false);
+}
+
 bool    Headmaster::inspectAndVerifyGradForm(CourseFinishedForm& form)
 {
     if (form.getFinishedCourse() || form.getStudentToGrad())
@@ -109,8 +146,6 @@ bool    Headmaster::inspectAndVerifyGradForm(CourseFinishedForm& form)
             std::cout << "This stud cannnot be graduate for this course " << std::endl;
     }
     return false;
-
-    
 }
 
 bool	Headmaster::inspectFormInfo(Course* course, Student* stud)
@@ -120,18 +155,18 @@ bool	Headmaster::inspectFormInfo(Course* course, Student* stud)
     {
         if ((*it) == course)
         {
-            if (DEBUG)
-                std::cout << "Stud register to this course" << std::endl;
             std::vector<CourseProgress*>::iterator itp;
-            for (itp = stud->getProgress().begin(); itp != stud->getProgress().end(); it++)
+            for (itp = stud->getProgress().begin(); itp != stud->getProgress().end(); itp++)
             {
                 if ((*it) == (*itp)->course)
                 {
                     if(DEBUG)
                         std::cout << "Check progress course remain : " << (*itp)->courseRemain << std::endl;
-                    if ((*itp)->courseRemain == 0)
+                    if ((*itp)->courseRemain == 3)
                         return true;
                 }
+                if (DEBUG)
+                    std::cout << "it : " << (*it)->getName() << " itp : " << (*itp)->course->getName() << std::endl;
             }
         }
     }

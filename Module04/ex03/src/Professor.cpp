@@ -44,6 +44,7 @@ void    Professor::fillCreationForm(NeedCourseCreationForm& nccf)
 
 void	Professor::fillGraduationForm(CourseFinishedForm& cff, Student& stud)
 {
+
     cff.setCourseFinished(_currentCourse);
     cff.setStudToGrad(&stud);
     _director->receiveForm(&cff);

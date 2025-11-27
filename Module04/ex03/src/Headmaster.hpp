@@ -35,7 +35,11 @@ class Headmaster : public Staff
 
 		void    needGraduationForm(Professor& prof, Student& stud);
 
+		void    needSubscriptionCourseForm(Student& stud);
+
 		bool    inspectAndVerifyGradForm(CourseFinishedForm& form);
+
+		bool    inspectAndVerifySubForm(SubscriptionToCourseForm& form);
 		bool 	inspectCourse(Course* course);
 		bool    inspectStud(Student* stud);
 

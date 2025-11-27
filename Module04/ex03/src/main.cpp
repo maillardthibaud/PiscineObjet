@@ -87,18 +87,23 @@ int main()
     mediator.assignCourseToProf(geo, prof2);
 
     // cpe
-
+    boty.setHeadmaster(&mediator);
     prof.setHeadmaster(&mediator);
     prof2.setHeadmaster(&mediator);
     prof3.setHeadmaster(&mediator);
+
 
     prof.doClass();
     prof2.doClass();    
     prof3.doClass();
     prof3.doClass();
 
-    math.subscribe(&boty);
-    mediator.needGraduationForm(prof, boty);
+    boty.askForSubscriptionForm("Mathematique");
+    // mediator.
+
+    // math.subscribe(&boty);
+    // mediator.needGraduationForm(prof, boty);
+
 
 
     return (0);
