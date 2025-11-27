@@ -2,6 +2,7 @@
 #include "Professor.hpp"
 #include "Headmaster.hpp"
 #include "NeedCourseCreationForm.hpp"
+#include "NeedMoreClassRoomForm.hpp"
 #include "CourseFinishedForm.hpp"
 #include "Student.hpp"
 
@@ -30,9 +31,20 @@ void Professor::doClass()
     {
         _director->needCreationForm(*this);
     }
+    else if (_currentCourse->getClassroom() == nullptr)
+    {
+        _director->needClassroomCreation(this);
+    }
     else
         _currentCourse->displayInfoCourse();
 
+}
+
+void    Professor::fillCreationClassRoomForm(NeedMoreClassRoomForm& form)
+{
+    form.setRequester(this);
+    form.setCourse(_currentCourse);
+    _director->receiveForm(&form);
 }
 
 void    Professor::fillCreationForm(NeedCourseCreationForm& nccf)

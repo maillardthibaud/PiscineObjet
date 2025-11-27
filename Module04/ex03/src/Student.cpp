@@ -7,7 +7,7 @@
 #include "Course.hpp"
 #include "SubscriptionToCourseForm.hpp"
 
-Student::Student(std::string name) : Person(name)
+Student::Student(std::string name) : Person(name), _director(nullptr)
 {
     // std::cout << "Student Constructor, name : " << _name << std::endl;
 }

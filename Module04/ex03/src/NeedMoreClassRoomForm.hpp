@@ -11,8 +11,8 @@ class NeedMoreClassRoomForm : public Form
 {
 	private:
 
-			// Professor*			_requester;
-			// Course* 			_course;
+			Professor*			_requester;
+			Course* 			_course;
 			Classroom*			_newRoom;
 
 
@@ -24,6 +24,13 @@ class NeedMoreClassRoomForm : public Form
 
 
 		bool inspectFormInfo(Professor* prof);
+
+		Course*		getCourse();
+		Professor*  getRequester();
+
+		void	setRequester(Professor* prof);
+
+		void	setCourse(Course* course);
 
 		void execute();
 };

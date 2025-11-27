@@ -7,10 +7,11 @@
 #include "NeedCourseCreationForm.hpp"
 #include "SubscriptionToCourseForm.hpp"
 #include "CourseFinishedForm.hpp"
+#include "NeedMoreClassRoomForm.hpp"
 #include "Professor.hpp"
 #include "Course.hpp"
 
-Headmaster::Headmaster(std::string name) : Staff(name), _cpe(nullptr)
+Headmaster::Headmaster(std::string name) : Staff(name), _cpe(nullptr), _nbRoom(1)
 {
     // std::cout << "Headmaster constructor, name : " << _name << std::endl;
 }
@@ -59,6 +60,12 @@ void    Headmaster::needSubscriptionCourseForm(Student& stud)
     SubscriptionToCourseForm& scf = dynamic_cast<SubscriptionToCourseForm&>(*_cpe->createForm(FormType::SubscriptionToCourse));
     stud.fillSubscriptionForm(scf);
 }
+void	Headmaster::needClassroomCreation(Professor& prof)
+{
+    NeedMoreClassRoomForm& nmcf = dynamic_cast<NeedMoreClassRoomForm&>(*_cpe->createForm(FormType::NeedMoreClassRoom));
+    prof.fillCreationClassRoomForm(nmcf);
+
+}
 
 void Headmaster::receiveForm(Form* p_form)
 {
@@ -95,17 +102,37 @@ void Headmaster::receiveForm(Form* p_form)
             }
             break;
         }
+        case FormType::NeedMoreClassRoom :
+        {
+            NeedMoreClassRoomForm& nmcf = dynamic_cast<NeedMoreClassRoomForm&>(*p_form);
+            if (inspectAndVerifyClassCreaForm(nmcf))
+            {
+                nmcf.signeForm();
+                nmcf.execute();
+            }
+            break;
+        }
         
         default:
             break;
     }
+}
 
-    // if (p_form && !p_form->getIsSigned())
-    // {
-    //     if(DEBUG)
-    //         std::cout << _name << " has received form : " << p_form->getName()  << std::endl;
-    //     _formToValidate.push_back(p_form);
-    // }
+bool    Headmaster::inspectAndVerifyClassCreaForm(NeedMoreClassRoomForm& form)
+{
+    if (inspectCourse(form.getCourse()))
+    {
+        if (!form.getCourse()->getClassroom())
+        {
+            _nbRoom++;
+            Classroom* newClassroom = new Classroom(_nbRoom);
+            std::cout << "Creation new classroom and set to Course" << std::endl;
+            form.getCourse()->setClassRoom(newClassroom);
+            return (true);
+        }
+        
+    }
+    return (false);
 }
 bool    Headmaster::inspectCourse(Course* course)
 {
@@ -134,6 +161,8 @@ bool    Headmaster::inspectAndVerifySubForm(SubscriptionToCourseForm& form)
     }
     return (false);
 }
+
+
 
 bool    Headmaster::inspectAndVerifyGradForm(CourseFinishedForm& form)
 {

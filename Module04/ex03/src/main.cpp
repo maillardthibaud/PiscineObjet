@@ -98,7 +98,7 @@ int main()
     prof3.doClass();
     prof3.doClass();
 
-    boty.askForSubscriptionForm("Mathematique");
+    // boty.askForSubscriptionForm("Mathematique");
     // mediator.
 
     // math.subscribe(&boty);

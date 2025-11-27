@@ -18,6 +18,9 @@ class Headmaster : public Staff
 		// std::vector<Professor*>		_professors;
 
 		Secretary*					_cpe;
+
+
+		int							_nbRoom;
 		
 	public:
 		
@@ -37,7 +40,11 @@ class Headmaster : public Staff
 
 		void    needSubscriptionCourseForm(Student& stud);
 
+		void	needClassroomCreation(Professor& prof);
+
 		bool    inspectAndVerifyGradForm(CourseFinishedForm& form);
+
+		bool    inspectAndVerifyClassCreaForm(NeedMoreClassRoomForm& form);
 
 		bool    inspectAndVerifySubForm(SubscriptionToCourseForm& form);
 		bool 	inspectCourse(Course* course);

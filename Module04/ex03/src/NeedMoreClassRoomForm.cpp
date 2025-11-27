@@ -54,6 +54,25 @@ bool    NeedMoreClassRoomForm::inspectFormInfo(Professor* prof)
     }
     return (false);
 }
+void	NeedMoreClassRoomForm::setRequester(Professor* prof)
+{
+    _requester = prof;
+}
+
+
+
+void	NeedMoreClassRoomForm::setCourse(Course* course)
+{
+    _course = course;
+}
+Course*		NeedMoreClassRoomForm::getCourse()
+{
+    return (_course);
+}
+Professor*  NeedMoreClassRoomForm::getRequester()
+{
+    return (_requester);
+}
     // auto& listcourse = CourseList::getInstance().getList();
 
     // std::vector<Course*>::iterator it;

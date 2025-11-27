@@ -9,6 +9,7 @@
 class Course;
 class Headmaster;
 class NeedCourseCreationForm;
+class NeedMoreClassRoomForm;
 class CourseFinishedForm;
 class Student;
 
@@ -41,6 +42,7 @@ class Professor : public Staff
 		// void	needCourseCreationForm();
 
 		void    fillCreationForm(NeedCourseCreationForm& nccf);
+		void    fillCreationClassRoomForm(NeedMoreClassRoomForm& form);
 
 		void	fillGraduationForm(CourseFinishedForm& cff, Student& stud);
 };
