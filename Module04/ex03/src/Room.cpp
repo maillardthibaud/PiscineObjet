@@ -1,6 +1,5 @@
 #include "Room.hpp"
-#include <iostream>
-#include "Singleton.hpp"
+
 
 Room::Room(int id) : _id(id)
 {
@@ -28,12 +27,10 @@ bool Room::canEnter(Person* person)
 
 void Room::enter(Person* person)
 {
-
     (void) person;
 }
 void Room::exit(Person* person)
 {
-
     (void) person;
 }
 	

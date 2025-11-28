@@ -1,26 +1,6 @@
 
 
-#include "Room.hpp"
-#include "Classroom.hpp"
-#include "SecretarialOffice.hpp"
-#include "HeadmasterOffice.hpp"
-#include "StaffRestRoom.hpp"
-
-#include "Courtyard.hpp"
-#include "Course.hpp"
-#include "Person.hpp"
-#include "Staff.hpp"
-#include "Student.hpp"
-#include "Secretary.hpp"
-#include "Headmaster.hpp"
-#include "Professor.hpp"
-#include "Form.hpp"
-#include "Singleton.hpp"
-
-#include "SubscriptionToCourseForm.hpp"
-#include "NeedCourseCreationForm.hpp"
-#include "NeedMoreClassRoomForm.hpp"
-#include "CourseFinishedForm.hpp"
+#include "main.hpp"
 
 void DirectorValidation(Headmaster& director)
 {
@@ -93,9 +73,11 @@ int main()
     prof3.setHeadmaster(&mediator);
 
 
+    std::cout << "1" << std::endl;
     prof.doClass();
+    std::cout << "-" << std::endl;
     prof2.doClass();    
-    prof3.doClass();
+    std::cout << "-" << std::endl;
     prof3.doClass();
 
     // boty.askForSubscriptionForm("Mathematique");

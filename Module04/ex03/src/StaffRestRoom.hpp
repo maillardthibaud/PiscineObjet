@@ -1,6 +1,8 @@
 #ifndef __STAFFRESTROOM_HPP__
 #define __STAFFRESTROOM_HPP__
 
+#include <iostream>
+
 #include "Room.hpp"
 
 class StaffRestRoom : public Room
@@ -9,12 +11,12 @@ class StaffRestRoom : public Room
 
     public:
 
-    StaffRestRoom(int id);
-    ~StaffRestRoom();
-    
-    bool                    canEnter(Person* person);
-    std::vector<Person*>    getOccupants();
-    int                     getId();
+        StaffRestRoom(int id);
+        ~StaffRestRoom();
+        
+        bool                    canEnter(Person* person);
+        std::vector<Person*>    getOccupants();
+        int                     getId();
 
 };
 #endif

@@ -2,6 +2,7 @@
 #define __PERSON_HPP__
 
 #include <string>
+#include <iostream>
 
 class Room;
 
@@ -17,9 +18,8 @@ class Person
 		Person(std::string p_name);
 		~Person();
 
-		std::string	getName();
-
-		Room* getCurrentRoom();
+		std::string		getName();
+		Room* 			getCurrentRoom();
 
 };
 

@@ -1,7 +1,5 @@
 #include "Form.hpp"
 
-#include <iostream>
-
 Form::Form(FormType p_formType, std::string name) : _formType(p_formType), _name(name), _isSigned(false)
 {
     // std::cout << "Form constructor" << std::endl;

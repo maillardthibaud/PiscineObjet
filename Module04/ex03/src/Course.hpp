@@ -4,7 +4,11 @@
 #include <iostream>
 #include <vector>
 #include <string>
+
 #include "Classroom.hpp"
+#include "Professor.hpp"
+#include "Course.hpp"
+#include "Student.hpp"
 
 class Professor;
 class Student;
@@ -18,9 +22,8 @@ class Course
 		std::vector<Student*> 	_students;
 		int 					_numberOfClassToGraduate;
 		int						_maximumNumberOfStudent;
+
 		Professor* 				_responsable;
-
-
 		Classroom*				_classroom;
 
 	public:
@@ -34,17 +37,14 @@ class Course
 		std::vector<Student*>	getStud();
 		Professor*				getResponsable();
 		Classroom*				getClassroom();
-		void					addClassroom(Classroom* room);
 
 		void        			setResponsable(Professor* prof);
 		void					setClassRoom(Classroom* classroom);
 
-
+		void					addClassroom(Classroom* room);
 		void 					assign(Professor* p_professor);
 		void 					subscribe(Student* p_student);
-
 		void					displayInfoCourse();
-
 		bool					countStudent();
 
 };

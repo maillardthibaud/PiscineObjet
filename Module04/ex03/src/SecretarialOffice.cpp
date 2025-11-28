@@ -1,6 +1,4 @@
-#include <iostream>
 #include "SecretarialOffice.hpp"
-
 
 SecretarialOffice::SecretarialOffice(int id) : Room(id)
 {
@@ -9,7 +7,6 @@ SecretarialOffice::SecretarialOffice(int id) : Room(id)
 SecretarialOffice::~SecretarialOffice()
 {
 	// std::cout << "Secretary office destructor"  << std::endl;
-
 }
 
 bool SecretarialOffice::canEnter(Person* person)

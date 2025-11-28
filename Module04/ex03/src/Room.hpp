@@ -2,7 +2,10 @@
 #define __ROOM_HPP__
 
 #include <vector>
-// #include "Person.hpp"
+#include <iostream>
+
+#include "Singleton.hpp"
+
 class Person;
 
 class Room
@@ -23,10 +26,11 @@ class Room
 			virtual std::vector<Person*>		getOccupants();
 
 
-			virtual bool 				canEnter(Person* person);
-			virtual void 				enter(Person* person);
-			virtual void 				exit(Person* person);
-			virtual void 				printOccupant();
+			virtual bool 						canEnter(Person* person);
+			virtual void 						enter(Person* person);
+			virtual void 						exit(Person* person);
+
+			virtual void 						printOccupant();
 
 };
 #endif

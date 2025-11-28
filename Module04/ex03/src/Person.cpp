@@ -1,5 +1,4 @@
 #include "Person.hpp"
-#include <iostream>
 
 Person::Person(std::string p_name) : _name(p_name), _currentRoom(NULL)
 {

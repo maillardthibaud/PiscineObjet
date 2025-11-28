@@ -2,7 +2,10 @@
 #define __SECRETARIALOFFICE_HPP__
 
 #include <vector>
+#include <iostream>
+
 #include "Room.hpp"
+
 class Form;
 
 class SecretarialOffice: public Room
@@ -16,9 +19,9 @@ class SecretarialOffice: public Room
         SecretarialOffice(int id);
         ~SecretarialOffice();
 
-        bool canEnter(Person* person);
-        int     getId();
+        bool                        canEnter(Person* person);
 
+        int                         getId();
         std::vector<Person*>		getOccupants();
 
 };

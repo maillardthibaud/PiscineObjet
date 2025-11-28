@@ -1,10 +1,9 @@
-#include <iostream>
 #include "Professor.hpp"
-#include "Headmaster.hpp"
 #include "NeedCourseCreationForm.hpp"
 #include "NeedMoreClassRoomForm.hpp"
 #include "CourseFinishedForm.hpp"
 #include "Student.hpp"
+#include "Headmaster.hpp"
 
 Professor::Professor(std::string name, std::string subject) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(nullptr)
 {
@@ -29,15 +28,16 @@ void Professor::doClass()
 {
     if(_currentCourse == nullptr)
     {
+        std::cout << "2" << std::endl;
         _director->needCreationForm(*this);
     }
     else if (_currentCourse->getClassroom() == nullptr)
     {
-        _director->needClassroomCreation(this);
+        std::cout << "3" << std::endl;
+        _director->needClassroomCreation(*this);
     }
     else
         _currentCourse->displayInfoCourse();
-
 }
 
 void    Professor::fillCreationClassRoomForm(NeedMoreClassRoomForm& form)
@@ -56,11 +56,9 @@ void    Professor::fillCreationForm(NeedCourseCreationForm& nccf)
 
 void	Professor::fillGraduationForm(CourseFinishedForm& cff, Student& stud)
 {
-
     cff.setCourseFinished(_currentCourse);
     cff.setStudToGrad(&stud);
     _director->receiveForm(&cff);
-
 }
 void Professor::closeCourse()
 {
@@ -77,17 +75,10 @@ Course*         Professor::getCurrentCourse()
     return (_currentCourse);
 }
 
-// void        Professor::needCourseCreationForm()
-// {
-//     _director->receiveForm(NeedCourseCreation);
-// }
-
 void	Professor::setHeadmaster(Headmaster* p_headmaster)
 {
     _director = p_headmaster;
 }
-
-
 
 void	Professor::setCourse(Course* p_course)
 {

@@ -2,6 +2,7 @@
 #define __COURSEFINISHEDFORM_HPP__
 
 #include <iostream>
+
 #include "Form.hpp"
 #include "Course.hpp"
 #include "Student.hpp"
@@ -11,23 +12,25 @@ class CourseFinishedForm : public Form
 {
 	private:
 
-			Course* 	_finishedcourse;
-			Student*	_studToGrad;
+		Course* 	_finishedcourse;
+		Student*	_studToGrad;
 
 	public:
 
 		CourseFinishedForm();
 		~CourseFinishedForm();
 
-		bool   	inspectFormInfo(Course* course, Student* stud);
+		Course*			getFinishedCourse();
+		Student*		getStudentToGrad();
+		void			setCourseFinished(Course* course);
+		void			setStudToGrad(Student* stud);
+
+		bool   			inspectFormInfo(Course* course, Student* stud);
+
+		void 			execute();
 
 
-		Course*	getFinishedCourse();
-		Student*	getStudentToGrad();
-		void	setCourseFinished(Course* course);
-		void	setStudToGrad(Student* stud);
 
-		void execute();
 };
 
 

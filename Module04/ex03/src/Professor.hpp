@@ -1,10 +1,9 @@
 #ifndef __PROFESSOR_HPP__
 #define __PROFESSOR_HPP__
 
+#include <iostream>
+
 #include "Staff.hpp"
-// #include "Headmaster.hpp"
-// #include "Form.hpp"
-// #include "NeedCourseCreationForm.hpp"
 
 class Course;
 class Headmaster;
@@ -19,8 +18,6 @@ class Professor : public Staff
 
 		std::string		_subjectTeaching;
 		Course* 		_currentCourse;
-
-
 		Headmaster*		_director;
 
 	public:
@@ -32,18 +29,17 @@ class Professor : public Staff
 		std::string		getSubject();
 		Course*			getCurrentCourse();
 
-		void assignCourse(Course* p_course);
-		void doClass();
-		void closeCourse();
+		void			setHeadmaster(Headmaster* p_headmaster);
+		void			setCourse(Course* p_course);
 
+		void 			assignCourse(Course* p_course);
+		void 			doClass();
+		void 			closeCourse();
 
-		void	setHeadmaster(Headmaster* p_headmaster);
-		void	setCourse(Course* p_course);
-		// void	needCourseCreationForm();
-
-		void    fillCreationForm(NeedCourseCreationForm& nccf);
-		void    fillCreationClassRoomForm(NeedMoreClassRoomForm& form);
-
-		void	fillGraduationForm(CourseFinishedForm& cff, Student& stud);
+		void    		fillCreationForm(NeedCourseCreationForm& nccf);
+		void    		fillCreationClassRoomForm(NeedMoreClassRoomForm& form);
+		void			fillGraduationForm(CourseFinishedForm& cff, Student& stud);
 };
+
+
 #endif

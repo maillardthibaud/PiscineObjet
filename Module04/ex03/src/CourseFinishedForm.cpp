@@ -1,6 +1,5 @@
-#include "CourseFinishedForm.hpp"
-#include <iostream>
 
+#include "CourseFinishedForm.hpp"
 
 CourseFinishedForm::CourseFinishedForm() : Form(FormType::CourseFinished, "CourseFinishedForm"), _finishedcourse(nullptr), _studToGrad(nullptr)
 {
@@ -14,7 +13,6 @@ CourseFinishedForm::~CourseFinishedForm()
 void CourseFinishedForm::execute()
 {
     std::cout << "|->exec graduation for student " << _studToGrad->getName() << " for " << _finishedcourse->getName() << " course" << std::endl;
-
 }
 
 bool	CourseFinishedForm::inspectFormInfo(Course* course, Student* stud)
@@ -51,7 +49,6 @@ bool	CourseFinishedForm::inspectFormInfo(Course* course, Student* stud)
 void	CourseFinishedForm::setCourseFinished(Course* course)
 {
     _finishedcourse = course;
-
 }
 void	CourseFinishedForm::setStudToGrad(Student* stud)
 {

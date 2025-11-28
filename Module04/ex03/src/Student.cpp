@@ -1,9 +1,7 @@
-#include <iostream>
 
-#include "Headmaster.hpp"
 #include "Student.hpp"
+#include "Headmaster.hpp"
 #include "Classroom.hpp"
-// #include "Person.hpp"
 #include "Course.hpp"
 #include "SubscriptionToCourseForm.hpp"
 
@@ -70,14 +68,12 @@ void        Student::getAllCourseAndRemainClass()
     for (it = _courseProgress.begin(); it != _courseProgress.end(); it++)
     {
         std::cout << _name << " is register to " << (*it)->course->getName() << ", remain to grad : " << (*it)->courseRemain << std::endl;
-
     }
 }
 
 bool        Student::checkStudentSub(Classroom* p_classroom)
 {
     std::vector<Course*>::iterator it;
-
     for (it = _subscribedCourse.begin(); it != _subscribedCourse.end(); it++)
     {
        if ((*it) == p_classroom->getCurrentCourse())
@@ -105,7 +101,7 @@ std::vector<CourseProgress*>&		Student::getProgress()
     return (_courseProgress);
 }
 
-void 						Student::askForSubscriptionForm(std::string subject)
+void 		Student::askForSubscriptionForm(std::string subject)
 {
     _subjectSubscription = subject;
     if (_director)
@@ -113,7 +109,7 @@ void 						Student::askForSubscriptionForm(std::string subject)
     _director->needSubscriptionCourseForm(*this);
 }
 
-void							Student::setHeadmaster(Headmaster* director)
+void	    Student::setHeadmaster(Headmaster* director)
 {
     _director = director;
 }

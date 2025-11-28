@@ -1,10 +1,4 @@
 #include "Secretary.hpp"
-#include <iostream>
-#include "Form.hpp"
-#include "CourseFinishedForm.hpp"
-#include "NeedCourseCreationForm.hpp"
-#include "NeedMoreClassRoomForm.hpp"
-#include "SubscriptionToCourseForm.hpp"
 
 Secretary::Secretary(std::string name) : Staff(name)
 {
@@ -14,7 +8,6 @@ Secretary::~Secretary()
 {
     // std::cout << "Secretary destructor" << std::endl;
 }
-
 		
 Form* Secretary::createForm(FormType p_formType)
 {
@@ -27,7 +20,6 @@ Form* Secretary::createForm(FormType p_formType)
         default: break;
     }
     return(nullptr);
-
 }
 void Secretary::archiveForm()
 {

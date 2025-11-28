@@ -1,7 +1,4 @@
-#include <iostream>
 #include "SubscriptionToCourseForm.hpp"
-#include "Singleton.hpp"
-
 
 SubscriptionToCourseForm::SubscriptionToCourseForm() : Form(FormType::SubscriptionToCourse, "SubscriptionCourseForm"), _subStudent(nullptr), _subCourse(nullptr)
 {

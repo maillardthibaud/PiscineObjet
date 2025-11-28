@@ -1,15 +1,5 @@
 
 #include "Headmaster.hpp"
-#include <iostream>
-#include "Staff.hpp"
-#include "Form.hpp"
-#include "Singleton.hpp"
-#include "NeedCourseCreationForm.hpp"
-#include "SubscriptionToCourseForm.hpp"
-#include "CourseFinishedForm.hpp"
-#include "NeedMoreClassRoomForm.hpp"
-#include "Professor.hpp"
-#include "Course.hpp"
 
 Headmaster::Headmaster(std::string name) : Staff(name), _cpe(nullptr), _nbRoom(1)
 {
@@ -20,12 +10,9 @@ Headmaster::~Headmaster()
     // std::cout << "Headmaster destructor" << std::endl;
 }
 
-
-
 void	Headmaster::setSecretary(Secretary* cpe)
 {   
     _cpe = cpe;
-
 }
 
 void	Headmaster::assignCourseToProf(Course& course, Professor& prof)
@@ -64,7 +51,6 @@ void	Headmaster::needClassroomCreation(Professor& prof)
 {
     NeedMoreClassRoomForm& nmcf = dynamic_cast<NeedMoreClassRoomForm&>(*_cpe->createForm(FormType::NeedMoreClassRoom));
     prof.fillCreationClassRoomForm(nmcf);
-
 }
 
 void Headmaster::receiveForm(Form* p_form)
@@ -125,9 +111,9 @@ bool    Headmaster::inspectAndVerifyClassCreaForm(NeedMoreClassRoomForm& form)
         if (!form.getCourse()->getClassroom())
         {
             _nbRoom++;
+            std::cout << "Creation new classroom" << std::endl;
             Classroom* newClassroom = new Classroom(_nbRoom);
-            std::cout << "Creation new classroom and set to Course" << std::endl;
-            form.getCourse()->setClassRoom(newClassroom);
+            form.setNewRoom(newClassroom);
             return (true);
         }
         
@@ -227,9 +213,3 @@ void    Headmaster::validateForms()
         }
     }
 }
-
-
-// void 	Headmaster::attendClass()
-// {
-
-// }

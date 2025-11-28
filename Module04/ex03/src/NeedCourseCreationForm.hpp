@@ -2,10 +2,13 @@
 #define __NEEDCOURSECREATIONFORM_HPP__
 
 #include <string>
+#include <iostream>
+
 #include "Form.hpp"
 #include "Staff.hpp"
 #include "Professor.hpp"
 #include "Course.hpp"
+#include "Singleton.hpp"
 
 class Course;
 
@@ -21,14 +24,13 @@ class NeedCourseCreationForm : public Form
 		NeedCourseCreationForm();
 		~NeedCourseCreationForm();
 
-		void execute();
+		void 			execute();
 
-		void 	setProf(Professor* p_prof);
-		Professor* 	getProf();
-		
-		// void	setCourse(Course* p_course);
+		Professor* 		getProf();
 
-		bool inspectFormInfo(Professor* prof);
+		void 			setProf(Professor* p_prof);
+
+		bool 			inspectFormInfo(Professor* prof);
 };
 
 

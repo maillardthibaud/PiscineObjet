@@ -12,8 +12,6 @@
 
 #include "Student.hpp"
 
-
-
 template <typename S>
 class Singleton
 {
@@ -83,17 +81,5 @@ std::vector<S>& Singleton<S>::getList()
 {
     return(_list);
 }
-
-// template <typename S>
-// void Singleton<S>::remove(const S& item)
-// {
-//     std::lock_guard<std::mutex> lock(_mutex);
-//     typename std::vector<S>::iterator it = std::find(_list.begin(), _list.end(), item);
-//     if (it != _list.end())
-//         _list.erase(it);
-// }
-
-
-
 
 #endif

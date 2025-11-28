@@ -1,7 +1,5 @@
 
 #include "HeadmasterOffice.hpp"
-#include "Person.hpp"
-#include <iostream>
 
 HeadmasterOffice::HeadmasterOffice(int id) : Room(id)
 {   
@@ -13,19 +11,15 @@ HeadmasterOffice::~HeadmasterOffice()
 
 }
 
-
 void 				HeadmasterOffice::printOccupant()
 {
     for(auto person : _occupants)
     {
-
         std::cout << "Room id : " << _id << std::endl;
         if (_occupants.empty())
             std::cout << " have nobody in here" << std::endl;
         else
- 
-        std::cout << "Inside headmaster office : " << person->getName();
-    
+            std::cout << "Inside headmaster office : " << person->getName();
     }
 
 }

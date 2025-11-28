@@ -1,4 +1,4 @@
-#include <iostream>
+
 #include "Classroom.hpp"
 
 Classroom::Classroom(int idClassroom) : Room(idClassroom), _currentRoom(nullptr)
@@ -18,12 +18,10 @@ void Classroom::assignCourse(Course* p_course)
         _courseName = p_course->getName();
         if (DEBUG)
             std::cout << "Classroom id : " << _id << " has been assign the " << _courseName << " course" << std::endl;
-        // p_course->addClassroom(this);
         _currentRoom = p_course;
     }
     else
         std::cout << "This classroom has already a course assign" << std::endl;
-
 }
 
 bool Classroom::canEnter(Person* person)

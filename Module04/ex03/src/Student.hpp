@@ -1,11 +1,12 @@
 #ifndef __STUDENT_HPP__
 #define __STUDENT_HPP__
 
+#include <iostream>
 #include <vector>
 #include <map>
+
 #include "Person.hpp"
 #include "Form.hpp"
-// #include "Singleton.hpp"
 
 class Course;
 class Classroom;

@@ -1,7 +1,4 @@
-#include <iostream>
-#include "Professor.hpp"
 #include "Course.hpp"
-#include "Student.hpp"
 
 Course::Course(std::string p_name, int toGrad, int maxStud)
  : _name(p_name), _numberOfClassToGraduate(toGrad), _maximumNumberOfStudent(maxStud), _responsable(nullptr), _classroom(nullptr)
@@ -18,7 +15,6 @@ std::string 	Course::getName()
 {
     return (_name);
 }
-
 
 Professor*      Course::getResponsable()
 {
@@ -39,7 +35,6 @@ void Course::assign(Professor* p_professor)
         _responsable = p_professor;
         std::cout << p_professor->getName() << " has been assign to " << _name << " course" << std::endl;
     }
-
 }
 void Course::subscribe(Student* p_student)
 {
@@ -49,10 +44,7 @@ void Course::subscribe(Student* p_student)
         p_student->addCourse(this);
         _students.push_back(p_student);
     }
-
 }
-
-
 bool                Course::countStudent()
 {
     if (static_cast<int>(_students.size()) < _maximumNumberOfStudent)
@@ -60,8 +52,6 @@ bool                Course::countStudent()
     std::cout << _name << " course have reach the max student value" << std::endl;
     return false;
 }
-
-
 void					Course::displayInfoCourse()
 {
     std::cout << _name << " course, ";
@@ -79,11 +69,8 @@ void					Course::displayInfoCourse()
             std::cout << "|-> " << (*it)->getName() << std::endl;
         }
     }
-
     std::cout << "Classsroom id : " << _classroom->getId() << std::endl;
 }
-
-
 std::vector<Student*>   Course::getStud()
 {
     return (_students);
@@ -92,8 +79,6 @@ Classroom* Course::getClassroom()
 {
     return (_classroom);
 }
-
-
 void        Course::setResponsable(Professor* prof)
 {
     _responsable = prof;
@@ -102,6 +87,9 @@ void					Course::addClassroom(Classroom* room)
 {
     if (room)
         _classroom = room;
+}
 
-
+void					Course::setClassRoom(Classroom* classroom)
+{
+    _classroom = classroom;
 }

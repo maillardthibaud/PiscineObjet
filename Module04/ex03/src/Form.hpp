@@ -2,6 +2,7 @@
 #define __FORM_HPP__
 
 #include <string>
+#include <iostream>
 
 enum class FormType
 {
@@ -32,6 +33,7 @@ class Form
 		FormType			getFormType();
 		std::string 		getName();
 		bool				getIsSigned();
+		
 		void				setName(std::string name);		
 
 		void				signeForm();
