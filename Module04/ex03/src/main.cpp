@@ -73,20 +73,5 @@ int main()
     prof3.setHeadmaster(&mediator);
 
 
-    std::cout << "1" << std::endl;
-    prof.doClass();
-    std::cout << "-" << std::endl;
-    prof2.doClass();    
-    std::cout << "-" << std::endl;
-    prof3.doClass();
-
-    // boty.askForSubscriptionForm("Mathematique");
-    // mediator.
-
-    // math.subscribe(&boty);
-    // mediator.needGraduationForm(prof, boty);
-
-
-
     return (0);
 }
