@@ -21,7 +21,10 @@ class Headmaster : public Staff
 	private:
 
 		std::vector<Form*>			_formToValidate;
+
+		std::vector<Professor*> 	_professors;
 		Secretary*					_cpe;
+	
 		int							_nbRoom;
 		
 	public:
@@ -29,10 +32,17 @@ class Headmaster : public Staff
 		Headmaster(std::string name);
 		~Headmaster();
 
+
+
 		void 	receiveForm(Form* p_form);
 		void	validateForms();
 
 		void	setSecretary(Secretary* cpe);
+		void	setNbRoom(int value);
+		void	addProf(Professor* prof);
+
+
+		void	launchClass();
 
 		void	assignCourseToProf(Course& course, Professor& prof);
 

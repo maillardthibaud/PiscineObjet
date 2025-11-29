@@ -41,9 +41,10 @@ void					Student::addCourse(Course* course)
     _courseProgress.push_back(cp);
 }
 
+
+
 void Student::attendClass(Classroom* p_classroom)
 {
-    std::cout << _name << " try to attend class : " << p_classroom->getCurrentCourse()->getName() << std::endl;
     if (checkStudentSub(p_classroom))
     {
         std::vector<CourseProgress*>::iterator it;
@@ -52,10 +53,10 @@ void Student::attendClass(Classroom* p_classroom)
             if (p_classroom->getCurrentCourse() == (*it)->course)
             {
                 (*it)->courseRemain--;
-                std::cout << "You're attend to class : " << (*it)->course->getName() << std::endl;
+                std::cout << _name << " attend to class : " << (*it)->course->getName() << std::endl;
                 if ((*it)->courseRemain == 0)
                 {
-                    std::cout << "You attend all the class needed to graduate, ask for a CourseFinishedForm" << std::endl;
+                    std::cout << _name << " attend all the class needed to graduate, ask for a CourseFinishedForm" << std::endl;
                 }
             }
         }
@@ -90,6 +91,12 @@ void Student::graduate(Course* p_course)
     (void)p_course;
 }
 
+void    Student::askForGraduation(Course* p_course)
+{
+    if (p_course)
+        p_course->getResponsable()->receiveStudForGrad(this);
+}
+
 
 std::vector<Course*>&	Student::getCourses()
 {
@@ -103,9 +110,8 @@ std::vector<CourseProgress*>&		Student::getProgress()
 
 void 		Student::askForSubscriptionForm(std::string subject)
 {
+    std::cout << _name << " ask for sub to " << subject << " course" << std::endl;
     _subjectSubscription = subject;
-    if (_director)
-        std::cout << "chelou " << std::endl;
     _director->needSubscriptionCourseForm(*this);
 }
 

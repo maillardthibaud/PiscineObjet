@@ -1,7 +1,7 @@
 
 #include "NeedCourseCreationForm.hpp"
 
-NeedCourseCreationForm::NeedCourseCreationForm() : Form(FormType::NeedCourseCreation, "NeedCourseCreationForm"), _professor(nullptr), _course(nullptr)
+NeedCourseCreationForm::NeedCourseCreationForm() : Form(FormType::NeedCourseCreation, "CourseCreationForm"), _professor(nullptr), _course(nullptr)
 {
     // std::cout << "NCCForm constructor" << std::endl;
 }
@@ -17,6 +17,12 @@ Professor* 	NeedCourseCreationForm::getProf()
 void           NeedCourseCreationForm::setProf(Professor* prof)
 {
     _professor = prof;
+}
+
+
+void			NeedCourseCreationForm::setSubject(std::string subject)
+{
+    _subject = subject;
 }
 
 void NeedCourseCreationForm::execute()

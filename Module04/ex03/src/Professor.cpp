@@ -18,6 +18,11 @@ std::string 	Professor::getName()
 {
     return (_name);
 }
+
+void			Professor::receiveStudForGrad(Student* p_stud)
+{
+    _director->needGraduationForm(*this, *p_stud);
+}
 void Professor::assignCourse(Course* p_course)
 {
     if (DEBUG)
@@ -28,16 +33,22 @@ void Professor::doClass()
 {
     if(_currentCourse == nullptr)
     {
-        std::cout << "2" << std::endl;
+        if (DEBUG)
+            std::cout << _name << " need Course Creation" << std::endl;
         _director->needCreationForm(*this);
     }
     else if (_currentCourse->getClassroom() == nullptr)
     {
-        std::cout << "3" << std::endl;
+        if (DEBUG)
+            std::cout << _name << " need Classroom Creation" << std::endl;
         _director->needClassroomCreation(*this);
     }
     else
-        _currentCourse->displayInfoCourse();
+    {
+        if (DEBUG)
+            std::cout << _name << " teaching " << _currentCourse->getName() << " course" << std::endl;
+        _currentCourse->attendCourse();
+    }
 }
 
 void    Professor::fillCreationClassRoomForm(NeedMoreClassRoomForm& form)
@@ -49,7 +60,7 @@ void    Professor::fillCreationClassRoomForm(NeedMoreClassRoomForm& form)
 
 void    Professor::fillCreationForm(NeedCourseCreationForm& nccf)
 {
-    nccf.setName(_subjectTeaching);
+    nccf.setSubject(_subjectTeaching);
     nccf.setProf(this);
     _director->receiveForm(&nccf);
 }

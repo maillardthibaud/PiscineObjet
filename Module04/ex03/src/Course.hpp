@@ -44,7 +44,7 @@ class Course
 		void					addClassroom(Classroom* room);
 		void 					assign(Professor* p_professor);
 		void 					subscribe(Student* p_student);
-		void					displayInfoCourse();
+		void					attendCourse();
 		bool					countStudent();
 
 };

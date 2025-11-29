@@ -11,7 +11,6 @@ SubscriptionToCourseForm::~SubscriptionToCourseForm()
 
 void SubscriptionToCourseForm::execute()
 {
-    std::cout << "execute -> Student subscribe to course " << std::endl; 
     _subCourse->subscribe(_subStudent);
 }
 Student*		SubscriptionToCourseForm::getStud()

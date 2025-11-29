@@ -52,9 +52,9 @@ bool                Course::countStudent()
     std::cout << _name << " course have reach the max student value" << std::endl;
     return false;
 }
-void					Course::displayInfoCourse()
+void					Course::attendCourse()
 {
-    std::cout << _name << " course, ";
+    std::cout << _name << " course, classsroom id : " << _classroom->getId();
     if (_students.empty())
     {
         std::cout << "have no student register" << std::endl;
@@ -62,14 +62,15 @@ void					Course::displayInfoCourse()
     }
     else
     {
-        std:: cout << "have " << _students.size() << " student(s) register : " << std::endl;
+        std:: cout << ", have " << _students.size() << " student(s) register : " << std::endl;
         std::vector<Student*>::iterator it;
         for (it = _students.begin(); it != _students.end(); it++)
         {
             std::cout << "|-> " << (*it)->getName() << std::endl;
+            (*it)->attendClass(_classroom);
         }
     }
-    std::cout << "Classsroom id : " << _classroom->getId() << std::endl;
+    
 }
 std::vector<Student*>   Course::getStud()
 {

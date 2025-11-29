@@ -18,6 +18,7 @@ class NeedCourseCreationForm : public Form
 
 			Professor* 		_professor;
 			Course*			_course;
+			std::string 	_subject;
 
 	public:
 
@@ -29,6 +30,7 @@ class NeedCourseCreationForm : public Form
 		Professor* 		getProf();
 
 		void 			setProf(Professor* p_prof);
+		void			setSubject(std::string subject);
 
 		bool 			inspectFormInfo(Professor* prof);
 };

@@ -46,6 +46,8 @@ class Student : public Person
 		void 							exitClass();
 		void 							graduate(Course* p_course);
 
+		void    						askForGraduation(Course* p_course);
+
 
 
 

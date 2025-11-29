@@ -36,6 +36,8 @@ class Professor : public Staff
 		void 			doClass();
 		void 			closeCourse();
 
+		void			receiveStudForGrad(Student* p_stud);
+
 		void    		fillCreationForm(NeedCourseCreationForm& nccf);
 		void    		fillCreationClassRoomForm(NeedMoreClassRoomForm& form);
 		void			fillGraduationForm(CourseFinishedForm& cff, Student& stud);
