@@ -19,34 +19,7 @@ void NeedMoreClassRoomForm::execute()
     _newRoom->assignCourse(_course);
     RoomList::getInstance().getList().push_back(_newRoom);
 }
-        
-bool    NeedMoreClassRoomForm::inspectFormInfo(Professor* prof)
-{
-    auto& staffList = StaffList::getInstance().getList();
-    std::vector<Staff*>::iterator it;
-    for (it = staffList.begin(); it != staffList.end(); it++)
-    {
-        if ((*it)->getName() == prof->getName())
-        {
-            if (DEBUG)
-                std::cout << "Prof is in Stafflist" << std::endl;
-            if (prof->getCurrentCourse()->getClassroom())
-            {
-                std::cout << "you re already have a classroom assign for this course, id : " << prof->getCurrentCourse()->getClassroom()->getId() << std::endl;
-                return (false);
-            }
-            else
-            {
-                if (DEBUG)
-                    std::cout << "new room created for : " << prof->getCurrentCourse()->getName() << std::endl;
-                _newRoom = new Classroom(12);
-                prof->getCurrentCourse()->addClassroom(_newRoom);
-                return (true);
-            }
-        }
-    }
-    return (false);
-}
+
 void	NeedMoreClassRoomForm::setRequester(Professor* prof)
 {
     _requester = prof;

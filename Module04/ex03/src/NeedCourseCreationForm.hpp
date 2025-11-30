@@ -32,7 +32,6 @@ class NeedCourseCreationForm : public Form
 		void 			setProf(Professor* p_prof);
 		void			setSubject(std::string subject);
 
-		bool 			inspectFormInfo(Professor* prof);
 };
 
 

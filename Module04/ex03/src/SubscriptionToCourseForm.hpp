@@ -31,9 +31,6 @@ class SubscriptionToCourseForm : public Form
 
 		void 			execute();
 
-		bool			inspectFormInfo(Student* stud, Course* course);
-		bool    		inspectCourseAndStud(Student* stud, Course* course);
-
 };
 
 

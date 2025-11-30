@@ -34,6 +34,5 @@ class NeedMoreClassRoomForm : public Form
 
 		void 		execute();
 
-		bool 		inspectFormInfo(Professor* prof);
 };
 #endif

@@ -25,8 +25,6 @@ class CourseFinishedForm : public Form
 		void			setCourseFinished(Course* course);
 		void			setStudToGrad(Student* stud);
 
-		bool   			inspectFormInfo(Course* course, Student* stud);
-
 		void 			execute();
 
 

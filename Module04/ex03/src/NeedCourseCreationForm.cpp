@@ -35,19 +35,3 @@ void NeedCourseCreationForm::execute()
     _course->setResponsable(_professor);
 }
 
-bool    NeedCourseCreationForm::inspectFormInfo(Professor* prof)
-{
-    auto& staffList = StaffList::getInstance().getList();
-    std::vector<Staff*>::iterator it;
-    for (it = staffList.begin(); it != staffList.end(); it++)
-    {
-        if ((*it)->getName() == prof->getName())
-        {
-            if (DEBUG)
-                std::cout << "Prof is register is staffList" << std::endl;
-            _professor = prof;
-            return true;
-        }
-    }
-    return (true);
-}
