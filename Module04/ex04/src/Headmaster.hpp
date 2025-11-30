@@ -15,6 +15,7 @@
 #include "SubscriptionToCourseForm.hpp"
 #include "CourseFinishedForm.hpp"
 #include "NeedMoreClassRoomForm.hpp"
+#include "iObserver.hpp"
 
 class Headmaster : public Staff
 {
@@ -26,6 +27,8 @@ class Headmaster : public Staff
 		Secretary*					_cpe;
 	
 		int							_nbRoom;
+
+		std::vector<iObserver*>		_observers;
 		
 	public:
 		
@@ -40,7 +43,6 @@ class Headmaster : public Staff
 		void	setSecretary(Secretary* cpe);
 		void	setNbRoom(int value);
 		void	addProf(Professor* prof);
-
 
 		void	launchClass();
 
@@ -58,6 +60,12 @@ class Headmaster : public Staff
 		bool    inspectStud(Student* stud);
 
 		bool	inspectFormInfo(Course* course, Student* stud);
+
+
+		void	addObserver(iObserver* observer);
+		void	removeObserver(iObserver* observer);
+
+		void    ringTheBell();
 };
 
 #endif

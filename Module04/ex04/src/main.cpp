@@ -77,33 +77,15 @@ int main()
     
     std::cout << "-----------SCHOOL READY------------------------" << std::endl;
 
-    std::cout << "Lauch Class 1" << std::endl;
-    mediator.launchClass();
-    mediator.validateForms();
-    std::cout << "Lauch Class 2" << std::endl;
-    mediator.launchClass();
-    boty.askForSubscriptionForm("Maths");
-    boty.askForSubscriptionForm("Geo");
-    ludo.askForSubscriptionForm("Maths");
-    ludo.askForSubscriptionForm("Physics");
-    mediator.validateForms();
-    std::cout << "Lauch Class 3" << std::endl;
-    mediator.launchClass();
-    std::cout << "Lauch Class 4" << std::endl;
-    mediator.launchClass();
-    std::cout << "Lauch Class 5" << std::endl;
-    mediator.launchClass();
-    std::cout << "Lauch Class 6" << std::endl;
-    mediator.launchClass();
-    std::cout << "Lauch Class 7" << std::endl;
-    mediator.launchClass();
-    std::cout << "----" << std::endl;
+    mediator.addObserver(&prof);
+    mediator.addObserver(&prof2);
+    mediator.addObserver(&prof3);
+    mediator.addObserver(&boty);
+    mediator.addObserver(&ludo);
 
-    boty.askForGraduation(&math);
-    ludo.askForGraduation(&math);
-    boty.askForGraduation(&geo);
+    mediator.ringTheBell();
 
-    mediator.validateForms();
+
 
 
     return (0);

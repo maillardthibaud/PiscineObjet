@@ -229,3 +229,24 @@ void    Headmaster::setNbRoom(int value)
 {
     _nbRoom = value;
 }
+
+void	Headmaster::addObserver(iObserver* observer)
+{
+    _observers.push_back(observer);
+}
+void	Headmaster::removeObserver(iObserver* observer)
+{
+    _observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
+}
+
+
+void    Headmaster::ringTheBell()
+{
+    std::vector<iObserver*>::iterator it;
+    for (it = _observers.begin(); it != _observers.end(); it++)
+    {
+        (*it)->notify(Event::RingBell);
+    }
+
+
+}

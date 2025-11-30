@@ -6,6 +6,7 @@
 #include <map>
 
 #include "Person.hpp"
+#include "iObserver.hpp"
 #include "Form.hpp"
 
 class Course;
@@ -20,7 +21,7 @@ struct CourseProgress
 };
 
 
-class Student : public Person
+class Student : public Person, public iObserver
 {
 	private:
 
@@ -53,6 +54,9 @@ class Student : public Person
 
 		void 							askForSubscriptionForm(std::string subject);
 		void							fillSubscriptionForm(SubscriptionToCourseForm& form);
+
+
+		void							notify(Event event);
 };
 
 

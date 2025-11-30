@@ -119,3 +119,8 @@ void	    Student::setHeadmaster(Headmaster* director)
 {
     _director = director;
 }
+void    Student::notify(Event event)
+{
+    (void)event;
+    std::cout << "student notify" << std::endl;
+}

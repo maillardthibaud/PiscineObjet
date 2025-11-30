@@ -95,3 +95,10 @@ void	Professor::setCourse(Course* p_course)
 {
     _currentCourse = p_course;
 }
+
+
+void    Professor::notify(Event event)
+{
+    (void)event;
+    std::cout << "professor notify" << std::endl;
+}

@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "Staff.hpp"
+#include "iObserver.hpp"
 
 class Course;
 class Headmaster;
@@ -12,7 +13,7 @@ class NeedMoreClassRoomForm;
 class CourseFinishedForm;
 class Student;
 
-class Professor : public Staff
+class Professor : public Staff, public iObserver
 {
 	private:
 
@@ -41,6 +42,9 @@ class Professor : public Staff
 		void    		fillCreationForm(NeedCourseCreationForm& nccf);
 		void    		fillCreationClassRoomForm(NeedMoreClassRoomForm& form);
 		void			fillGraduationForm(CourseFinishedForm& cff, Student& stud);
+
+
+		void			notify(Event event);
 };
 
 
