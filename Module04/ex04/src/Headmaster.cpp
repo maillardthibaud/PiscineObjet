@@ -60,30 +60,47 @@ void Headmaster::receiveForm(Form* p_form)
         {
             NeedCourseCreationForm& nccf = dynamic_cast<NeedCourseCreationForm&>(*p_form);
             if (nccf.getProf())
+            {
                 _formToValidate.push_back(&nccf);
+                // nccf.signeForm();
+                // nccf.execute();
+            }
             break;
         }
         case FormType::CourseFinished :
         {
                CourseFinishedForm& cff = dynamic_cast<CourseFinishedForm&>(*p_form);
                if (inspectAndVerifyGradForm(cff))
+               {
                     _formToValidate.push_back(&cff);
+                    // cff.signeForm();
+                    // cff.execute();
+               }
                break;
         }
         case FormType::SubscriptionToCourse : 
         {
             SubscriptionToCourseForm& scf = dynamic_cast<SubscriptionToCourseForm&>(*p_form);
             if (inspectAndVerifySubForm(scf))
+            {
                 _formToValidate.push_back(&scf);
+                // scf.signeForm();
+                // scf.execute();
+            }
             break;
         }
         case FormType::NeedMoreClassRoom :
         {
             NeedMoreClassRoomForm& nmcf = dynamic_cast<NeedMoreClassRoomForm&>(*p_form);
             if (inspectAndVerifyClassCreaForm(nmcf))
+            {
                 _formToValidate.push_back(&nmcf);
+                // nmcf.signeForm();
+                // nmcf.execute();
+            }
             break;
         }
+        
         default:
             break;
     }
