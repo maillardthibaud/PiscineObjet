@@ -5,7 +5,7 @@
 #include "Course.hpp"
 #include "SubscriptionToCourseForm.hpp"
 
-Student::Student(std::string name) : Person(name), _director(nullptr)
+Student::Student(std::string name) : Person(name), _director(nullptr), _isInClass(true)
 {
     // std::cout << "Student Constructor, name : " << _name << std::endl;
 }
@@ -45,7 +45,7 @@ void					Student::addCourse(Course* course)
 
 void Student::attendClass(Classroom* p_classroom)
 {
-    if (checkStudentSub(p_classroom))
+    if (p_classroom->canEnter(this))
     {
         std::vector<CourseProgress*>::iterator it;
         for (it = _courseProgress.begin(); it != _courseProgress.end(); it++)
@@ -121,6 +121,15 @@ void	    Student::setHeadmaster(Headmaster* director)
 }
 void    Student::notify(Event event)
 {
-    (void)event;
-    std::cout << "student notify" << std::endl;
+    if (_isInClass)
+    {
+        _isInClass = false;
+        std::cout << "!Bell! " << _name << " can go on break" << std::endl;
+    }
+    else
+    {
+        _isInClass = true;
+        std::cout << _name << " must return in class" << std::endl;
+    }
+    
 }

@@ -20,6 +20,7 @@ class Professor : public Staff, public iObserver
 		std::string		_subjectTeaching;
 		Course* 		_currentCourse;
 		Headmaster*		_director;
+		bool			_isInClass;
 
 	public:
 

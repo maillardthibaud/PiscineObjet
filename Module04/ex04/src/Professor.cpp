@@ -5,7 +5,7 @@
 #include "Student.hpp"
 #include "Headmaster.hpp"
 
-Professor::Professor(std::string name, std::string subject) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(nullptr)
+Professor::Professor(std::string name, std::string subject) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(nullptr), _isInClass(true)
 {
     // std::cout << "Professor constructor, name : " << _name << std::endl;
 }
@@ -45,9 +45,16 @@ void Professor::doClass()
     }
     else
     {
-        if (DEBUG)
-            std::cout << _name << " teaching " << _currentCourse->getName() << " course" << std::endl;
-        _currentCourse->attendCourse();
+        Classroom* room = _currentCourse->getClassroom();
+        if (room->canEnter(this))
+        {
+            room->enter(this);
+            _isInClass = true;
+            if (DEBUG)
+                std::cout << _name << " teaching " << _currentCourse->getName() << " course" << std::endl;
+            _currentCourse->attendCourse();
+            room->exit(this);
+        }
     }
 }
 

@@ -29,6 +29,8 @@ class Student : public Person, public iObserver
 		std::vector<CourseProgress*>		_courseProgress; 
 		Headmaster*							_director;		
 		std::string 						_subjectSubscription;
+
+		bool								_isInClass;
 		
 
 	public:

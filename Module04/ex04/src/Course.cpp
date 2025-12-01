@@ -55,21 +55,9 @@ bool                Course::countStudent()
 void					Course::attendCourse()
 {
     std::cout << _name << " course, classsroom id : " << _classroom->getId();
-    if (_students.empty())
-    {
-        std::cout << "have no student register" << std::endl;
-        return;
-    }
-    else
-    {
-        std:: cout << ", have " << _students.size() << " student(s) register : " << std::endl;
-        std::vector<Student*>::iterator it;
-        for (it = _students.begin(); it != _students.end(); it++)
-        {
-            std::cout << "|-> " << (*it)->getName() << std::endl;
-            (*it)->attendClass(_classroom);
-        }
-    }
+    std::vector<Student*>::iterator it;
+    for (it = _students.begin(); it != _students.end(); it++)
+        (*it)->attendClass(_classroom);
     
 }
 std::vector<Student*>   Course::getStud()

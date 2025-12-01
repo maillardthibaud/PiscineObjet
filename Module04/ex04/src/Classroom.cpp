@@ -44,3 +44,24 @@ Course*					Classroom::getCurrentCourse()
 {
     return (_currentRoom);
 }
+bool 					Classroom::canEnter(Person* person)
+{
+    if (person == _currentRoom->getResponsable())
+        return true;
+    std::vector<Student*>::iterator it;
+    for(it = _currentRoom->getStud().begin(); it != _currentRoom->getStud().end(); it++)
+    {
+        if ((*it) == person) 
+            return true;
+    }
+    return false;
+
+}
+void 					Classroom::enter(Person* person)
+{
+    std::cout << person->getName() << " enter the room : " << _id << " for the " << _currentRoom->getName() << " course" << std::endl;
+}
+void 					Classroom::exit(Person* person)
+{
+    std::cout << person->getName() << " exit the room : " << _id << std::endl;
+}
