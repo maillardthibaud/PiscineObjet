@@ -25,6 +25,9 @@ class Room
 			virtual int 						getId();
 			virtual std::vector<Person*>		getOccupants();
 
+			// virtual void						addOccupants(Person* person);
+			// virtual void						removeOccuppants(Person* person);
+
 
 			virtual bool 						canEnter(Person* person);
 			virtual void 						enter(Person* person);

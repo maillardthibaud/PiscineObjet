@@ -3,6 +3,8 @@
 
 #include <vector>
 #include <iostream>
+#include <chrono>
+#include <thread>
 #include <algorithm>
 
 #include "Staff.hpp"
@@ -22,13 +24,12 @@ class Headmaster : public Staff
 	private:
 
 		std::vector<Form*>			_formToValidate;
-
 		std::vector<Professor*> 	_professors;
-		Secretary*					_cpe;
-	
-		int							_nbRoom;
-
 		std::vector<iObserver*>		_observers;
+		Secretary*					_cpe;
+		int							_nbRoom;
+		bool						_workTime;
+		
 		
 	public:
 		
@@ -66,6 +67,7 @@ class Headmaster : public Staff
 		void	removeObserver(iObserver* observer);
 
 		void    ringTheBell();
+		void    durationTime(int time);
 };
 
 #endif

@@ -6,7 +6,6 @@ enum class Event
 	RingBell
 };
 
-
 class iObserver
 {
     private:

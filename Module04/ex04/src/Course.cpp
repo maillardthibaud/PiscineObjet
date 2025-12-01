@@ -38,6 +38,11 @@ void Course::assign(Professor* p_professor)
 }
 void Course::subscribe(Student* p_student)
 {
+    if (static_cast<int>(_students.size()) >= _maximumNumberOfStudent)
+    {
+        std::cout << "Max stud reach for this course : " << _name << std::endl;
+        return;
+    }
     if (p_student)
     {
         std::cout << "Student : " << p_student->getName() << " has subscribe to " << _name << " course" << std::endl;
@@ -54,9 +59,7 @@ bool                Course::countStudent()
 }
 void					Course::attendCourse()
 {
-    std::cout << _name << " course, classsroom id : " << _classroom->getId();
-    std::vector<Student*>::iterator it;
-    for (it = _students.begin(); it != _students.end(); it++)
+    for (auto it = _students.begin(); it != _students.end(); it++)
         (*it)->attendClass(_classroom);
     
 }

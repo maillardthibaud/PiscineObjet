@@ -35,12 +35,14 @@ class Student : public Person, public iObserver
 
 	public:
 
-		Student(std::string name);
+		Student(std::string name, Headmaster* director);
 		~Student();
 
 		std::string						getName();
 		std::vector<Course*>&			getCourses();
 		std::vector<CourseProgress*>&	getProgress();
+
+		
 
 		void							setHeadmaster(Headmaster* director);
 

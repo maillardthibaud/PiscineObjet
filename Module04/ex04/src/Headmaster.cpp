@@ -1,7 +1,7 @@
 
 #include "Headmaster.hpp"
 
-Headmaster::Headmaster(std::string name) : Staff(name), _cpe(nullptr), _nbRoom(1)
+Headmaster::Headmaster(std::string name) : Staff(name), _cpe(nullptr), _nbRoom(0), _workTime(true)
 {
     // std::cout << "Headmaster constructor, name : " << _name << std::endl;
 }
@@ -60,44 +60,28 @@ void Headmaster::receiveForm(Form* p_form)
         {
             NeedCourseCreationForm& nccf = dynamic_cast<NeedCourseCreationForm&>(*p_form);
             if (nccf.getProf())
-            {
                 _formToValidate.push_back(&nccf);
-                // nccf.signeForm();
-                // nccf.execute();
-            }
             break;
         }
         case FormType::CourseFinished :
         {
                CourseFinishedForm& cff = dynamic_cast<CourseFinishedForm&>(*p_form);
                if (inspectAndVerifyGradForm(cff))
-               {
                     _formToValidate.push_back(&cff);
-                    // cff.signeForm();
-                    // cff.execute();
-               }
                break;
         }
         case FormType::SubscriptionToCourse : 
         {
             SubscriptionToCourseForm& scf = dynamic_cast<SubscriptionToCourseForm&>(*p_form);
             if (inspectAndVerifySubForm(scf))
-            {
                 _formToValidate.push_back(&scf);
-                // scf.signeForm();
-                // scf.execute();
-            }
             break;
         }
         case FormType::NeedMoreClassRoom :
         {
             NeedMoreClassRoomForm& nmcf = dynamic_cast<NeedMoreClassRoomForm&>(*p_form);
             if (inspectAndVerifyClassCreaForm(nmcf))
-            {
                 _formToValidate.push_back(&nmcf);
-                // nmcf.signeForm();
-                // nmcf.execute();
-            }
             break;
         }
         
@@ -118,6 +102,9 @@ void	Headmaster::launchClass()
     {
         (*it)->doClass();
     }
+    _workTime = true;
+    durationTime(10);
+
 }
 
 bool    Headmaster::inspectAndVerifyClassCreaForm(NeedMoreClassRoomForm& form)
@@ -239,14 +226,34 @@ void	Headmaster::removeObserver(iObserver* observer)
     _observers.erase(std::remove(_observers.begin(), _observers.end(), observer), _observers.end());
 }
 
+void    Headmaster::durationTime(int time)
+{
+    if (!_workTime)
+        std::cout << "Break Time : ";
+    else 
+        std::cout << "Working time : ";
+    std::cout << time << " secondes" << std::endl;
+    for (int i = time; i > 0; --i)
+    {
+        std::cout << i << "...";
+        std::this_thread::sleep_for(std::chrono::seconds(1)); 
+    }
+    std::cout << std::endl;
+}
 
 void    Headmaster::ringTheBell()
 {
-    std::vector<iObserver*>::iterator it;
-    for (it = _observers.begin(); it != _observers.end(); it++)
-    {
+    std::cout << " !! DRING DRING !! " << std::endl;
+    for (auto it = _observers.begin(); it != _observers.end(); it++)
         (*it)->notify(Event::RingBell);
+    if (_workTime)
+    {
+        _workTime = false;
+        durationTime(5);
     }
-
-
+    else
+    {    
+        _workTime = true;
+        launchClass();
+    }
 }

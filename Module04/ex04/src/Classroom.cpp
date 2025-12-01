@@ -24,11 +24,7 @@ void Classroom::assignCourse(Course* p_course)
         std::cout << "This classroom has already a course assign" << std::endl;
 }
 
-bool Classroom::canEnter(Person* person)
-{
-    (void)person;
-    return(true);
-}
+
 
 std::vector<Person*>        Classroom::getOccupants()
 {
@@ -60,8 +56,20 @@ bool 					Classroom::canEnter(Person* person)
 void 					Classroom::enter(Person* person)
 {
     std::cout << person->getName() << " enter the room : " << _id << " for the " << _currentRoom->getName() << " course" << std::endl;
+    addOccupants(person);
 }
 void 					Classroom::exit(Person* person)
 {
     std::cout << person->getName() << " exit the room : " << _id << std::endl;
+    removeOccuppants(person);
+}
+
+void                Classroom::addOccupants(Person* person)
+{
+    _occupants.push_back(person);
+}
+
+void                Classroom::removeOccuppants(Person* person)
+{
+    _occupants.erase(std::remove(_occupants.begin(), _occupants.end(), person), _occupants.end());
 }

@@ -24,7 +24,7 @@ class Professor : public Staff, public iObserver
 
 	public:
 
-		Professor(std::string name, std::string subject);
+		Professor(std::string name, std::string subject, Headmaster* director);
 		~Professor();
 
 		std::string 	getName();
@@ -39,6 +39,8 @@ class Professor : public Staff, public iObserver
 		void 			closeCourse();
 
 		void			receiveStudForGrad(Student* p_stud);
+
+		bool 			doesNeedForm();
 
 		void    		fillCreationForm(NeedCourseCreationForm& nccf);
 		void    		fillCreationClassRoomForm(NeedMoreClassRoomForm& form);

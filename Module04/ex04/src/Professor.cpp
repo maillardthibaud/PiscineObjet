@@ -5,7 +5,7 @@
 #include "Student.hpp"
 #include "Headmaster.hpp"
 
-Professor::Professor(std::string name, std::string subject) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(nullptr), _isInClass(true)
+Professor::Professor(std::string name, std::string subject, Headmaster* director) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(director), _isInClass(true)
 {
     // std::cout << "Professor constructor, name : " << _name << std::endl;
 }
@@ -29,31 +29,37 @@ void Professor::assignCourse(Course* p_course)
         std::cout << _name << " has been assign to : " << p_course->getName() << std::endl;
     _currentCourse = p_course;
 }
-void Professor::doClass()
+bool Professor::doesNeedForm()
 {
     if(_currentCourse == nullptr)
     {
         if (DEBUG)
             std::cout << _name << " need Course Creation" << std::endl;
         _director->needCreationForm(*this);
+        return (true);
     }
     else if (_currentCourse->getClassroom() == nullptr)
     {
         if (DEBUG)
             std::cout << _name << " need Classroom Creation" << std::endl;
         _director->needClassroomCreation(*this);
+        return (true);
     }
-    else
+    return (false);
+}
+
+void Professor::doClass()
+{
+    if (!doesNeedForm()) 
     {
-        Classroom* room = _currentCourse->getClassroom();
-        if (room->canEnter(this))
+        _currentRoom = _currentCourse->getClassroom();
+        if (_currentRoom->canEnter(this))
         {
-            room->enter(this);
+            _currentRoom->enter(this);
             _isInClass = true;
             if (DEBUG)
                 std::cout << _name << " teaching " << _currentCourse->getName() << " course" << std::endl;
             _currentCourse->attendCourse();
-            room->exit(this);
         }
     }
 }
@@ -106,6 +112,19 @@ void	Professor::setCourse(Course* p_course)
 
 void    Professor::notify(Event event)
 {
-    (void)event;
-    std::cout << "professor notify" << std::endl;
+    if(event == Event::RingBell)
+    {
+        if (_isInClass)
+        {
+            _isInClass = false;
+            _currentRoom->exit(this);
+            std::cout << _name << " go in staffRoom" << std::endl;
+        }
+        else
+        {
+            _isInClass = true;
+            _currentCourse->getClassroom()->enter(this);
+            std::cout << _name << " return to class"  << std::endl;
+        }
+    }
 }

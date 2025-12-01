@@ -3,6 +3,8 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
 
 #include "Room.hpp"
 #include "Course.hpp"
@@ -23,6 +25,9 @@ class Classroom : public Room
 		std::vector<Person*>	getOccupants();
 		int						getId();
 		Course*					getCurrentCourse();
+
+		void					addOccupants(Person* person);
+		void					removeOccuppants(Person* person);
 
 		void 					assignCourse(Course* p_course);
 		bool 					canEnter(Person* person);
