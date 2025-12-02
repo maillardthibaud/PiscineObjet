@@ -5,7 +5,7 @@
 #include "Student.hpp"
 #include "Headmaster.hpp"
 
-Professor::Professor(std::string name, std::string subject, Headmaster* director) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(director), _isInClass(true)
+Professor::Professor(std::string name, std::string subject, Headmaster* director) : Staff(name), _subjectTeaching(subject), _currentCourse(nullptr), _director(director), _isInClass(false)
 {
     // std::cout << "Professor constructor, name : " << _name << std::endl;
 }
@@ -52,15 +52,9 @@ void Professor::doClass()
 {
     if (!doesNeedForm()) 
     {
-        _currentRoom = _currentCourse->getClassroom();
-        if (_currentRoom->canEnter(this))
-        {
-            _currentRoom->enter(this);
-            _isInClass = true;
-            if (DEBUG)
-                std::cout << _name << " teaching " << _currentCourse->getName() << " course" << std::endl;
-            _currentCourse->attendCourse();
-        }
+        if (DEBUG)
+            std::cout << _name << " teaching " << _currentCourse->getName() << " course" << std::endl;
+        _currentCourse->attendCourse();
     }
 }
 
@@ -118,13 +112,15 @@ void    Professor::notify(Event event)
         {
             _isInClass = false;
             _currentRoom->exit(this);
-            std::cout << _name << " go in staffRoom" << std::endl;
         }
         else
         {
-            _isInClass = true;
-            _currentCourse->getClassroom()->enter(this);
-            std::cout << _name << " return to class"  << std::endl;
+            _currentRoom = _currentCourse->getClassroom();
+            if (_currentRoom->canEnter(this))
+            {
+                _currentRoom->enter(this);
+                _isInClass = true;
+            }
         }
     }
 }

@@ -1,7 +1,7 @@
 
 #include "Headmaster.hpp"
 
-Headmaster::Headmaster(std::string name) : Staff(name), _cpe(nullptr), _nbRoom(0), _workTime(true)
+Headmaster::Headmaster(std::string name) : Staff(name), _cpe(nullptr), _nbRoom(0), _state(SchoolState::Start) 
 {
     // std::cout << "Headmaster constructor, name : " << _name << std::endl;
 }
@@ -23,6 +23,7 @@ void	Headmaster::assignCourseToProf(Course& course, Professor& prof)
             std::cout << "setResponsable to : " << course.getName() << " course and setCourse to prof : " << prof.getName() << std::endl;
         course.setResponsable(&prof);
         prof.setCourse(&course);
+        prof.setCurrentRoom(course.getClassroom());
     }
     else
         std::cout << "This professor subject : " << prof.getSubject() <<  " is different from this course subject : " << course.getName() << std::endl;
@@ -99,12 +100,7 @@ void	Headmaster::launchClass()
 {
     std::vector<Professor*>::iterator it;
     for (it = _professors.begin(); it != _professors.end(); it++)
-    {
         (*it)->doClass();
-    }
-    _workTime = true;
-    durationTime(10);
-
 }
 
 bool    Headmaster::inspectAndVerifyClassCreaForm(NeedMoreClassRoomForm& form)
@@ -150,8 +146,6 @@ bool    Headmaster::inspectAndVerifySubForm(SubscriptionToCourseForm& form)
         std::cout << "error" << std::endl;
     return (false);
 }
-
-
 
 bool    Headmaster::inspectAndVerifyGradForm(CourseFinishedForm& form)
 {
@@ -228,10 +222,12 @@ void	Headmaster::removeObserver(iObserver* observer)
 
 void    Headmaster::durationTime(int time)
 {
-    if (!_workTime)
+    if (_state == SchoolState::Recreation)
         std::cout << "Break Time : ";
-    else 
-        std::cout << "Working time : ";
+    else if (_state == SchoolState::Working)
+            std::cout << "Working time : ";
+    else if (_state == SchoolState::Lunch)
+            std::cout << "Lunch time : ";
     std::cout << time << " secondes" << std::endl;
     for (int i = time; i > 0; --i)
     {
@@ -244,16 +240,46 @@ void    Headmaster::durationTime(int time)
 void    Headmaster::ringTheBell()
 {
     std::cout << " !! DRING DRING !! " << std::endl;
+    switch (_state)
+    {
+        case SchoolState::Start :
+        {
+            _state = SchoolState::Working;
+            notifyAll();
+            launchClass();
+            durationTime(10);
+            break;
+        }
+        case SchoolState::Working :
+        {
+            _state = SchoolState::Recreation;
+            notifyAll();
+            durationTime(5);
+            break;
+        }
+        case SchoolState::Recreation :
+        {
+            _state = SchoolState::Working;
+            notifyAll();
+            launchClass();
+            durationTime(10);
+            break;
+        }
+        case SchoolState::Lunch :
+        {
+            _state = SchoolState::Working;
+            notifyAll();
+            launchClass();
+            durationTime(10);
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+void    Headmaster::notifyAll()
+{
     for (auto it = _observers.begin(); it != _observers.end(); it++)
         (*it)->notify(Event::RingBell);
-    if (_workTime)
-    {
-        _workTime = false;
-        durationTime(5);
-    }
-    else
-    {    
-        _workTime = true;
-        launchClass();
-    }
 }

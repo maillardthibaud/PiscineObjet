@@ -20,3 +20,8 @@ std::string	Person::getName()
 {
     return(_name);
 }
+
+void			Person::setCurrentRoom(Room* room)
+{
+    _currentRoom = room;
+}

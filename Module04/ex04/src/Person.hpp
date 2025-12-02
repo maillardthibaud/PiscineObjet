@@ -20,6 +20,7 @@ class Person
 
 		std::string		getName();
 		Room* 			getCurrentRoom();
+		void			setCurrentRoom(Room* room);
 
 };
 

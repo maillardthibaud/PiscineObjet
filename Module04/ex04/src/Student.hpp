@@ -31,6 +31,7 @@ class Student : public Person, public iObserver
 		std::string 						_subjectSubscription;
 
 		bool								_isInClass;
+		Course*								_currentCourse;
 		
 
 	public:

@@ -100,14 +100,12 @@ int main()
     mediator.addObserver(&ludo);
     mediator.addObserver(&david);
 
-    mediator.launchClass();
-
-    mediator.ringTheBell();
-    // mediator.breakTime(5);
 
     mediator.ringTheBell();
     mediator.ringTheBell();
     mediator.ringTheBell();
+    mediator.ringTheBell();
+
 
 
 

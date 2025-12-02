@@ -5,7 +5,7 @@
 #include "Course.hpp"
 #include "SubscriptionToCourseForm.hpp"
 
-Student::Student(std::string name, Headmaster* director) : Person(name), _director(director), _isInClass(true)
+Student::Student(std::string name, Headmaster* director) : Person(name), _director(director), _isInClass(false)
 {
     // std::cout << "Student Constructor, name : " << _name << std::endl;
 }
@@ -35,6 +35,7 @@ void			Student::fillSubscriptionForm(SubscriptionToCourseForm& form)
 void					Student::addCourse(Course* course)
 {
     _subscribedCourse.push_back(course);
+    _currentCourse = course;
     CourseProgress* cp = new CourseProgress();
     cp->course = course;
     cp->courseRemain = course->getNbToGrad();
@@ -45,26 +46,19 @@ void					Student::addCourse(Course* course)
 
 void Student::attendClass(Classroom* p_classroom)
 {
-    if (p_classroom->canEnter(this))
+    std::vector<CourseProgress*>::iterator it;
+    for (it = _courseProgress.begin(); it != _courseProgress.end(); it++)
     {
-        p_classroom->enter(this);
-        _currentRoom = p_classroom;
-        std::vector<CourseProgress*>::iterator it;
-        for (it = _courseProgress.begin(); it != _courseProgress.end(); it++)
+        if (p_classroom->getCurrentCourse() == (*it)->course)
         {
-            if (p_classroom->getCurrentCourse() == (*it)->course)
+            (*it)->courseRemain--;
+            std::cout << _name << " attend to class : " << (*it)->course->getName() << std::endl;
+            if ((*it)->courseRemain == 0)
             {
-                (*it)->courseRemain--;
-                std::cout << _name << " attend to class : " << (*it)->course->getName() << std::endl;
-                if ((*it)->courseRemain == 0)
-                {
-                    std::cout << _name << " attend all the class needed to graduate, ask for a CourseFinishedForm" << std::endl;
-                }
+                std::cout << _name << " attend all the class needed to graduate, ask for a CourseFinishedForm" << std::endl;
             }
         }
     }
-    else
-        std::cout << _name << " can enter this room" << std::endl;
 }
 
 void        Student::getAllCourseAndRemainClass()
@@ -125,18 +119,17 @@ void	    Student::setHeadmaster(Headmaster* director)
 }
 void    Student::notify(Event event)
 {
-    (void)event;
-    if (_isInClass)
+    if (event != Event::RingBell)
+        return;
+    if (! _isInClass && _currentRoom->canEnter(this))
     {
-        getCurrentRoom()->exit(this);
-        std::cout << "!Bell! " << _name << " can go on break" << std::endl;
-        _isInClass = false;
+        _currentRoom->enter(this);
+        _isInClass = true;
     }
     else
     {
-        getCurrentRoom()->enter(this);
-        _isInClass = true;
-        std::cout << _name << " must return in class" << std::endl;
+        _currentRoom->exit(this);
+        _isInClass = false;
     }
     
 }
