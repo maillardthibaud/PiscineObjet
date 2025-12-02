@@ -6,6 +6,19 @@ enum class Event
 	RingBell
 };
 
+enum class SchoolState
+{ 
+	Start = 0,
+
+	Working = 1,
+
+	Recreation = 2,
+
+	Lunch = 3,
+
+	End = 4,
+};
+
 class iObserver
 {
     private:
@@ -13,7 +26,7 @@ class iObserver
     public:
 
         virtual ~iObserver() {};
-        virtual void notify(Event event) = 0;
+        virtual void notify(SchoolState event) = 0;
 };
 
 

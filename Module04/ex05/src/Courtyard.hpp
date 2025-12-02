@@ -4,6 +4,7 @@
 #include <iostream>
 
 #include "Room.hpp"
+#include "Staff.hpp"
 
 class Courtyard : public Room
 {

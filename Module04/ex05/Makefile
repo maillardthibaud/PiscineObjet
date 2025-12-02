@@ -27,7 +27,8 @@ SRC				:= main.cpp \
 					NeedMoreClassRoomForm.cpp \
 					SubscriptionToCourseForm.cpp \
 					CourseFinishedForm.cpp \
-					Course.cpp 
+					Course.cpp \
+					School.cpp
 
 
 OBJ				:= $(addprefix $(OBJ_DIR)/, $(SRC:.cpp=.o))

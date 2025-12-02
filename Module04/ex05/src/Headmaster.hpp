@@ -19,18 +19,7 @@
 #include "NeedMoreClassRoomForm.hpp"
 #include "iObserver.hpp"
 
-enum class SchoolState
-{ 
-	Start = 0,
 
-	Working = 1,
-
-	Recreation = 2,
-
-	Lunch = 3,
-
-	End = 4,
-};
 
 class Headmaster : public Staff
 {
@@ -75,12 +64,12 @@ class Headmaster : public Staff
 
 		bool	inspectFormInfo(Course* course, Student* stud);
 
-		void    notifyAll();
+		void    notifyAll(SchoolState event);
 
 		void	addObserver(iObserver* observer);
 		void	removeObserver(iObserver* observer);
 
-		void    ringTheBell();
+		void    ringTheBell(SchoolState event);
 		void    durationTime(int time);
 };
 

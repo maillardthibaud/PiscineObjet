@@ -24,4 +24,6 @@
 #include "NeedMoreClassRoomForm.hpp"
 #include "CourseFinishedForm.hpp"
 
+#include "School.hpp"
+
 #endif

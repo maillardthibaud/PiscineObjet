@@ -9,6 +9,7 @@
 #include "iObserver.hpp"
 #include "Form.hpp"
 
+enum class SchoolState;
 class Course;
 class Classroom;
 class SubscriptionToCourseForm;
@@ -61,7 +62,7 @@ class Student : public Person, public iObserver
 		void							fillSubscriptionForm(SubscriptionToCourseForm& form);
 
 
-		void							notify(Event event);
+		void							notify(SchoolState event);
 };
 
 

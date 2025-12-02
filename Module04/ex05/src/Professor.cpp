@@ -103,24 +103,57 @@ void	Professor::setCourse(Course* p_course)
     _currentCourse = p_course;
 }
 
-
-void    Professor::notify(Event event)
+void    Professor::enterClassroom()
 {
-    if(event == Event::RingBell)
+    _currentRoom = _currentCourse->getClassroom();
+    if (_currentRoom->canEnter(this))
     {
-        if (_isInClass)
+        _currentRoom->enter(this);
+        _isInClass = true;
+    }
+}
+
+void    Professor::notify(SchoolState event)
+{
+    switch  (event)
+    {
+        case SchoolState::Start :
         {
-            _isInClass = false;
-            _currentRoom->exit(this);
+            enterClassroom();            
+            break;
         }
-        else
+        case SchoolState::Working :
         {
-            _currentRoom = _currentCourse->getClassroom();
-            if (_currentRoom->canEnter(this))
-            {
-                _currentRoom->enter(this);
-                _isInClass = true;
-            }
+            enterClassroom();
+            break;
         }
+        case SchoolState::Recreation :
+        {
+            exitClassroom();
+            enterStaffRoom();
+            break;
+        }
+        case SchoolState::Lunch :
+        {
+            exitClassroom();
+            break;
+        }
+        
+        default:
+            break;
+    }
+}
+void    Professor::enterStaffRoom()
+{
+    // St
+
+
+}
+void    Professor::exitClassroom()
+{
+    if (_isInClass)
+    {
+        _isInClass = false;
+        _currentRoom->exit(this);
     }
 }

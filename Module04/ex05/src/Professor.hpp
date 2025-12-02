@@ -47,7 +47,13 @@ class Professor : public Staff, public iObserver
 		void			fillGraduationForm(CourseFinishedForm& cff, Student& stud);
 
 
-		void			notify(Event event);
+		void			notify(SchoolState event);
+
+		void    		enterClassroom();
+
+		void    		exitClassroom();
+
+		void    		enterStaffRoom();
 };
 
 

@@ -117,10 +117,9 @@ void	    Student::setHeadmaster(Headmaster* director)
 {
     _director = director;
 }
-void    Student::notify(Event event)
+void    Student::notify(SchoolState event)
 {
-    if (event != Event::RingBell)
-        return;
+    (void) event;
     if (! _isInClass && _currentRoom->canEnter(this))
     {
         _currentRoom->enter(this);

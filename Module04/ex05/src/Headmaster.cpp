@@ -224,7 +224,7 @@ void    Headmaster::durationTime(int time)
 {
     if (_state == SchoolState::Recreation)
         std::cout << "Break Time : ";
-    else if (_state == SchoolState::Working)
+    else if (_state == SchoolState::Working || _state == SchoolState::Start)
             std::cout << "Working time : ";
     else if (_state == SchoolState::Lunch)
             std::cout << "Lunch time : ";
@@ -237,40 +237,42 @@ void    Headmaster::durationTime(int time)
     std::cout << std::endl;
 }
 
-void    Headmaster::ringTheBell()
+
+void    Headmaster::ringTheBell(SchoolState event)
 {
+    _state = event;
     std::cout << " !! DRING DRING !! " << std::endl;
+
     switch (_state)
     {
         case SchoolState::Start :
         {
-            _state = SchoolState::Working;
-            notifyAll();
+            std::cout << "Start" << std::endl;
+            notifyAll(SchoolState::Start);
             launchClass();
             durationTime(10);
             break;
         }
         case SchoolState::Working :
         {
-            _state = SchoolState::Recreation;
-            notifyAll();
-            durationTime(5);
+            std::cout << "Working" << std::endl;
+            notifyAll(SchoolState::Working);
+            launchClass();
+            durationTime(10);
             break;
         }
         case SchoolState::Recreation :
         {
-            _state = SchoolState::Working;
-            notifyAll();
-            launchClass();
-            durationTime(10);
+            std::cout << "Recreation" << std::endl;
+            notifyAll(SchoolState::Recreation);
+            durationTime(5);
             break;
         }
         case SchoolState::Lunch :
         {
-            _state = SchoolState::Working;
-            notifyAll();
-            launchClass();
-            durationTime(10);
+            std::cout << "Lunch" << std::endl;
+            notifyAll(SchoolState::Lunch);
+            durationTime(8);
             break;
         }
         default:
@@ -278,8 +280,8 @@ void    Headmaster::ringTheBell()
     }
 }
 
-void    Headmaster::notifyAll()
+void    Headmaster::notifyAll(SchoolState event)
 {
     for (auto it = _observers.begin(); it != _observers.end(); it++)
-        (*it)->notify(Event::RingBell);
+        (*it)->notify(event);
 }
