@@ -119,17 +119,10 @@ void        School::initCourseAndRoom()
     geoRoom->assignCourse(geo);
     phyRoom->assignCourse(physic);
 }
-void        School::initRoom()
-{
-}
-
-void        School::initProf()
-{
-
-}
 
 void        School::launchClasses()
 {
+    _director.launchClass();
 }
 
 void                        School::runDayRoutine()
@@ -141,5 +134,49 @@ void                        School::runDayRoutine()
     _director.ringTheBell(SchoolState::Working);
     _director.ringTheBell(SchoolState::Recreation);
     _director.ringTheBell(SchoolState::Working);
+}
 
+void                        School::requestRingBell()
+{
+    switch (_director.getSchoolState())
+    {
+        case SchoolState::Start :
+        {
+            _director.ringTheBell(SchoolState::Working);
+            break;
+        }
+        case SchoolState::Working :
+        {
+            _director.ringTheBell(SchoolState::Recreation);
+            break;
+        }
+        case SchoolState::Recreation :
+        {
+            _director.ringTheBell(SchoolState::Working);
+            break;
+        }
+        case SchoolState::Lunch :
+        {
+            _director.ringTheBell(SchoolState::Working);
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+void                        School::graduationCeremony()
+{
+    auto& studList = StudentList::getInstance().getList();
+    for (auto it = studList.begin(); it != studList.end(); it++)
+    {
+        if (!(*it)->getGraduateCourse().empty())
+        {
+            for (auto itg = (*it)->getGraduateCourse().begin(); itg != (*it)->getGraduateCourse().end(); itg++)
+            {
+                (*it)->graduate((*itg));
+                break;
+            }
+        }
+    }
 }

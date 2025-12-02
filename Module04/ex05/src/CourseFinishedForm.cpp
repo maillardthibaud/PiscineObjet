@@ -12,7 +12,8 @@ CourseFinishedForm::~CourseFinishedForm()
 
 void CourseFinishedForm::execute()
 {
-    std::cout << "|->exec : " << _studToGrad->getName() << " have been graduate in " << _finishedcourse->getName() << " course" << std::endl;
+    std::cout << "|->exec : " << _studToGrad->getName() << " will be graduate in " << _finishedcourse->getName() << " course" << std::endl;
+    _studToGrad->addGraduationCourse(_finishedcourse);
 }
 
 void	CourseFinishedForm::setCourseFinished(Course* course)

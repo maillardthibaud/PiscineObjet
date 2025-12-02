@@ -56,6 +56,7 @@ void Student::attendClass(Classroom* p_classroom)
             if ((*it)->courseRemain == 0)
             {
                 std::cout << _name << " attend all the class needed to graduate, ask for a CourseFinishedForm" << std::endl;
+                askForGraduation((*it)->course);
             }
         }
     }
@@ -86,7 +87,7 @@ void Student::exitClass()
 {}
 void Student::graduate(Course* p_course)
 {
-    (void)p_course;
+    std::cout << "Congratulation  " << _name << ", received his graduation for " << p_course->getName() << " course" << std::endl;
 }
 
 void    Student::askForGraduation(Course* p_course)
@@ -104,6 +105,16 @@ std::vector<Course*>&	Student::getCourses()
 std::vector<CourseProgress*>&		Student::getProgress()
 {
     return (_courseProgress);
+}
+
+std::vector<Course*>			Student::getGraduateCourse()
+{
+    return (_graduateCourse);
+}
+
+void                        Student::addGraduationCourse(Course* p_course)
+{
+    _graduateCourse.push_back(p_course);
 }
 
 void 		Student::askForSubscriptionForm(std::string subject)

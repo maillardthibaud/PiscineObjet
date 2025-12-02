@@ -34,6 +34,9 @@ int main()
     schoolTest.recruteStudent();
     
     schoolTest.runDayRoutine();
+    schoolTest.getHeadmaster().validateForms();
+    schoolTest.graduationCeremony();
+    
 
 
 

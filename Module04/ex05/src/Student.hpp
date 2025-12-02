@@ -27,12 +27,14 @@ class Student : public Person, public iObserver
 	private:
 
 		std::vector<Course*> 				_subscribedCourse;
+		std::vector<Course*> 				_graduateCourse;
 		std::vector<CourseProgress*>		_courseProgress; 
 		Headmaster*							_director;		
 		std::string 						_subjectSubscription;
 
 		bool								_isInClass;
 		Course*								_currentCourse;
+		
 		
 
 	public:
@@ -43,8 +45,10 @@ class Student : public Person, public iObserver
 		std::string						getName();
 		std::vector<Course*>&			getCourses();
 		std::vector<CourseProgress*>&	getProgress();
+		std::vector<Course*>			getGraduateCourse();
 
 		
+		void                        	addGraduationCourse(Course* p_course);
 
 		void							setHeadmaster(Headmaster* director);
 

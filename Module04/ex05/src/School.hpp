@@ -35,21 +35,18 @@ class School
 
         void                        initHeadmaster();
         void                        initCourseAndRoom();
-        void                        initRoom();
-        void                        initProf();
 
-        // void                        add
 
         void                        runDayRoutine();
-        void                        launchClasses(); // Make the headmaster ask the students and professors to
-        void                        requestRingBell(); // Make the headmaster ring the bell
-        void                        recruteProfessor(); // Add a new professor to the school
-        void                        recruteStudent(); // Add a new student to the school
-        Course*                     getCourse(std::string p_name);// return a course with a given name
-        std::vector<Student*>       getStudents(); // return a vector containing every student in school
-        std::vector<Professor*>     getProfessors(); // return a vector containing everprofessor in school
-        Headmaster                  getHeadmaster(); // return the headmaster of the school
-        Secretary                   getSecretary(); // return the secretary of the school
+        void                        launchClasses();
+        void                        requestRingBell();
+        void                        recruteProfessor(); 
+        void                        recruteStudent(); 
+        Course*                     getCourse(std::string p_name);
+        std::vector<Student*>       getStudents();
+        std::vector<Professor*>     getProfessors();
+        Headmaster                  getHeadmaster();
+        Secretary                   getSecretary(); 
         void                        graduationCeremony(); // launch the graduation of every student that can graduate at a desired momen
 };
 

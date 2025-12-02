@@ -43,6 +43,8 @@ class Headmaster : public Staff
 		void 	receiveForm(Form* p_form);
 		void	validateForms();
 
+		SchoolState     getSchoolState();
+
 		void	setSecretary(Secretary* cpe);
 		void	setNbRoom(int value);
 		void	addProf(Professor* prof);

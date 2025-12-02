@@ -237,6 +237,11 @@ void    Headmaster::durationTime(int time)
     std::cout << std::endl;
 }
 
+SchoolState     Headmaster::getSchoolState()
+{
+    return (_state);
+}
+
 
 void    Headmaster::ringTheBell(SchoolState event)
 {
@@ -250,7 +255,7 @@ void    Headmaster::ringTheBell(SchoolState event)
             std::cout << "Start" << std::endl;
             notifyAll(SchoolState::Start);
             launchClass();
-            durationTime(10);
+            durationTime(3);
             break;
         }
         case SchoolState::Working :
@@ -258,21 +263,21 @@ void    Headmaster::ringTheBell(SchoolState event)
             std::cout << "Working" << std::endl;
             notifyAll(SchoolState::Working);
             launchClass();
-            durationTime(10);
+            durationTime(3);
             break;
         }
         case SchoolState::Recreation :
         {
             std::cout << "Recreation" << std::endl;
             notifyAll(SchoolState::Recreation);
-            durationTime(5);
+            durationTime(2);
             break;
         }
         case SchoolState::Lunch :
         {
             std::cout << "Lunch" << std::endl;
             notifyAll(SchoolState::Lunch);
-            durationTime(8);
+            durationTime(4);
             break;
         }
         default:
