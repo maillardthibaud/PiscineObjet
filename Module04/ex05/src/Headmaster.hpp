@@ -1,0 +1,87 @@
+#ifndef __HEADMASTER_HPP__
+#define __HEADMASTER_HPP__
+
+#include <vector>
+#include <iostream>
+#include <chrono>
+#include <thread>
+#include <algorithm>
+
+#include "Staff.hpp"
+#include "Form.hpp"
+#include "Secretary.hpp"
+#include "Course.hpp"
+#include "Professor.hpp"
+#include "Singleton.hpp"
+#include "NeedCourseCreationForm.hpp"
+#include "SubscriptionToCourseForm.hpp"
+#include "CourseFinishedForm.hpp"
+#include "NeedMoreClassRoomForm.hpp"
+#include "iObserver.hpp"
+
+enum class SchoolState
+{ 
+	Start = 0,
+
+	Working = 1,
+
+	Recreation = 2,
+
+	Lunch = 3,
+
+	End = 4,
+};
+
+class Headmaster : public Staff
+{
+	private:
+
+		std::vector<Form*>			_formToValidate;
+		std::vector<Professor*> 	_professors;
+		std::vector<iObserver*>		_observers;
+		Secretary*					_cpe;
+		int							_nbRoom;
+		SchoolState					_state;
+		
+		
+	public:
+		
+		Headmaster(std::string name);
+		~Headmaster();
+
+
+
+		void 	receiveForm(Form* p_form);
+		void	validateForms();
+
+		void	setSecretary(Secretary* cpe);
+		void	setNbRoom(int value);
+		void	addProf(Professor* prof);
+
+		void	launchClass();
+
+		void	assignCourseToProf(Course& course, Professor& prof);
+
+		void	needCreationForm(Professor& prof);
+		void    needGraduationForm(Professor& prof, Student& stud);
+		void    needSubscriptionCourseForm(Student& stud);
+		void	needClassroomCreation(Professor& prof);
+
+		bool    inspectAndVerifyGradForm(CourseFinishedForm& form);
+		bool    inspectAndVerifyClassCreaForm(NeedMoreClassRoomForm& form);
+		bool    inspectAndVerifySubForm(SubscriptionToCourseForm& form);
+		bool 	inspectCourse(Course* course);
+		bool    inspectStud(Student* stud);
+
+		bool	inspectFormInfo(Course* course, Student* stud);
+
+		void    notifyAll();
+
+		void	addObserver(iObserver* observer);
+		void	removeObserver(iObserver* observer);
+
+		void    ringTheBell();
+		void    durationTime(int time);
+};
+
+#endif
