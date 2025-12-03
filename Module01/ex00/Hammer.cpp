@@ -2,25 +2,31 @@
 #include "Worker.hpp"
 #include <iostream>
 
-
 Hammer::Hammer() : Tool()
 {
     _name = "Hammer";
-    std::cout << "Hammer Constructor" << std::endl;
 }   
 
 Hammer::~Hammer()
 {
 }
-
+std::string Hammer::getName() const
+{
+    return (_name);
+}
 
 void    Hammer::use()
 {
-    
-}
-std::string Hammer::getName()
-{
-    return (_name);
+    std::cout << "use : ";
+    if (!_worker)
+    {
+        std::cout << "This hammer is not attribut to any worker." << std::endl;
+    }
+    else
+    {
+        numbersOfUses++;
+        std::cout << _worker->getName() << " use this hammer, nbUse : " << numbersOfUses << std::endl;
+    }
 }
 
 void    Hammer::giveTool(Worker* worker)
@@ -30,18 +36,15 @@ void    Hammer::giveTool(Worker* worker)
     {
         std::cout << " To worker :  " << worker->getName() << std::endl;
         _worker = worker;
-        // worker->setShovel(this);
         _worker->addTool(this);
         _isUse = true;
     }
     else
     {
         std::cout << " This Hammer is already use by " << _worker->getName() << std::endl; 
-        // _worker->setShovel(NULL);
         _worker->removeTool(this);
         std::cout << "This Hammer is now use by : " << worker->getName() << std::endl;
         _worker = worker;
-        // _worker->setShovel(this);
         _worker->addTool(this);
     }
 

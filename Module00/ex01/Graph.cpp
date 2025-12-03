@@ -1,6 +1,5 @@
 #include "Graph.hpp"
 
-
 Graph::Graph(float width, float height) : _size(width, height)
 {
 }
@@ -14,7 +13,6 @@ void    Graph::AddPoint(const Vector2& points)
     }
     _pts.push_back(points);
 }
-
 
 void        Graph::ClearPoint()
 {
@@ -53,10 +51,6 @@ void    Graph::DisplayGraph()
         if (y == 0)
         {
             std::cout << std::endl;
-            
-        }
-        if (y == 0)
-        {
             std::cout << "  ";
             for (int x = 0; x <= width; x++)
             {

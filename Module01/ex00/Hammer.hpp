@@ -4,24 +4,22 @@
 #include <string>
 
 #include "Tool.hpp"
+
 class Worker;
 
 class Hammer : public Tool
 {
     private:
 
-        // std::string    _name;
-        // bool    _isUse;
-
     public:
 
         Hammer();
         ~Hammer();
 
-        std::string     getName();
-        void    use();
+        std::string     getName() const;
 
-        void    giveTool(Worker* worker);
+        void            use();
+        void            giveTool(Worker* worker);
 };
 
 

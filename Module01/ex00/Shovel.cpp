@@ -5,18 +5,24 @@
 Shovel::Shovel() : Tool()
 {
     _name = "Shovel";
-    std::cout << "Shovel Constructor, is use ? " << _isUse << std::endl;
 }
 
 Shovel::~Shovel()
 {
 }
-
     
-    
-std::string Shovel::getName()
+std::string Shovel::getName() const
 {
     return (_name);
+}
+
+bool        Shovel::getIsUse() const
+{
+    return (_isUse);
+}
+void        Shovel::setIsUse(bool value)
+{
+    _isUse = value;
 }
 
 void        Shovel::use()
@@ -31,7 +37,6 @@ void        Shovel::use()
         numbersOfUses++;
         std::cout << _worker->getName() << " use this shovel nbUse : " << numbersOfUses << std::endl;
     }
-
 }
 
 void    Shovel::giveTool(Worker* worker)
@@ -50,12 +55,4 @@ void    Shovel::giveTool(Worker* worker)
     _worker = worker;
     _worker->addTool(this);
     
-}
-bool        Shovel::getIsUse()
-{
-    return (_isUse);
-}
-void        Shovel::setIsUse(bool value)
-{
-    _isUse = value;
 }

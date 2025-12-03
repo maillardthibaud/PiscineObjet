@@ -4,10 +4,8 @@
 int main()
 {
     Graph test(5.0f, 5.0f);
-
-
+    
     std::cout << "42 exemple -> 0/0 - 2/2 - 4/2 - 2/4" << std::endl;
-
 
     test.AddPoint(Vector2(0.0f, 0.0f));
     test.AddPoint(Vector2(2.0f, 2.0f));

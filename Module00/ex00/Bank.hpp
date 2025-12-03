@@ -12,9 +12,11 @@ class Bank
 {
     private:
 
-        double _funds;
-        int _nextId;
-        std::vector<Account*> _account;
+        double                  _funds;
+        int                     _nextId;
+        std::vector<Account*>   _account;
+
+
         void    SetBalance(Account* account, int depot);
 
     public:
@@ -22,16 +24,16 @@ class Bank
         Bank(double liquidity);
         ~Bank();
 
-    Account*    CreateAccount();
-    void        DeleteAccount(Account* account);
-    void        Deposit(Account* account, double amount);
-    void        ApplyLoan(Account* account, double amount);
-    void        RepayLoan(Account* account, double amount);
-    Account*    FindAccount(Account* account);
+        Account*    CreateAccount();
+        void        DeleteAccount(Account* account);
+        void        Deposit(Account* account, double amount);
+        void        ApplyLoan(Account* account, double amount);
+        void        RepayLoan(Account* account, double amount);
+        Account*    FindAccount(Account* account);
 
-    void        ShowAccount();
-    void        ShowLiquidityAvailable();
-        
+        void        ShowAccount();
+        void        ShowLiquidityAvailable();
+            
 
 };
 

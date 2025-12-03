@@ -28,10 +28,7 @@ class Worker
 
         Position                    _coordonnee;
         Statistic                   _stats;
-
-        // Shovel*                  _shovel;
         std::vector<Tool*>           _tool;
-
         std::string                 _name;
         bool                        _hasShovel;
 
@@ -42,18 +39,15 @@ class Worker
         ~Worker();
 
 
-        // void            setShovel(Shovel* sh);
-        // Shovel*         getShovel();
+        std::vector<Tool*>      getTool() const;
+        std::string             getName() const;
 
-        std::vector<Tool*>  getTool();
-        void                removeTool(Tool* tool);
-        void                addTool(Tool* tool);
-        void                displayTool();
+        void                    removeTool(Tool* tool);
+        void                    addTool(Tool* tool);
+        void                    displayTool() const;
 
         void                work();
-        // Tool*               getTool();
 
-        std::string     getName();
 };
 
 #endif

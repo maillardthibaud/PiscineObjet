@@ -20,7 +20,7 @@ class Account
 
         int     getId() const;
         double  getBalance() const;
-        double  getLoan();
+        double  getLoan() const;
 
         friend class Bank;
     

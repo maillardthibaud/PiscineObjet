@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-// #include "Account.hpp"
 #include "Bank.hpp"
 
 int main()
@@ -10,12 +9,6 @@ int main()
 	Account *acc2 = MainBank.CreateAccount();
 	Account *acc3 = MainBank.CreateAccount();
 
-
-	std::cout << "-------Get id-------" << std::endl;
-
-	std::cout << acc->getId() << std::endl;
-	std::cout << acc2->getId() << std::endl;
-	std::cout << acc3->getId() << std::endl;
 
 	std::cout << "-----Deposit 100 on 1, 1200 on 2, 130 on 3-------" << std::endl;
 
@@ -52,7 +45,6 @@ int main()
 
 	MainBank.DeleteAccount(acc);
 	MainBank.DeleteAccount(acc2);
-
 
 	std::cout << "-----ShowLiquidity-------" << std::endl;
     MainBank.ShowLiquidityAvailable();

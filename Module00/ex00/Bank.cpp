@@ -9,7 +9,6 @@ Bank::Bank(double liquidity) : _funds(liquidity)
 
 Bank::~Bank()
 {
-    std::cout << "Bank destructor" << std::endl;
     std::vector<Account*>::iterator it;
     for (it = _account.begin(); it != _account.end(); it++)
     {
@@ -66,7 +65,6 @@ void    Bank::ShowAccount()
             std::cout << " and have a loan, amount : " << (*it)->_loan << std::endl;
         }
     }
-
 }
 
 void    Bank::Deposit(Account* account, double amount)
@@ -130,10 +128,7 @@ void    Bank::RepayLoan(Account* account, double amount)
                 _funds += amount;
             }
             account->_balance -= amount;
-            
             std::cout << "After RepayLoan Account id : " << account->getId() << " balance : " << account->_balance << ", loan : " << account->_loan << std::endl;
-            
-            
         }
     }
 }

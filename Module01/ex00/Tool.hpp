@@ -22,10 +22,11 @@ class Tool
         
         int                 numbersOfUses;
 
+        std::string         getName() const;
+
         virtual void        use() = 0;
         virtual void        giveTool(Worker* worker) = 0;
 
-        std::string getName();
 };
 
 

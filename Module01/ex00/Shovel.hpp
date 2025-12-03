@@ -22,8 +22,8 @@ class Shovel : public Tool
 
 
 
-        std::string getName();
-        bool        getIsUse();
+        std::string getName() const;
+        bool        getIsUse() const;
         void        setIsUse(bool value);
 
         void        use();

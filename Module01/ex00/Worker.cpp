@@ -6,15 +6,18 @@
 
 Worker::Worker(std::string name) :  _coordonnee(0, 0, 0), _stats(1, 0), _name(name), _hasShovel(false)
 {
-    std::cout << "Worker Constructor" << std::endl;
 }
 
 Worker::~Worker()
 {
 }
-std::vector<Tool*> Worker::getTool()
+std::vector<Tool*> Worker::getTool() const
 {
     return(_tool);
+}
+std::string     Worker::getName() const
+{
+    return (_name);
 }
 
 void                Worker::removeTool(Tool* tool)
@@ -32,15 +35,12 @@ void                Worker::removeTool(Tool* tool)
             }
         }
     }
-
-
 }
 
 void                Worker::work()
 {
     std::cout << "The worker name : " << _name << " is working" << std::endl;
 }
-
 
 void                Worker::addTool(Tool* tool)
 {
@@ -60,49 +60,18 @@ void                Worker::addTool(Tool* tool)
     }
 }
 
-
-void                Worker::displayTool()
+void                Worker::displayTool() const
 {
-
     std::cout << "Worker name : " << _name;
     if (_tool.empty())
         std::cout << " have no tool" << std::endl;
     else
     {
         std::cout <<" have this tool : " << std::endl; 
-        std::vector<Tool*>::iterator it;
+        std::vector<Tool*>::const_iterator it;
         for (it = _tool.begin(); it != _tool.end(); it++)
         {
             std::cout << "|->" << (*it)->getName() << std::endl;
         }
     }
-}
-// Tool*               Worker::getTool()
-// {
-//     return(_tool);
-
-// }
-
-// void    Worker::setShovel(Shovel* sh)
-// {
-//     if (sh)
-//     {
-//         std::cout << _name << " has now a shovel" << std::endl;
-//         _shovel = sh;
-//         _hasShovel = true;
-//     }
-//     else
-//     {
-//         std::cout << _name << " dont have any shovel" << std::endl;
-//     }
-// }
-
-// Shovel*     Worker::getShovel()
-// {
-//     return (_shovel);
-// }
-
-std::string     Worker::getName()
-{
-    return (_name);
 }

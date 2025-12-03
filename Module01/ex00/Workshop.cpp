@@ -26,7 +26,6 @@ void    Workshop::registerWorker(Worker* worker)
         }
         _worker.push_back(worker);
     }
-
 }
 void    Workshop::releaseWorker(Worker* worker)
 {
@@ -44,7 +43,6 @@ void    Workshop::releaseWorker(Worker* worker)
         }
         std::cout << "This worker is not register" << std::endl;
     }
-
 }
 
 

@@ -4,11 +4,9 @@
 #include "Workshop.hpp"
 #include "Hammer.hpp"
 #include <iostream>
-// #include "Tool.hpp"
 
 int main()
 {
-
     Worker w("john");
     Worker w2("jack");
     Shovel sh;
@@ -18,22 +16,14 @@ int main()
 
     sh.giveTool(&w);
     sh.giveTool(&w2);
-    // sh.giveTool(&w2);
-    // sh.use();
-    // sh.giveTool(&w);
     hm.giveTool(&w);
-    // hm.giveTool(&w2);
-    // hm.giveTool(&w2);
-    // sh.use();
-
+    hm.use();
+    hm2.use();
 
     w.displayTool();
-
     w2.displayTool();
 
-
     std::cout << "------------------------" << std::endl;
-
     Workshop ws;
 
     ws.registerWorker(&w);
@@ -42,12 +32,9 @@ int main()
     ws.executeWorkDay();
 
     std::cout << "------------------------" << std::endl;
+
     ws.releaseWorker(&w);
-
     ws.executeWorkDay();
-    
-
-
     
     return (0);
 }
