@@ -29,7 +29,6 @@ StreamLogger::~StreamLogger()
 {
 }
 
-
 void    StreamLogger::write(const std::string& msg)
 {
     if (_header)

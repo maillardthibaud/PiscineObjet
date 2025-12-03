@@ -8,8 +8,9 @@ Direction::Direction() : directionAngle(0.0f)
     std::cout << "Constructor " << typeid(this).name() << std::endl;
     manageWheels();
 }
-
-
+Direction::~Direction()
+{
+}
 void Direction::manageWheels()
 {
     std::cout << "|-> manage wheel" << std::endl;
@@ -22,14 +23,7 @@ void Direction::manageWheels()
         
         std::cout << "Whell type : " << wheel[i].wt << std::endl;
     }
-
 }
-
-Direction::~Direction()
-{
-
-}
-
 void Direction::turn(float p_angle)
 {
     std::cout << "Direction angle was before : " << directionAngle << " degres, its now : " << p_angle << " degres" << std::endl;
@@ -40,14 +34,3 @@ void Direction::turn(float p_angle)
             wheel[i].turnWheel(p_angle);
     }
 }
-
-// Wheel* Direction::getFWheel(int idx)
-// {
-//     (void)idx;
-//     return (wheel[idx]);
-// }
-// Wheel* Direction::getBWheel(int idx)
-// {
-//     (void)idx;
-//     return (wheel[idx]);
-// }

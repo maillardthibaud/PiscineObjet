@@ -10,38 +10,22 @@ Transmission::Transmission() : forceGiven(0.0f), isVMax(false), isActive(false)
 {
     std::cout << "Constructor " << typeid(this).name() << std::endl;
 }
+Transmission::~Transmission()
+{
+}
 void Transmission::addWheel(Direction* d)
 {
     for (int i = 0; i < 4; i++) 
-    {
         wheelVector.push_back(&(d->wheel[i]));
-    }
 }
 
 bool Transmission::isEmpty()
 {
     if (wheelVector.empty())
-    {
-        // std::cout << "wheelvector is empty " << std::endl;
         return (true);
-    }
     else
-    {
-        // std::cout << "Wheelvector is not empty, size : " << wheelVector.size() << std::endl;
         return(false);
-    }
 }
-
-Transmission::~Transmission()
-{
-}
-
-bool Transmission::checkWheel()
-{
-    // wheelVector = new Vec
-    return (true);
-}
-
 void Transmission::activate(float p_force)
 {
     if(checkForceReceive(p_force))
@@ -57,14 +41,11 @@ void Transmission::activate(float p_force)
             }
             std::cout << "  Transmission activate rotation on wheel with force : "  << p_force << std::endl;
             (*it)->executeRotation(p_force);
-            
         }
     }
-
 }
 
-
-bool    Transmission::getIsActive()
+bool    Transmission::getIsActive() const
 {
     return (isActive);
 }
@@ -101,7 +82,7 @@ bool        Transmission::checkForceReceive(float force)
 
 }
 
-float Transmission::getForce()
+float Transmission::getForce() const
 {
     return (forceGiven);
 }

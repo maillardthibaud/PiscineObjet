@@ -10,15 +10,13 @@ Injector::Injector() : pression(0.0f)
 {
     std::cout << "Constructor " << typeid(this).name() << " pression : " << pression << std::endl;
 }
+Injector::~Injector()
+{
+}
 
 void Injector::setEc(ExplosionChamber* chamber)
 {
     ec = chamber;
-}
-
-Injector::~Injector()
-{
-
 }
 
 void Injector::execute(float p_pression)
@@ -33,7 +31,6 @@ void Injector::execute(float p_pression)
     }
     else
     {   
-        // if 
         pression += p_pression;
         if (pression > 0.0f)
         {
@@ -44,11 +41,10 @@ void Injector::execute(float p_pression)
     }
 
 }
-float Injector::getPression()
+float Injector::getPression() const
 {
     return(pression);
 }
-
 
 void    Injector::setPression(float SPression)
 {

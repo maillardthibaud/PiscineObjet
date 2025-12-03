@@ -13,7 +13,6 @@ class IHeader
         virtual std::string getTextHeader() const = 0;
 };
 
-
 IHeader::~IHeader()
 {
 }

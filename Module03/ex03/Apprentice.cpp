@@ -13,7 +13,6 @@ Apprentice::~Apprentice()
 void    Apprentice::addSchoolHour(int hour)
 {
     _schoolHourRemain += hour;
-
 }
 
 bool    Apprentice::isSchoolRemain()
@@ -32,7 +31,6 @@ bool    Apprentice::isSchoolRemain()
 
 int    Apprentice::executeWorday()
 {
-
     int todayHour = 7;
     int schoolTodo;
     if (_schoolHourRemain > todayHour)

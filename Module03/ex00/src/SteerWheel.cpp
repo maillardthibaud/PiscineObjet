@@ -10,14 +10,14 @@ SteerWheel::SteerWheel()
     std::cout << "Constructor " << typeid(this).name() << std::endl;
     
 }
-
+SteerWheel::~SteerWheel()
+{
+}
 void SteerWheel::setDae(DAE* p_dae)
 {
     dae = p_dae;
 }
-SteerWheel::~SteerWheel()
-{
-}
+
 
 void SteerWheel::turn(float p_angle)
 {

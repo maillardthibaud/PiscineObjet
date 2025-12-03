@@ -20,8 +20,6 @@ int main()
 
     StreamLogger sl2(std::cout);
 
-
-
     std::vector<ILogger*>       vectorLogger;
 
     vectorLogger.push_back(&fl);
@@ -47,13 +45,8 @@ int main()
         for (it = vectorLogger.begin(); it != vectorLogger.end(); it++)
         {
             (*it)->write((*itl));
-
         }
     }
-
-
-
-
 
     return (0);
 }

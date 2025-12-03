@@ -40,12 +40,6 @@ DIR_OBJ		:= obj
 OBJ 		:= $(addprefix $(DIR_OBJ)/, $(SRC:.cpp=.o))
 
 
-
-
-
-
-
-
 all		: $(NAME)
 
 
@@ -63,7 +57,7 @@ clean	:
 fclean	: clean
 			rm -f $(NAME)
 
-re		: fclean clean
+re		: fclean all
 
 .PHONY	:all clean fclean re
 

@@ -6,7 +6,6 @@
 Cockpit::Cockpit() : gl(GearLever::getInstance())
 {
     std::cout << "Constructor " << typeid(this).name() << std::endl;
-    // gl.manageGear();
 }
 
 Cockpit::~Cockpit()

@@ -16,8 +16,6 @@ class Motor
 
         bool                isOn;
 
-
-
     public:
 
         Motor();
@@ -27,8 +25,8 @@ class Motor
         Injector*           getInjector();
         Crankshaft*         getCrank();
         ExplosionChamber*   getExplosionChamber();
+        bool                getIsOn() const;
         
-        bool                getIsOn();
         void                StartMotor();
         void                stopMotor();
 

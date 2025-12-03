@@ -20,6 +20,7 @@ class GearLever : public Singleton<GearLever>
         
         GearLever();
         ~GearLever();
+
         static const char* const gearNames[NBGEAR];
         static const float gearVmax[NBGEAR];
 
@@ -29,7 +30,7 @@ class GearLever : public Singleton<GearLever>
         Gear gearArr[NBGEAR];
 
 
-        int     getLevel();
+        int     getLevel() const;
 
         void    setLevel(int levelIdx);
 
@@ -37,7 +38,6 @@ class GearLever : public Singleton<GearLever>
         void    manageGear();
         void    decreaseLevel();
 
-        void    change();
         Gear*   activeGear();
 
 };

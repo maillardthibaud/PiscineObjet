@@ -53,7 +53,6 @@ Gear*   DriverInfo::getGear()
     return currentGear;
 }
 
-
 void    DriverInfo::setMotor(Motor* p_motor)
 {
     motor = p_motor;
@@ -72,7 +71,7 @@ void    DriverInfo::setWheelInfo(Wheel* wh)
 
 }
 
-float    DriverInfo::getCurrentSpeed()
+float    DriverInfo::getCurrentSpeed() const
 {
     return(speed);
 }

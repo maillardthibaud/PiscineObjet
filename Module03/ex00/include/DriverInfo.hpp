@@ -25,24 +25,23 @@ class DriverInfo
         float           speed;
         float           pedalPressure;
         
-
-
-
     public:
 
         DriverInfo();
         ~DriverInfo();
 
-        void    displayDriverInfo();
+        float   getCurrentSpeed() const;
+        Gear*   getGear();
+
         void    setLastPedal(Pedal* pedal);
         void    setWheelInfo(Wheel* wh);
         void    setBrakeController(BrakeController* p_bc);
         void    setMotor(Motor* p_motor);
-        Gear*   getGear();
         void    setGear(Gear* gear);
         void    setIsTurnOn(bool value);
 
-        float     getCurrentSpeed();
+        void    displayDriverInfo();
+
 };
 
 

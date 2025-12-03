@@ -22,8 +22,6 @@ TuesdayDiscountCommand::TuesdayDiscountCommand(int id, const std::string &date, 
     std::cout << " ----------------------------------------------------- " << std::endl;
 }
 
-
-
 TuesdayDiscountCommand::~TuesdayDiscountCommand()
 {
 }

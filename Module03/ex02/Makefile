@@ -15,8 +15,6 @@ SRC 		:= main.cpp \
 OBJ			:= $(SRC:.cpp=.o)
 
 
-
-
 all			: $(NAME)
 
 $(NAME)		: $(OBJ)
@@ -26,14 +24,13 @@ $(NAME)		: $(OBJ)
 				$(CC) $(CFLAGS) -c $< -o $@
 
 
-
 clean		:
 				rm -f $(OBJ)
 
 fclean		: clean
 				rm -f $(NAME)
 
-re			: fclean
+re			: fclean all
 
 
 .PHONY		: all re fclean clean

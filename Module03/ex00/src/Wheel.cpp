@@ -12,7 +12,6 @@ Wheel::Wheel() : force(0.0f), speed(0.0f), direction_angle(0.0f), brakeForceRece
 
 Wheel::~Wheel()
 {
-    // std::cout << "Destructor " << typeid(this).name() << std::endl;
 }
 bool    Wheel::isParkActive()
 {
@@ -33,16 +32,12 @@ DriverInfo* Wheel::getDriverInfo()
 void Wheel::manageBrakeForce()
 {
     if (brakeForceReceived > 0.0f)
-    {
         std::cout << "  Force brake received : " << brakeForceReceived << ", the force rotation was : " << force << " is now : " << force - brakeForceReceived << std::endl;
-        // force -= brakeForceReceived;
-    }
 }
 void Wheel::executeRotation(float p_force)
 {
     if (isParkActive())
         return ;
-
     std::cout << "  executeRotation, wheel force was : " << force << " new force : " << p_force << std::endl;
     force = p_force;
     manageBrakeForce();
@@ -58,8 +53,6 @@ void Wheel::executeRotation(float p_force)
             speed = 61.0f;
         std::cout << "Wheel go backward at : " << speed << " km/h, angle direction : " << direction_angle<< std::endl;
     }
-
-
 }
 
 void    Wheel::setDriverInfo(DriverInfo* p_di)
@@ -67,7 +60,7 @@ void    Wheel::setDriverInfo(DriverInfo* p_di)
     di = p_di;
 }
 
-float   Wheel::getBrakeForce()
+float   Wheel::getBrakeForce() const
 {
     return (brakeForceReceived);
 }
@@ -79,7 +72,7 @@ void    Wheel::setBrakeForce(float value)
     executeRotation(force);
 }
 
-float   Wheel::getSpeed()
+float   Wheel::getSpeed() const
 {
     return (speed);
 }
@@ -91,14 +84,13 @@ void    Wheel::turnWheel(float p_angle)
         direction_angle = p_angle;
         std::cout << "Apply turn on Front wheel with an angle : " << direction_angle << " degres" << std::endl;
     }
-
 }
-float   Wheel::getDirectAngle()
+float   Wheel::getDirectAngle() const
 {
     return (direction_angle);
 }
 
-bool    Wheel::getIsPark()
+bool    Wheel::getIsPark() const
 {
     return (isPark);
 }

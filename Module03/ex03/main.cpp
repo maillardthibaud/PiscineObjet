@@ -27,10 +27,7 @@ int main()
     em.executeWorkday();
     em.executeWorkday();
 
-
     em.executePayroll();
-
-
 
     em.executeWorkday();
     em.executeWorkday();

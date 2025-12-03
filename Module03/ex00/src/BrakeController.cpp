@@ -17,17 +17,13 @@ BrakeController::BrakeController() : pression(1.0f), isPark(true)
 
 BrakeController::~BrakeController()
 {
-    // std::cout << "Destructor " << typeid(this).name() << std::endl;
 }
 
 void BrakeController::execute(float p_pression)
 {
     std::cout << "->Brake controller execute at : " << p_pression << " bars." << std::endl;
     for (int i = 0; i < 4; i++)
-    {
         brakeArr[i].execute(p_pression);
-    
-    }
     pression = p_pression;
 }
 
@@ -36,11 +32,11 @@ Brake*  BrakeController::getBrake(int idx)
     return(&(brakeArr[idx]));
 }
 
-float BrakeController::getPression()
+float BrakeController::getPression() const
 {
     return(pression);
 }
-bool BrakeController::getIsPark()
+bool BrakeController::getIsPark() const
 {
     return(isPark);
 }

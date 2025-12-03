@@ -11,7 +11,9 @@ Car::Car() : gl(GearLever::getInstance()), currSpeed(0.0f)
     std::cout << "Constructor " << typeid(this).name() << std::endl;
     Init();
 }
-
+Car::~Car()
+{
+}
 
 void Car::Init()
 {
@@ -35,7 +37,6 @@ void Car::Init()
     cockpit.getDriverInfo().setBrakeController(&bc);
     cockpit.getDriverInfo().setMotor(&motor);
 
-    
     tr.setCar(this);
 
     std::cout << "-->> BrakeController get Brakes and set their wheel" << std::endl;
@@ -46,14 +47,8 @@ void Car::Init()
     std::cout << "-->> Your car is Ready" <<  std::endl;
 
     cockpit.getDriverInfo().displayDriverInfo();
-
-    
 }
 
-Car::~Car()
-{
-    // std::cout << "Destructor " << typeid(this).name() << std::endl;
-}
 void Car::start()
 {
     std::cout << "Try to Start your engine..." << std::endl;
@@ -63,9 +58,7 @@ void Car::start()
 void    Car::stop()
 {
     if (!motor.getIsOn())
-    {
         std::cout << "You try to stop the car, but the motor is not start yet..." <<std::endl;
-    }
     else
     {
         bc.execute(1.0f);
@@ -82,8 +75,6 @@ void    Car::checkBrakePressure()
         int purCent = bc.getBrake(i)->getForce() * 100;
         std::cout << "Brake n " << i << " have " <<  purCent << " % force on it" << std::endl;
     }
-
-
 }
 void Car::displayGear()
 {
@@ -93,7 +84,6 @@ void Car::displayGear()
 
 void Car::accelerate(float speed)
 {
-    // displayGear();
     if (!motor.getIsOn())
         std::cout << "The motor is off." << std::endl;
     else if (gl.activeGear()->getIdx() == 0)
@@ -102,13 +92,11 @@ void Car::accelerate(float speed)
         std::cout << "Maybe try to remove the Parking brake" << std::endl;
     else
     {
-
         if (!checkSpeed(speed))
             return;
         Injector* ij = motor.getInjector();
         if (!ij)
             return;
-
         Pedal& pedal = cockpit.getPedal();
         pedal.setTarget(ij);
         currSpeed = speed;
@@ -194,14 +182,9 @@ void Car::checkGearSpeed(float speed)
                 }
                 break;
             }
-
         default:
             break;
-
-    std::cout << "test  " << std::endl;
-
     }
-
 }
 void Car::shift_gears_up()
 {

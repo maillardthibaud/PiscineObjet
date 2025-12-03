@@ -15,14 +15,12 @@ Motor::~Motor()
 {
 }
 
-
 Crankshaft* Motor::getCrank()
 {
     return (&cr);
 }
 
-
-bool    Motor::getIsOn()
+bool    Motor::getIsOn() const
 {
     return (isOn);
 }

@@ -24,8 +24,8 @@ class Transmission
         Transmission();
         ~Transmission();
 
-        float   getForce();
-        bool    getIsActive();
+        float   getForce() const;
+        bool    getIsActive() const;
 
         void    setCar(Car* car);
         void    setVmax(bool value);
@@ -33,7 +33,6 @@ class Transmission
 
         void    addWheel(Direction* d);
         bool    isEmpty();
-        bool    checkWheel();
         bool    checkForceReceive(float force);
 
         void    activate(float p_force);

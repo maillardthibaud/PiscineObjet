@@ -15,6 +15,7 @@ class Pedal
         ~Pedal();
 
         void setTarget(LinkablePart* p_part);
+        
         void use(float p_pression);
 };
 

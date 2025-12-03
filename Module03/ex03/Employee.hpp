@@ -22,7 +22,7 @@ class Employee
 
 
                 virtual int         executeWorday() = 0;
-                virtual int        calculMonthlyPayAndReset();
+                virtual int         calculMonthlyPayAndReset();
 };
 
 #endif

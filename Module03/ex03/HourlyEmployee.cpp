@@ -5,7 +5,6 @@
 TempWorker::TempWorker(const std::string& name, int hourlyValue ) : Employee(name, hourlyValue), _hourlyMobilize(0)
 {
     std::cout << "Temp Worker, name : " << name << ", hourly value : " << hourlyValue << std::endl;
-
 }
 
 TempWorker::~TempWorker()
@@ -23,8 +22,6 @@ int     TempWorker::executeWorday()
     std::cout << "Pay for the day : " << totalPay << std::endl;
     return (today);
 }
-
-
 
 void    TempWorker::addMobilizedHour(int hour)
 {

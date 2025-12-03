@@ -16,10 +16,10 @@ class Gear
         Gear();
         ~Gear();
 
-        int             getIdx();
-        std::string     getName();
-        int             getDemult();
-        float           getVmax();
+        int             getIdx() const;
+        std::string     getName() const;
+        int             getDemult() const;
+        float           getVmax() const;
         
         void            setName(std::string);
         void            setVmax(float value);

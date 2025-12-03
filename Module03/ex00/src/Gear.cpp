@@ -13,20 +13,19 @@ Gear::~Gear()
 {
 }
 
-float   Gear::getVmax()
+float   Gear::getVmax() const
 {
     return (vMax);
 }
 
-int Gear::getIdx()
+int Gear::getIdx() const
 {
     return (idx);
 }
-std::string Gear::getName()
+std::string Gear::getName() const
 {
     return (name);
 }
-
 
 void            Gear::setVmax(float value)
 {
@@ -37,7 +36,7 @@ void Gear::setName(std::string setName)
     name = setName;   
 }
 
-int Gear::getDemult()
+int Gear::getDemult() const
 {
     return (demultiplier);
 }

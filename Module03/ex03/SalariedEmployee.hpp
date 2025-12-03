@@ -17,7 +17,6 @@ class ContractEmployee : public Employee
         void    addWorkOff(int day);
 
         virtual int executeWorday();
-        virtual void calculMonthlyPay();
 
 };
 

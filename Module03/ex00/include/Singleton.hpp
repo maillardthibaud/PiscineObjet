@@ -35,7 +35,6 @@ Singleton<T>::Singleton()
 template<class T>
 Singleton<T>::~Singleton()
 {
-    std::cout << "destro single" << std::endl;
 }
 
 template<class T>

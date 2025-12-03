@@ -15,7 +15,6 @@ class FileLogger : public ILogger
             std::ofstream    _file;
             IHeader*        _iheader;
 
-
     public:
 
         FileLogger(const std::string& filename, IHeader* h);

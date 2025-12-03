@@ -8,7 +8,6 @@ class Brake
     private:
 
         Wheel*      wheel;
-
         float       force;
 
     public:
@@ -17,8 +16,8 @@ class Brake
         ~Brake();
 
         
-        Wheel*      getWheel();
-        float       getForce();
+        Wheel*      getWheel() const;
+        float       getForce() const;
 
         void        setWheel(Wheel* wh);
 

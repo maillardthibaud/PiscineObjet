@@ -36,10 +36,10 @@ class Wheel : public iTurnable, public iMovable
 
         WheelType       wt;
 
-        float           getSpeed();
-        float           getBrakeForce();
-        float           getDirectAngle();
-        bool            getIsPark();
+        float           getSpeed() const;
+        float           getBrakeForce() const;
+        float           getDirectAngle() const;
+        bool            getIsPark() const;
         DriverInfo*     getDriverInfo();
 
         void            setBrakeForce(float value);
@@ -47,8 +47,6 @@ class Wheel : public iTurnable, public iMovable
 
         bool            isParkActive();
         void            manageBrakeForce();
-
-
         void            executeRotation(float p_force);
         void            turnWheel(float p_angle);
 

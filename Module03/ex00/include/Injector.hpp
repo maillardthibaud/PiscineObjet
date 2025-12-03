@@ -17,7 +17,7 @@ class Injector : public LinkablePart
         Injector();
         ~Injector();
 
-        float   getPression();
+        float   getPression() const;
 
         void    setPression(float s_pression);
         void    setEc(ExplosionChamber* chamber);

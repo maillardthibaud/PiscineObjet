@@ -8,8 +8,6 @@ class ILogger
 {
     private:
 
-
-
     public:
 
         ILogger();

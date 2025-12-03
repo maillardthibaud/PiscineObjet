@@ -20,8 +20,8 @@ class BrakeController : public LinkablePart
 
 
         Brake*      getBrake(int idx);
-        float       getPression();
-        bool        getIsPark();
+        float       getPression() const;
+        bool        getIsPark() const;
 
         void        setPression(float value);
         void        setIsPark(bool value);

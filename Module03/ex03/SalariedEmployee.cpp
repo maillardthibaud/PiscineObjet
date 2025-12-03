@@ -13,7 +13,6 @@ ContractEmployee::~ContractEmployee()
 {
 }
 
-
 int     ContractEmployee::executeWorday()
 {
     int today = 7;
@@ -27,7 +26,6 @@ int     ContractEmployee::executeWorday()
     std::cout << "ContractEmployee name : " << name << " work hour today : " << today << " because hours missed : " << missToday << std::endl;
     std::cout << "Pay for the day : " << totalPay << std::endl;
     return (today);
-
 }
 
 
@@ -36,7 +34,3 @@ void    ContractEmployee::addWorkOff(int day)
     _hourlyMissed += day;
 }
 
-void    ContractEmployee::calculMonthlyPay()
-{
-
-}

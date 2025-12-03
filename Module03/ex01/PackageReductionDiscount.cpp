@@ -33,5 +33,4 @@ float PackageReductionDiscountCommand::getTotalPrice()
         std::cout << "Apply reduction on price ( -10 euros), new price : " << result << std::endl;
     }
     return (result);
-
 }

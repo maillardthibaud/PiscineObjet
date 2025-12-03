@@ -17,10 +17,9 @@ class TempWorker : public Employee
         TempWorker(const std::string& name, int hourlyDay);
         ~TempWorker();
 
-        void    addMobilizedHour(int hour);
+        void            addMobilizedHour(int hour);
 
-
-        virtual int executeWorday();
+        virtual int     executeWorday();
 
 };
 

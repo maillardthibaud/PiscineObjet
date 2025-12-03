@@ -15,7 +15,7 @@ class ExplosionChamber
         ExplosionChamber();
         ~ExplosionChamber();
 
-        float   getVolume();
+        float   getVolume() const;
 
         void    setVolume(float vol);
         void    setCrank(Crankshaft* crank);

@@ -13,7 +13,6 @@ Crankshaft::~Crankshaft()
 {
 }
 
-
 void    Crankshaft::setTr(Transmission* t)
 {
     tr = t;
@@ -34,6 +33,4 @@ void Crankshaft::receiveForce(float p_volume)
         float force = volume;
         tr->activate(force);
     }
-    
-    
 }

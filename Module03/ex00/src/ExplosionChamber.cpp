@@ -14,7 +14,7 @@ ExplosionChamber::~ExplosionChamber()
 }
 
 
-float   ExplosionChamber::getVolume()
+float   ExplosionChamber::getVolume() const
 {
     return (volume);
 }
@@ -34,5 +34,4 @@ void ExplosionChamber::fill(float p_volume)
     std::cout << "Chamber vol was : " << volume  << " fill with " << p_volume << std::endl;
     volume = p_volume;
     cr->receiveForce(volume);
-
 }

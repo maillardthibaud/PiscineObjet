@@ -13,10 +13,6 @@ GearLever::GearLever()
 GearLever::~GearLever()
 {
 }
-void GearLever::change()
-{
-
-}
 
 Gear* GearLever::activeGear()
 {
@@ -38,7 +34,6 @@ const float GearLever::gearVmax[GearLever::NBGEAR] = {
     61.0f, 0.0f, 61.0f, 84.0f, 110.0f, 140.0f, 198.0f
 };
 
-
 void GearLever::manageGear()
 {
     std::cout << "|-> manage gear" << std::endl;
@@ -49,10 +44,9 @@ void GearLever::manageGear()
         gearArr[i].setVmax(gearVmax[i]);
         std::cout << "Gear name  : " << gearArr[i].getName() << std::endl;
     }
-
 }
 
-int     GearLever::getLevel()
+int     GearLever::getLevel() const
 {
     return (level);
 }

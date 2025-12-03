@@ -8,15 +8,18 @@ Brake::Brake() : force(1.0f)
     std::cout << "Constructor " << typeid(this).name() << std::endl;
 
 }
-
 Brake::~Brake()
 {
-    // std::cout << "Destructor " << typeid(this).name() << std::endl;
 }
 
-Wheel* Brake::getWheel()
+Wheel* Brake::getWheel() const 
 {
     return(wheel);
+}
+
+float    Brake::getForce() const
+{
+    return (force);
 }
 
 void  Brake::setWheel(Wheel* wh)
@@ -39,11 +42,6 @@ void Brake::execute(float p_force)
         std::cout << "  Apply force " << p_force << " on brake" << std::endl;
         wheel->setBrakeForce(p_force);
     }
-
-}
-float    Brake::getForce()
-{
-    return (force);
 }
 
 void Brake::attackWheel(Wheel* p_wheel)

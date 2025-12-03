@@ -15,7 +15,6 @@ DAE::~DAE()
 void    DAE::setDirection(Direction* p_direction)
 {
     direction = p_direction;
-
 }
 
 void DAE::use(float p_angle)

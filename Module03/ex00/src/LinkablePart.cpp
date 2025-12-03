@@ -10,5 +10,4 @@ LinkablePart::LinkablePart()
 
 LinkablePart::~LinkablePart()
 {
-    // std::cout << "Destructor " << typeid(this).name() << std::endl;
 }

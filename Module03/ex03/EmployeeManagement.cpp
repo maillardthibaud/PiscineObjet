@@ -39,7 +39,6 @@ void    EmployeeManager::executeWorkday()
         if ((*it)->executeWorday() == 0)
             std::cout << "!!! Employee nname : " << (*it)->name << " has not workin today !!!" << std::endl;
     }
-
 }
 
 void    EmployeeManager::executePayroll()
@@ -48,8 +47,5 @@ void    EmployeeManager::executePayroll()
 
     std::vector<Employee*>::iterator it;
     for (it = _setEmployee.begin(); it != _setEmployee.end(); it++)
-    {
         std::cout << "Employee name : " << (*it)->name << " paid : " << (*it)->calculMonthlyPayAndReset() << std::endl; 
-
-    }
 }

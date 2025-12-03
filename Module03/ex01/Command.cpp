@@ -3,6 +3,9 @@
 Command::Command()
 {
 }
+Command::~Command()
+{
+}
 void    Command::InitArticlesPrice()
 {
     _articlePrice["Apple"] = 1.1f;
@@ -56,6 +59,3 @@ bool Command::CheckArticle(std::string article)
 }
 
 
-Command::~Command()
-{
-}
